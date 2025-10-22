@@ -1,0 +1,76 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
+  text-decoration: none;
+  color: inherit;
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 32px;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  min-height: 365px;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  background-color: var(--white);
+}
+
+.card:focus,
+.card:active {
+  outline: none;
+  background-color: transparent;
+}
+
+
+.logoContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    max-width: 330px;
+    max-height: auto;
+    object-fit: contain;
+}
+
+.vs {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #888;
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: var(--font-size-base);
+  margin-bottom: 12px;
+  font-weight: 700;
+  text-align: start;
+  line-height: 1.4;
+}
+
+.card p {
+  font-size: var(--font-size-base);
+  color: var(--text-light);
+  line-height: 1.6;
+  flex-grow: 1;
+}

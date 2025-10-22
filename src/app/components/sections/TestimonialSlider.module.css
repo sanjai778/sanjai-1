@@ -1,0 +1,101 @@
+.testimonialSwiperWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* The Swiper instance MUST have overflow: visible to show the side slides */
+.swiperContainer {
+  padding-top: 20px;
+  padding-bottom: 60px !important;
+  overflow: visible !important;
+}
+
+.swiperSlide {
+  /* We REMOVED the fixed width. Swiper now controls the width based on `slidesPerView` */
+  height: auto;
+  transform: scale(0.9);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  display: flex;
+}
+
+/* Use :global() to target Swiper's dynamically added classes */
+.testimonialSwiperWrapper :global(.swiper-slide-active) {
+  transform: scale(1);
+}
+.testimonialSwiperWrapper :global(.swiper-slide-active) .card {
+  box-shadow: 0 20px 50px -20px rgba(44, 62, 80, 0.15);
+}
+.testimonialSwiperWrapper :global(.swiper-pagination) {
+  position: absolute;
+  bottom: 10px !important;
+  width: 100%;
+  text-align: center;
+}
+.testimonialSwiperWrapper :global(.swiper-pagination-bullet) {
+  background: var(--border-color);
+  width: 9px;
+  height: 9px;
+  opacity: 1;
+}
+.testimonialSwiperWrapper :global(.swiper-pagination-bullet-active) {
+  background: var(--primary-green);
+  width: 28px;
+  border-radius: 5px;
+}
+
+/* Card and Content Styling */
+.card {
+  background: #fff;
+  padding: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+}
+.quoteIcon {
+  margin-bottom: 15px;
+}
+.cardText {
+  font-family: 'Poppins', 'Montserrat', sans-serif !important;
+  flex-grow: 1;
+  color: var(--text-dark);
+  line-height: 1.8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  font-weight: 500;
+  font-size: 15px;
+}
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-green);
+}
+.authorInfo h4 {
+  color: var(--primary-green);
+  font-size: 1rem;
+  margin: 0 0 5px;
+}
+.authorInfo p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--text-light);
+}
+
+/* On mobile, we want the slides to look fully active since we only see one at a time */
+@media (max-width: 767px) {
+  .swiperSlide {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,123 @@
+/* styles/globals.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-green: #10c469;
+  --primary-green-dark: #0d9d55;
+  --text-dark: #2c3e50;
+  --text-light: #5a6a7a;
+  --border-color: #e5e7eb;
+  --background-light: #f8f9fa;
+  --font-family: 'Inter', sans-serif;
+  --footer-bg: #f7f8fa;
+  --white: #ffffff;
+
+  /* Font Sizes */
+  --font-size-xxl: 2.5em; /* Extra extra large */
+  --font-size-xl: 2rem; /* Extra large */
+  --font-size-lg: 1.25rem; /* Large */
+  --font-size-md: 1.125rem; /* Medium */
+  --font-size-base: 1rem; /* Base */
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-dark);
+  background-color: #fff;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section_header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.section_tagline {
+  color: var(--primary-green);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.section_title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.btn {
+  text-decoration: none !important;
+  padding: 12px 24px !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--primary-green) !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  font-weight: 600 !important;
+}
+
+.btn-primary {
+  background-color: var(--primary-green) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-green-dark) !important;
+  color: #fff !important;
+}
+
+.btn-primary-header {
+  background-color: var(--primary-green) !important;
+  color: #fff !important;
+  padding: 8px 16px !important;
+}
+
+.btn-primary-header:hover {
+  background-color: #fff !important;
+  color: var(--primary-green) !important;
+}
+
+.btn-outline-primary {
+  background-color: transparent !important;
+  color: var(--primary-green) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-green-dark) !important;
+  color: #fff !important;
+  border-color: var(--primary-green-dark) !important;
+}
+
+.btn-secondary {
+  background-color: var(--text-light) !important;
+  color: var(--white) !important;
+  border-color: var(--text-light) !important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--text-dark) !important;
+  border-color: var(--text-dark) !important;
+}
+
+.btn-submit {
+  background-color: var(--primary-green) !important;
+  color: var(--white) !important;
+  border: none !important;
+  padding: 15px 30px !important;
+  border-radius: 6px !important;
+  font-size: var(--font-size-md) !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  transition: background-color 0.3s !important;
+}
+
+.btn-submit:hover {
+  background-color: var(--primary-green-dark) !important;
+}

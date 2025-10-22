@@ -1,0 +1,64 @@
+.faqSection {
+  padding: 80px 0;
+  background-color: var(--background-light);
+}
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.tagline {
+  color: var(--primary-green);
+  font-weight: 500;
+}
+.title {
+  font-size: 2rem;
+  color: var(--text-dark);
+  max-width: 700px;
+  margin: 10px auto 0;
+}
+.accordion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.cardHeader {
+  padding: 0;
+}
+.button {
+  width: 100%;
+  text-align: left;
+  padding: 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.iconWrapper {
+  margin-right: 15px;
+  color: var(--primary-green);
+  font-size: 1.5rem;
+}
+.contentWrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+.contentWrapper.open {
+  max-height: 500px; /* A large enough value to show content */
+}
+.cardBody {
+  padding: 0 20px 20px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
