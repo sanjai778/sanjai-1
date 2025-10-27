@@ -1,0 +1,39 @@
+/* All colors, base fonts, and buttons are from globals.css */
+.section { padding: 60px 0; }
+
+/* Hero Section */
+.hero_section { background-color: var(--white); padding: 80px 0; border-bottom: 1px solid var(--border-color); }
+.hero_content { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.hero_left { flex: 1; max-width: 50%; }
+.hero_title { font-size: var(--font-size-xxl); font-weight: 700; color: var(--text-dark); line-height: 1.2; margin-bottom: 20px; }
+.hero_subtitle { font-size: var(--font-size-lg); color: var(--text-light); margin-bottom: 30px; }
+.button_group { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 30px; }
+.check_items { display: flex; flex-wrap: wrap; gap: 24px; color: var(--text-light); }
+.check_item { display: flex; align-items: center; gap: 8px; font-size: var(--font-size-base); }
+.hero_right { flex: 1; text-align: center; }
+
+/* Solutions & Market Data */
+.solutions_grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.solution_card { background: var(--white); padding: 32px; border-radius: 8px; border: 1px solid var(--border-color); }
+.card_title { font-size: var(--font-size-lg); font-weight: 600; margin-bottom: 16px; color: var(--text-dark); }
+.section_subtitle { font-size: var(--font-size-xl); font-weight: 600; margin-bottom: 40px; border-bottom: 3px solid var(--primary-green); padding-bottom: 12px; display: inline-block; }
+.market_trends { margin-bottom: 60px; }
+.trends_grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.trend_card { background-color: var(--background-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 24px; }
+.trend_card h4 { font-size: var(--font-size-md); font-weight: 600; margin-bottom: 12px; color: var(--text-dark); text-transform: capitalize; }
+.category_grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px; }
+.category_card { background-color: var(--white); border: 1px solid var(--border-color); border-radius: 8px; padding: 24px; }
+.category_card h4 { font-size: var(--font-size-md); font-weight: 600; margin-bottom: 16px; color: var(--text-dark); text-transform: capitalize; }
+.category_card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.category_card li { background-color: var(--background-light); border-radius: 20px; padding: 8px 16px; font-size: 0.9rem; color: var(--text-light); font-weight: 500; }
+
+/* Background for Country List Section */
+.country_list_background { background-color: var(--white); border-top: 1px solid var(--border-color); }
+
+/* Responsive */
+@media (max-width: 991px) {
+  .hero_content { flex-direction: column-reverse; text-align: center; }
+  .hero_left, .hero_right { max-width: 100%; }
+  .hero_right { margin-bottom: 30px; }
+  .button_group, .check_items { justify-content: center; }
+}

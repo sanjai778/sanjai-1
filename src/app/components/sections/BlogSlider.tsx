@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Mousewheel, Autoplay, EffectFade } from 'swiper/modules';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 import 'swiper/swiper-bundle.css';
 
@@ -34,6 +34,9 @@ const BlogSection: React.FC = () => {
   }, []);
 
   const getStrapiMedia = (url: string) => {
+    if (!url) {
+      return '/images/placeholder.png'; // Return a default image path if URL is missing
+    }
     if (url.startsWith("https://onfra.io/wp-content")) {
       return url.replace("https://onfra.io/wp-content", "");
     }

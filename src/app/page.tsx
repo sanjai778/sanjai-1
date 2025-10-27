@@ -1,3 +1,4 @@
+'use client';
 // Import React components
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -13,13 +14,14 @@ import EnterpriseCta from './components/sections/EnterpriseCta';
 import CtaSection from './components/sections/CtaSection';
 // import NewsletterModal from './components/sections/NewsletterModal';
 // import PeekabooSlider from './components/PeekabooSlider';
-import BlogSection from './components/sections/BlogSlider';
+import BlogSwiperSection from './components/sections/BlogSwiperSection';
+import './components/BlogSwiper/BlogSwiper.css';
 import TestimonialSection from './components/sections/TestimonialSection';
 
 export default function HomePage() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       
       <main>
         <HeroSection />
@@ -54,12 +56,12 @@ export default function HomePage() {
         
         <SecuritySection />
         
-        {/* <TestimonialSection /> */}
+        <TestimonialSection />
         
         <SolutionsGrid />
-        {/* <FaqSection /> */}
+        <FaqSection />
         <EnterpriseCta />
-         {/* <BlogSection /> */}
+        <BlogSwiperSection />
         <CtaSection />
         
 

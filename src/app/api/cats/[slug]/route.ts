@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { NextResponse, NextRequest } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
@@ -6,10 +5,10 @@ const prisma = new PrismaClient();
 
 export async function GET(
   request: NextRequest,
-  context: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
+  const { slug } = await context.params;
   try {
-    const { slug } = context.params;
     const cat = await prisma.cat.findUnique({
       where: {
         slug: slug,

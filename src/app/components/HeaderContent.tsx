@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import styles from './Header.module.css';
@@ -58,7 +59,7 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
     <nav className={styles.top_main_header}>
       <div className={styles.container}>
         <Link href="/" className={styles.brand}>
-          <img src="/images/logos/onfra-logo.png" style={{ height: '55px' }} alt="Best Workplace Management Platform" />
+          <Image src="/images/logos/onfra-logo.png" width={165} height={55} style={{ height: '55px' }} alt="Best Workplace Management Platform" />
         </Link>
         <ul className={`${styles.nav_menu} ${isMenuOpen ? styles.show : ''}`}>
           <li>

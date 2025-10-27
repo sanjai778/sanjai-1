@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './CompareHero.module.css';
 
 interface CompareHeroProps {
@@ -25,9 +26,9 @@ const CompareHero: React.FC<CompareHeroProps> = ({ competitorName }) => {
             </Link>
           </div>
           <div className={styles.features}>
-            <span><img src="https://onfra.io/wp-content/uploads/svg_image/check-circle 1.svg" width="20" alt="Checkmark" />Free 14-day Demo</span>
-            <span><img src="https://onfra.io/wp-content/uploads/svg_image/check-circle 1.svg" width="20" alt="Checkmark" />No credit card needed</span>
-            <span><img src="https://onfra.io/wp-content/uploads/svg_image/check-circle 1.svg" width="20" alt="Checkmark" />Quick Setup</span>
+            <span><Image src="https://onfra.io/wp-content/uploads/svg_image/check-circle 1.svg" width="20" height="20" alt="Checkmark" />Free 14-day Demo</span>
+            <span><Image src="https://onfra.io/wp-content/uploads/svg_image/check-circle 1.svg" width="20" height="20" alt="Checkmark" />No credit card needed</span>
+            <span><Image src="https://onfra.io/wp-content/uploads/svg_image/check-circle 1.svg" width="20" height="20" alt="Checkmark" />Quick Setup</span>
           </div>
         </div>
       </div>

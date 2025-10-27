@@ -2,15 +2,16 @@
 
 import React from 'react';
 import styles from './CompareHeader.module.css';
+import { Compare } from '@/app/types';
 
 interface CompareHeaderProps {
-  competitor: any;
+  competitor: Compare;
 }
 
 const CompareHeader: React.FC<CompareHeaderProps> = ({ competitor }) => {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>The Best {competitor.mainTitle} Alternative for Workspace Digital Transformation</h1>
+      <h1 className={styles.title}>The Best {competitor.main_title} Alternative for Workspace Digital Transformation</h1>
       <div className={styles.buttons}>
         <a href="#" className={`${styles.button} ${styles.primary}`}>Signup For Free!</a>
         <a href="#" className={`${styles.button} ${styles.secondary}`}>Talk to Us</a>

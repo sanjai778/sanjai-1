@@ -40,7 +40,7 @@ model Tag {
 
 model CaseStudy {
   id                Int     @id @default(autoincrement())
-  wordpress_id      String? @db.Text
+  wordpress_id      String? @unique @db.VarChar(255)
   Title             String? @db.Text
   Card_Image_Url    String? @db.VarChar(255)
   Header            String? @db.VarChar(255)
@@ -61,11 +61,13 @@ model CaseStudy {
   Employees         String? @db.VarChar(255)
   Product           String? @db.VarChar(255)
   Service_Time      String? @db.VarChar(255)
+  slug              String? @unique
 }
 
 model Compare {
   id                                     Int     @id @default(autoincrement())
-  wordpress_id                           String  @db.Text
+  wordpress_id                           String  @unique @db.VarChar(255)
+  slug                                   String? @unique
   main_title                             String? @db.Text
   Dynamic_Fields                         String? @db.Text
   Document_Sign                          String? @db.Text
@@ -183,8 +185,9 @@ model CountryWorkplaceData {
 }
 
 model Testimonial {
-  Id         Int       @id
-  name       String    @db.VarChar(255)
+  id           Int       @id @default(autoincrement())
+  wordpress_id Int       @unique
+  name         String    @db.VarChar(255)
   position   String    @db.VarChar(255)
   content    String    @db.Text
   img        String?   @db.VarChar(500)

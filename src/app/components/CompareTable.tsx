@@ -2,8 +2,14 @@
 
 import React from 'react';
 
+interface CompareData {
+  Id: number;
+  mainTitle: string;
+  [key: string]: string | number | boolean;
+}
+
 interface CompareTableProps {
-  data: any[];
+  data: CompareData[];
 }
 
 const CompareTable: React.FC<CompareTableProps> = ({ data }) => {

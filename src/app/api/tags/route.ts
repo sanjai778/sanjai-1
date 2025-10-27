@@ -21,6 +21,7 @@ export async function GET() {
         id: blog.id,
         title: blog.title,
         createdAt: blog.createdAt,
+        imgUrl: blog.feature_img,
       })),
     }));
 

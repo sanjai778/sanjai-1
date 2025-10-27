@@ -1,8 +1,9 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import styles from './PriceComparison.module.css';
-import { Compare } from '@/entity/Compare';
+import { Compare } from '@/app/types';
 
 interface PriceComparisonProps {
   compare: Compare;
@@ -18,7 +19,7 @@ const PriceComparison: React.FC<PriceComparisonProps> = ({ compare, onfraPrice }
             {/* Competitor Card */}
             <div className={styles.clientPricingCard}>
               <div className={styles.compareClient}>
-                <h2 className={styles.clientLogoCompare}>{compare.mainTitle}</h2>
+                <h2 className={styles.clientLogoCompare}>{compare.main_title}</h2>
                 <h3 className={styles.businessProposal}>Price Comparison</h3>
                 <h4 className={styles.planName}>Professional Plan</h4>
                 <p className={styles.withoutProductPrice}>
@@ -28,7 +29,7 @@ const PriceComparison: React.FC<PriceComparisonProps> = ({ compare, onfraPrice }
             </div>
             {/* Onfra Card */}
             <div className={styles.ourPricingCard}>
-              <img className={styles.onfraLogoCompare} src="https://onfra.io/wp-content/uploads/2024/05/onfra-logo.png" alt="Onfra Logo" />
+              <Image className={styles.onfraLogoCompare} src="/uploads/2024/05/onfra-logo.png" alt="Onfra Logo" width={100} height={28} />
               <h2 className={styles.businessProposal}>Price Comparison</h2>
               <h3 className={styles.planName}>Professional Plan</h3>
               <p className={styles.productPrice}>
@@ -41,8 +42,8 @@ const PriceComparison: React.FC<PriceComparisonProps> = ({ compare, onfraPrice }
           </div>
           {/* Comparison Description */}
           <div className={styles.comparisonDes}>
-            <h2><span style={{ color: '#00d470' }}>Onfra</span> vs {compare.mainTitle}</h2>
-            <div dangerouslySetInnerHTML={{ __html: compare.pageDescription }} />
+            <h2><span style={{ color: '#00d470' }}>Onfra</span> vs {compare.main_title}</h2>
+            <div dangerouslySetInnerHTML={{ __html: compare.page_description }} />
           </div>
         </div>
       </div>

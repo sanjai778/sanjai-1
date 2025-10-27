@@ -17,9 +17,26 @@ const TestimonialSection: React.FC = () => {
 
   useEffect(() => {
     const fetchTestimonials = async () => {
-      const res = await fetch('/api/testimonials');
-      const data = await res.json();
-      setTestimonials(data);
+      try {
+        const res = await fetch('/api/testimonials');
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        const data = await res.json();
+        // Ensure that the data is an array before setting the state
+        if (Array.isArray(data)) {
+          setTestimonials(data);
+        } else if (data && Array.isArray(data.testimonials)) {
+          // Handle cases where the array is nested under a 'testimonials' key
+          setTestimonials(data.testimonials);
+        } else {
+          console.error('Fetched data is not an array:', data);
+          setTestimonials([]); // Set to empty array if data is not as expected
+        }
+      } catch (error) {
+        console.error('Failed to fetch testimonials:', error);
+        setTestimonials([]); // Set to empty array on error
+      }
     };
 
     fetchTestimonials();

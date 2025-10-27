@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './BestComparisonsSection.module.css';
+import { Compare } from '@/app/types';
 
 async function getLimitedCompares() {
   try {
@@ -27,7 +29,7 @@ const truncateWords = (text: string, wordLimit: number) => {
 };
 
 const BestComparisonsSection: React.FC = () => {
-  const [compares, setCompares] = useState<any[]>([]);
+  const [compares, setCompares] = useState<Compare[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -47,23 +49,23 @@ const BestComparisonsSection: React.FC = () => {
         <div className={styles.row}>
           {compares
             .filter(
-              (c: any) =>
-                c.mainTitle &&
-                c.mainTitle.toLowerCase() !== 'onfra' &&
-                c.mainTitle.toLowerCase() !== 'title'
+              (c: Compare) =>
+                c.main_title &&
+                c.main_title.toLowerCase() !== 'onfra' &&
+                c.main_title.toLowerCase() !== 'title'
             )
             .slice(0, 3)
-            .map((compare: any) => (
-              <div className={styles.colMd4} key={compare.Id}>
+            .map((compare: Compare) => (
+              <div className={styles.colMd4} key={compare.id}>
                 <Link href={`/compares/${compare.slug}`} className={styles.comparisonCardLink}>
                   <div className={styles.comparisonCard}>
                     <div className={styles.cardHeaderLogo}>
-                      {compare.imgUrl && <img src={compare.imgUrl} alt={`${compare.mainTitle} Logo`} className={styles.cardLogo} />}
+                      {compare.img_url && <Image src={compare.img_url} alt={`${compare.main_title} Logo`} className={styles.cardLogo} width={100} height={100} />}
                     </div>
                     <div className={styles.cardContent}>
-                      <h5 className={styles.cardTitle}>Onfra vs {compare.mainTitle}</h5>
+                      <h5 className={styles.cardTitle}>Onfra vs {compare.main_title}</h5>
                       <p className={styles.cardDescription}>
-                        {truncateWords(compare.pageDescription, 10)}
+                        {truncateWords(compare.page_description, 10)}
                       </p>
                     </div>
                   </div>

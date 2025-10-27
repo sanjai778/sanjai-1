@@ -3,13 +3,14 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from '../blogs/blogs.module.css';
 import NewPagination from './NewPagination';
 
 interface Post {
   id: number;
   title: string;
-  content: string;
+  miniContent: string;
   date: string;
   slug: string;
   featuredImage: string | null;
@@ -27,6 +28,7 @@ interface BlogListProps {
 }
 
 
+
 export default function BlogList({ posts, categories }: BlogListProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -34,7 +36,20 @@ export default function BlogList({ posts, categories }: BlogListProps) {
   const postsPerPage = 15;
 
   const filteredPosts = useMemo(() => {
-    return posts.filter(post => {
+    const processedPosts = posts.map(p => {
+      const post = { ...p };
+      if (post.featuredImage) {
+        if (post.featuredImage.startsWith('https://onfra.io/wp-content/uploads/')) {
+          post.featuredImage = post.featuredImage.replace('https://onfra.io/wp-content/uploads/', '');
+        } else if (post.featuredImage.startsWith('/uploads/')) {
+          post.featuredImage = post.featuredImage.substring('/uploads/'.length);
+        }
+        post.featuredImage = encodeURI(post.featuredImage);
+      }
+      return post;
+    });
+
+    return processedPosts.filter(post => {
       const matchesCategory = selectedCategory === 'All' || post.categories.some(cat => cat.name === selectedCategory);
       const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase());
       return matchesCategory && matchesSearch;
@@ -80,10 +95,21 @@ export default function BlogList({ posts, categories }: BlogListProps) {
 
       {/* Blog Grid */}
       <div className={styles.blog_grid}>
-        {paginatedPosts.map(post => (
+        {paginatedPosts.map((post, index) => (
           <Link key={post.id} href={`/blogs/${post.slug}`} className={styles.blog_card}>
             {post.featuredImage && (
-              <img src={post.featuredImage} alt={post.title} className={styles.card_image} />
+              // var imageUrl = post.featuredImage;
+  
+              <Image 
+                src={`/uploads/${post.featuredImage}`} 
+                alt={post.title} 
+                width={350} 
+                height={200} 
+                className={styles.card_image} 
+                priority={index < 3} // Prioritize loading for the first 3 images
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+              />
             )}
             <div className={styles.card_content}>
               <h2 className={styles.card_title}>
@@ -95,7 +121,7 @@ export default function BlogList({ posts, categories }: BlogListProps) {
                 })}
               </p>
               <div className={styles.card_excerpt}>
-                {post.content ? post.content.replace(/<[^>]*>?/gm, '') : ''}
+                {post.miniContent ? post.miniContent.replace(/<[^>]*>?/gm, '') : ''}
               </div>
               <span className={styles.read_more_btn}>
                 Read More

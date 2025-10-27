@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { NextResponse, NextRequest } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
@@ -6,10 +5,10 @@ const prisma = new PrismaClient();
 
 export async function GET(
   request: NextRequest,
-  context: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
+  const { slug } = await context.params;
   try {
-    const { slug } = context.params;
     const blog = await prisma.blog.findUnique({
       where: {
         slug: slug,
@@ -28,7 +27,8 @@ export async function GET(
       title: blog.title,
       slug: blog.slug,
       content: blog.content,
-      createdAt: blog.createdAt,
+      date: blog.createdAt,
+      featuredImage: blog.feature_img,
       cats: blog.cats,
       tags: blog.tags.map(tag => ({
         id: tag.id,

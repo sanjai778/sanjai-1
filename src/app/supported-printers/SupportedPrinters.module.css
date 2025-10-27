@@ -1,0 +1,62 @@
+.content {
+    padding: 2rem 0;
+    font-size: var(--font-size-base);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.tableContainer {
+    overflow-x: auto;
+    padding: 2rem 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    text-align: center;
+}
+
+.printersCol {
+    vertical-align: inherit;
+    font-weight: 600;
+}
+
+.iosCol, .androidCol {
+    vertical-align: middle;
+}
+
+.tdIconWrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.borderBottom {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.textAlignLeft {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.p1 {
+    padding: 1rem;
+}
+
+.borderRight {
+    border-right: 1px solid var(--border-color);
+}
+
+.airprintLink a {
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.airprintLink a:hover {
+    text-decoration: underline;
+}

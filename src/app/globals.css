@@ -16,6 +16,7 @@
   --font-family: 'Inter', sans-serif;
   --footer-bg: #f7f8fa;
   --white: #ffffff;
+  --line-height: 1.6;
 
   /* Font Sizes */
   --font-size-xxl: 2.5em; /* Extra extra large */
@@ -29,6 +30,7 @@ body {
   font-family: var(--font-family);
   color: var(--text-dark);
   background-color: #fff;
+  line-height: var(--line-height);
 }
 
 .container {
@@ -120,4 +122,43 @@ body {
 
 .btn-submit:hover {
   background-color: var(--primary-green-dark) !important;
+}
+
+.termsContainer h2 {
+  font-size: var(--font-size-xl);
+  color: var(--text-dark);
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--primary-green);
+  padding-bottom: 0.5rem;
+}
+
+.termsContainer p,
+.termsContainer li {
+  font-size: var(--font-size-base);
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.termsContainer ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.termsContainer strong {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.termsContainer a {
+  color: var(--primary-green);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.termsContainer a:hover {
+  color: var(--primary-green-dark);
+  text-decoration: underline;
 }

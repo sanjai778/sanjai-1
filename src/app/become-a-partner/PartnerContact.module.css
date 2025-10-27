@@ -1,0 +1,191 @@
+.multiStepForm {
+  padding: 4rem 0;
+  background-color: var(--background-light);
+}
+
+#pricingQuotes {
+  position: relative;
+  padding: 0px 300px !important;
+  max-width: 700px;
+  margin: 2rem auto;
+  background: var(--white);
+  z-index: 1;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* CORRECTED: Replaced tag selector with a class selector */
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+/* CORRECTED: Replaced tag selector with a class selector */
+.legend {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  width: 100%;
+  padding: 0;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.col {
+  flex: 1;
+}
+
+.label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: .75rem;
+  color: var(--text-light);
+  font-size: var(--font-size-base);
+}
+
+.formControl {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 1rem + 2px);
+  padding: .5rem 1rem;
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-dark);
+  background-color: var(--white);
+  background-clip: padding-box;
+  border: 1px solid var(--border-color);
+  border-radius: .5rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.formControl:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+
+.uploadWrapper {
+  width: 100%;
+}
+
+.dragDropArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  border: 2px dashed var(--border-color);
+  border-radius: 12px;
+  background-color: var(--background-light);
+  text-align: center;
+  color: var(--text-light);
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.dragDropArea.isDragging {
+  background-color: var(--border-color);
+  border-color: var(--primary-green);
+}
+
+.uploadIcon {
+  width: 40px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23868e96"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-bottom: 1rem;
+}
+
+.dragDropText {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  margin: 0;
+}
+
+.fileName {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: var(--font-size-md);
+  display: none;
+  margin-top: 1rem;
+}
+
+.fileInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.btnSubmit {
+  position: relative;
+  color: var(--white);
+  background-color: var(--primary-green);
+  width: 100%;
+  border-radius: 30px;
+  border: 0px;
+  padding: 15px;
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.btnSubmit:hover {
+  background-color: var(--primary-green-dark);
+}
+
+.btnSubmit span {
+  position: relative;
+  z-index: 2;
+}
+
+.btnSubmit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+  transition: left 1s linear;
+}
+
+.btnSubmit.isLoading {
+  pointer-events: none;
+}
+
+.btnSubmit.isLoading::before {
+  left: 0;
+  animation: loading-bar-animation 1.5s infinite linear;
+}
+
+@keyframes loading-bar-animation {
+  0% { width: 0%; left: 0; }
+  50% { width: 100%; left: 0; }
+  100% { width: 100%; left: 100%; }
+}
