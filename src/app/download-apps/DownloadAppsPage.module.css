@@ -1,0 +1,36 @@
+.downloadButton {
+  display: flex;
+  align-items: center;
+  background-color: #10c469;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.downloadButton:hover {
+  background-color: #0d9d55;
+}
+
+.downloadButton img {
+  margin-right: 12px;
+}
+
+.downloadButton div {
+  text-align: left;
+}
+
+.downloadButton p {
+  margin: 0;
+}
+
+.downloadButton .freeDownload {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.downloadButton .storeName {
+  font-size: 1.125rem;
+  font-weight: 700;
+}

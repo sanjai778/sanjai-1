@@ -1,0 +1,148 @@
+/* ============================ */
+/*       Global & Layout        */
+/* ============================ */
+
+/* A standard container to center content and add padding */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.sub-page-title {
+  background-color: var(--primary-green);
+  padding: 40px 0;
+  text-align: center;
+}
+
+.sub-page-title h1 {
+  color: var(--white);
+  font-size: var(--font-size-xxl);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ============================ */
+/*      About Us Section        */
+/* ============================ */
+
+.about-section {
+  padding: 80px 0;
+}
+
+/* THIS IS THE KEY FIX: The .row class now correctly uses Flexbox */
+.about-section .row {
+  display: flex;
+  flex-wrap: wrap; /* Allows columns to stack on small screens */
+  align-items: center; /* Vertically aligns the image and text */
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+/* Base styles for columns: full width on mobile by default */
+.about-section .col-lg-6 {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* On large screens (992px and up), make columns 50% width */
+@media (min-width: 992px) {
+  .about-section .col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+/* Text and content styling */
+.about-section h2 {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.about-section p:last-child {
+  margin-bottom: 0;
+}
+
+.about-section .green-color {
+  color: var(--primary-green);
+  font-weight: 500;
+}
+
+/* ============================ */
+/*         Team Section         */
+/* ============================ */
+
+.team-section {
+  text-align: center;
+  padding: 60px 0 80px;
+  border-top: 1px solid var(--border-color); /* Optional: adds a separator line */
+}
+
+.team-section .section-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 50px;
+}
+
+.team-members-container {
+  display: flex;
+  justify-content: center;
+  gap: 100px; /* Space between team members */
+  flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+}
+
+.team-member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+}
+
+.team-member-photo {
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Prevents the image from stretching */
+  margin-bottom: 20px;
+  border: 4px solid var(--white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.team-member-name {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--primary-green); /* Green color for the name */
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.team-member-role {
+  color: var(--text-light);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.linkedin-link {
+  color: var(--primary-green);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.linkedin-link:hover {
+  color: var(--primary-green-dark);
+  text-decoration: underline;
+}

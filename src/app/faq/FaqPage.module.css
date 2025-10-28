@@ -1,0 +1,43 @@
+.faq {
+  padding: 60px 0;
+}
+
+.card {
+  margin-bottom: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+.cardHeader {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.btn-link {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  color: #28d57a;
+}
+
+.cardBody {
+  padding: 15px;
+}
+
+.steps {
+  list-style: none;
+  padding-left: 0;
+}
+
+.steps li {
+  margin-bottom: 5px;
+}

@@ -7,9 +7,9 @@
 }
 .textContent { flex: 1; position: relative; }
 .imageContent { flex: 1; }
-.tagline { color: var(--primary-green); font-weight: 500; }
-.title { font-size: 2.25rem; color: var(--text-dark); margin: 10px 0 20px; }
-.description { color: var(--text-light); line-height: 1.7; }
+.tagline { color: var(--primary-green); font-weight: 500; font-size: 1rem; }
+.title { font-size: 2.5rem; color: var(--text-dark); margin: 10px 0 20px; }
+.description { color: var(--text-light); line-height: 1.7; font-size: 1.125rem; }
 .infoImage { width: 100%; height: auto; border-radius: 8px; }
 
 .arrowImage {
