@@ -1,0 +1,91 @@
+.section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.content {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--white);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.paragraph {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+.list {
+  list-style-position: outside;
+  list-style-type: decimal;
+  color: var(--text-light);
+  margin-left: 1.5rem;
+}
+
+.listItem {
+  margin-bottom: 1rem;
+}
+
+.heading {
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  color: var(--text-dark);
+}
+
+.subheading {
+  font-weight: 700;
+  font-size: var(--font-size-xl);
+  color: var(--text-dark);
+}
+
+.link {
+  color: var(--primary-green);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.marginTop8 {
+  margin-top: 2rem;
+}
+
+.marginTop4 {
+  margin-top: 1rem;
+}
+
+.marginTop2 {
+  margin-top: 0.5rem;
+}

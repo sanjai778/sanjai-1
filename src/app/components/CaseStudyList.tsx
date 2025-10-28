@@ -83,10 +83,10 @@ export default function CaseStudyList({ initialCaseStudies, industries, products
           The world’s leading workplaces of every size and industry rely on onfra to transform effectively
         </h1>
         <div style={{ marginBottom: '30px' }}>
-          <button style={{ backgroundColor: '#00d470', color: 'white', border: 'none', padding: '15px 30px', borderRadius: '5px', marginRight: '10px', cursor: 'pointer' }}>
+          <button className="btn btn-primary" style={{ marginRight: '10px' }}>
             Signup For Free!
           </button>
-          <button style={{ backgroundColor: 'white', color: '#333', border: '1px solid #ccc', padding: '15px 30px', borderRadius: '5px', cursor: 'pointer' }}>
+          <button className="btn btn-outline-primary">
             Talk to Us
           </button>
         </div>
@@ -111,7 +111,7 @@ export default function CaseStudyList({ initialCaseStudies, industries, products
       </div>
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-        <h2 style={{ fontSize: '2em' }}>Case Studies</h2>
+        <h2 style={{ fontSize: '2em'  }}>Case Studies</h2>
         <div style={{ display: 'flex', gap: '20px' }}>
           <select
             style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}
@@ -148,8 +148,8 @@ export default function CaseStudyList({ initialCaseStudies, industries, products
             <Link key={caseStudy.id} href={`/casestudies/${caseStudy.slug}`} style={{ textDecoration: 'none', color: 'inherit', border: '1px solid #eee', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
               {caseStudy.Company_Image_url && <Image src={caseStudy.Company_Image_url} alt={caseStudy.Card_Title || ''} width={300} height={200} style={{ width: '100%', height: '200px', objectFit: 'cover' }}/>}
               <div style={{ padding: '20px' }}>
-                <h2 style={{ marginTop: 0, fontSize: '1.1em', marginBottom: '10px' }}>{caseStudy.Card_Title}</h2>
-                <p>{caseStudy.Card_Description}</p>
+                <h2 style={{ marginTop: 0, fontSize: '1.1em', marginBottom: '10px' , color: '#222' }}>{caseStudy.Card_Title}</h2>
+                <p style={{ color: '#666' }}>{caseStudy.Card_Description}</p>
               </div>
             </Link>
           ))}

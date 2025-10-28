@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { JSX, useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 
 interface Faq {
@@ -108,7 +108,7 @@ const AccordionItem = ({ faq, isOpen, onClick }: { faq: Faq, isOpen: boolean, on
       >
         <div style={{
           marginRight: '15px',
-          backgroundColor: 'var(--primary-green)',
+          backgroundColor: 'var(--white)',
           borderRadius: '50%',
           width: '24px',
           height: '24px',
@@ -119,7 +119,7 @@ const AccordionItem = ({ faq, isOpen, onClick }: { faq: Faq, isOpen: boolean, on
           <ChevronDownIcon style={{
             width: '16px',
             height: '16px',
-            color: 'var(--white)',
+            color: 'var(--primary-green)',
             transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
             transition: 'transform 0.3s ease-in-out',
           }} />

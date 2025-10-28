@@ -30,7 +30,7 @@ const ServiceLevelAgreementPage = () => {
                     <td className="py-4 px-6">Monthly</td>
                   </tr>
                   <tr className="bg-gray-50">
-                    <td colSpan={4} className="py-4 px-6 font-bold text-gray-700">Support Response Times</td>
+                    <td colSpan={4} className="py-4 px-6 font-bold text-gray-700 text-center">Support Response Times</td>
                   </tr>
                   <tr>
                     <td className="py-4 px-6 pl-12">- Priority 1 (Critical)</td>
@@ -51,7 +51,7 @@ const ServiceLevelAgreementPage = () => {
                     <td className="py-4 px-6">Business hours</td>
                   </tr>
                   <tr className="bg-gray-50">
-                    <td colSpan={4} className="py-4 px-6 font-bold text-gray-700">Problem Resolution Times</td>
+                    <td colSpan={4} className="py-4 px-6 font-bold text-gray-700 text-center">Problem Resolution Times</td>
                   </tr>
                   <tr>
                     <td className="py-4 px-6 pl-12">- Priority 1 (Critical)</td>
@@ -72,7 +72,7 @@ const ServiceLevelAgreementPage = () => {
                     <td className="py-4 px-6">Business hours</td>
                   </tr>
                   <tr className="bg-gray-50">
-                    <td colSpan={4} className="py-4 px-6 font-bold text-gray-700">Scheduled Maintenance</td>
+                    <td colSpan={4} className="py-4 px-6 font-bold text-gray-700 text-center">Scheduled Maintenance</td>
                   </tr>
                   <tr>
                     <td className="py-4 px-6 pl-12">- Notification</td>
@@ -87,7 +87,7 @@ const ServiceLevelAgreementPage = () => {
                     <td className="py-4 px-6">As needed</td>
                   </tr>
                   <tr className="bg-gray-50">
-                    <td colSpan={4} className="py-4 px-6 font-bold text-gray-700">Data Security</td>
+                    <td colSpan={4} className="py-4 px-6 font-bold text-gray-700 text-center">Data Security</td>
                   </tr>
                   <tr>
                     <td className="py-4 px-6 pl-12">- Data Handling</td>

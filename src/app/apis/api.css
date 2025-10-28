@@ -12,18 +12,16 @@
     padding-right: 30px;
 }
 
-.sub_page_title {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 15px;
+.section_tagline {
+  color: var(--primary-green);
+  font-weight: 500;
+  margin-bottom: 10px;
 }
-
-.green_text {
-    color: var(--primary-green);
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 20px;
+.section_title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0;
 }
 
 .banner-text p {
@@ -239,60 +237,6 @@
     .col-lg-4 { flex: 0 0 33.3333%; max-width: 33.3333%; }
 }
 
-/* --- SECTION 1: HERO --- */
-#sub_page_hero_banner {
-    padding: 80px 0;
-}
-.banner-top-margin {
-    display: flex;
-    align-items: center;
-}
-.banner-text {
-    padding-right: 30px;
-}
-.banner-text p {
-    color: var(--text-light, #666);
-    margin-bottom: 30px;
-    font-size: 1.1rem;
-}
-.button_col {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-.btn {
-    padding: 12px 25px;
-    border-radius: 50px;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: 600;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-}
-.btn-primary {
-    background-color: var(--primary-green, #29d57a);
-    color: #fff;
-}
-.btn-outline-primary {
-    border-color: var(--primary-green, #29d57a);
-    color: var(--primary-green, #29d57a);
-}
-.btn-outline-primary:hover {
-    background-color: var(--primary-green, #29d57a);
-    color: #fff;
-}
-.notices {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-.notices span {
-    color: var(--text-light, #666);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
 
 /* --- SECTION 2: MATERIAL GATE PASS FEATURES --- */
 .prototype_service_info {

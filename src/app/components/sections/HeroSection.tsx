@@ -8,7 +8,7 @@ const HeroSection: React.FC = () => {
       <section className={styles.hero}>
         <div className="container">
           <div className={styles.heroContent}>
-            <h1 className={styles.title}>
+            <h1 className={`${styles.title} md:text-[#444]`}>
               Bridging people, spaces, things, and insights to make the <span className={styles.highlight}>workplace</span> efficient and sustainable!
             </h1>
             <div className={styles.buttonGroup}>
@@ -21,10 +21,7 @@ const HeroSection: React.FC = () => {
               <span><Image src="/images/icons/check-circle.svg" alt="check" width={20} height={20} /> Quick Setup</span>
             </div>
           </div>
-        </div>
-      </section>
-      <div className={styles.heroImageWrapper}>
-        <Image 
+           <Image 
           src="/images/hero-main.webp" 
           alt="#1 Workplace Management System" 
           width={1920} 
@@ -32,7 +29,11 @@ const HeroSection: React.FC = () => {
           priority
           className={styles.heroImage}
         />
-      </div>
+        </div>
+      </section>
+      {/* <div className={styles.heroImageWrapper}>
+
+      </div> */}
     </>
   );
 };

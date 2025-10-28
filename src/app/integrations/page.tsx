@@ -91,16 +91,16 @@ const IntegrationsPage = () => {
       <SubPageTitle title="Integrations" />
       <main>
         <section style={{ paddingBottom: '60px' }}>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
+          <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+            <div>
+              <div>
                 <h2 className={styles.intTitle}>Enhance your workplace with Onfra.</h2>
                 <p className={styles.subTitle}>Connect multiple apps for seamless integration and increased productivity.</p>
                 <input type="text" className={styles.searchInput} placeholder="Search for an app..." onChange={handleSearchChange} value={searchValue} />
               </div>
             </div>
-            <div className="row">
-              <div className="col-md-12">
+            <div>
+              <div>
                 <img className={styles.integrationImage} src="https://onfra.io/wp-content/uploads/svg_image/integration.svg" alt="Integrations" />
               </div>
             </div>

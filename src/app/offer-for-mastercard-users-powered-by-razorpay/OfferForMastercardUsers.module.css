@@ -1,0 +1,660 @@
+/* Custom styles to override or supplement Bootstrap */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.onfraPageWrapper {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+.onfraPageWrapper h1,
+.onfraPageWrapper h2,
+.onfraPageWrapper h3,
+.onfraPageWrapper h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #444;
+  line-height: 1.3;
+}
+
+.onfraPageWrapper h1 {
+  line-height: 1.4;
+}
+
+.onfraBrandGradient {
+  background: linear-gradient(to right, #10c469, #28d57a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  padding-bottom: 5px;
+}
+
+.onfraSubtitle {
+  color: #555;
+  max-width: 600px;
+}
+
+.onfraSection {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.bgLightGray {
+  background-color: #f9fafb !important;
+}
+
+.bgSoftGray {
+  background-color: #f4f6f8 !important;
+}
+
+@media (max-width: 768px) {
+  .onfraSection {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .onfraPageWrapper h2 {
+    font-size: 28px;
+  }
+  .onfraPageWrapper h1 {
+    font-size: 2.8rem;
+  }
+}
+
+.onfraCtaButton {
+  background-color: #10c469;
+  color: #fff;
+  padding: 14px 30px;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 8px !important;
+  border: none;
+  transition: background-color .3s ease, transform .2s ease;
+  box-shadow: 0 4px 15px rgba(16, 196, 105, 0.3);
+}
+
+.onfraCtaButton:hover {
+  background-color: #0e9f58;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Add container and layout styles */
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionHeader h2 {
+  margin-bottom: 1rem;
+}
+
+.sectionHeader .onfraSubtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.onfraHeroSection {
+  padding-top: 100px;
+  background-color: #fff;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .heroGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .heroContent {
+    text-align: left;
+  }
+}
+
+.heroContent {
+ text-align: center;
+}
+
+.heroSubtitle {
+  font-weight: 400;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 25px;
+}
+
+.heroDescription {
+  max-width: 500px;
+}
+
+@media (max-width: 991px) {
+  .heroDescription {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.heroPartnersWrapper {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 991px) {
+  .onfraHeroSection {
+    padding-top: 60px;
+  }
+  .heroPartnersWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.poweredByText {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 8px !important;
+}
+
+.onfraHeroPartners {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 991px) {
+  .onfraHeroPartners {
+    justify-content: center;
+  }
+}
+
+.onfraHeroPartners img {
+  max-height: 25px;
+  width: auto;
+}
+
+.onfraHeroPartners .divider {
+  width: 1px;
+  height: 20px;
+  background-color: #ccc;
+}
+
+.onfraFormCard {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.1);
+}
+
+.onfraFormHeader {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.onfraFormHeader h2 {
+  font-size: 1.6rem;
+  color: #333;
+}
+
+.onfraFormHeader p {
+  color: #6c757d;
+  font-size: 16px;
+}
+
+/* --- Form Styles --- */
+.form {
+  margin-top: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formControl, .formSelect {
+  width: 100%;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  padding: 12px 15px;
+  height: 50px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.formControl:focus, .formSelect:focus {
+  background-color: #fff;
+  border-color: #10c469;
+  box-shadow: 0 0 0 3px rgba(16,196,105,.2);
+  outline: none;
+}
+
+:global(.react-select__control) {
+  height: 50px;
+  background-color: #f8f9fa !important;
+  border: 1px solid #e0e0e0 !important;
+  box-shadow: none !important;
+}
+
+:global(.react-select__control--is-focused) {
+  border-color: #10c469 !important;
+  box-shadow: 0 0 0 3px rgba(16,196,105,.2) !important;
+}
+
+:global(.react-select__option--is-focused) {
+  background-color: #e8f5e9 !important;
+  color: #333;
+}
+
+:global(.react-select__option--is-selected) {
+  background-color: #10c469 !important;
+  color: white !important;
+}
+
+:global(.react-select__multi-value) {
+  background-color: #e9ecef !important;
+}
+
+/* --- Features Section --- */
+.featuresGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 576px) {
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 768px) {
+  .featuresGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .featuresGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.featureCard {
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  text-align: center;
+  height: 100%;
+  box-shadow: 0 4px 20px rgba(0,0,0,.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.07);
+}
+
+.featureIcon {
+  width: 60px;
+  height: 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8f5e9;
+  color: #10c469;
+  border-radius: 16px;
+  font-size: 28px;
+  margin: 0 auto 25px auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.featureCard:hover .featureIcon {
+  background-color: #10c469;
+  color: #fff;
+}
+
+.featureContent h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+.featureContent p {
+  font-size: 15px;
+  color: #6c757d;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* --- Pricing Section --- */
+.onfraPricingCardLarge {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.onfraPricingCardLarge:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,.08);
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .pricingGrid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.pricingHeader h3 {
+  margin-bottom: 0.5rem;
+}
+
+.featuresTitle {
+  color: #10c469;
+  font-weight: 700;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.featureListItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.statusIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.onfraPricingCtaCard {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+}
+
+.priceLabel {
+  margin-bottom: 0;
+  font-size: 0.875rem;
+}
+
+.priceWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.priceOriginal {
+  font-size: 28px;
+  font-weight: 600;
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+.priceDiscounted {
+  font-size: 48px;
+  font-weight: 700;
+  color: #10c469;
+  line-height: 1;
+}
+
+.priceFooter {
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+/* --- How It Works Section --- */
+.stepsGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .stepsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .stepsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.onfraStepItem {
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 4px 15px rgba(0,0,0,.05);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.stepNumber {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #e0e2e5;
+  line-height: 1;
+}
+
+.onfraStepItem h3 {
+  font-size: 20px;
+  margin-bottom: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.onfraStepItem p {
+  font-size: 15px;
+  color: #6c757d;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.stepButton {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.stepLogos {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stepLogos img {
+  max-height: 20px;
+}
+
+/* --- Why Choose Section --- */
+.choiceGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .choiceGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.choiceImage img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.choiceTitle {
+  margin-bottom: 2rem;
+}
+
+.benefitsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.onfraBenefitItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.benefitIcon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8f5e9 !important;
+  color: #10c469;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.benefitContent h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.benefitContent p {
+  margin-bottom: 0;
+  color: #6c757d;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* --- Stats Section --- */
+.statsGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .statsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.onfraStatItem .value {
+  font-size: 42px;
+  font-weight: 700;
+  color: #10c469;
+}
+
+.onfraStatItem .label {
+  font-size: 16px;
+  color: #555;
+}
+
+/* --- Client Logos Marquee --- */
+.marqueeContainer {
+  position: relative; width: 100%; overflow: hidden; height: 100px; margin-top: 30px;
+}
+.marqueeTrack {
+  display: flex; will-change: transform; align-items: center; height: 100%; animation: marquee 40s linear infinite;
+}
+.marqueeTrack img {
+  height: 90px; width: auto; padding: 0 40px;
+}
+.marqueeContainer::before, .marqueeContainer::after {
+  content: ""; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2;
+}
+.marqueeContainer::before {
+  left: 0; background: linear-gradient(to right, #fff 20%, rgba(255, 255, 255, 0) 100%);
+}
+.marqueeContainer::after {
+  right: 0; background: linear-gradient(to left, #fff 20%, rgba(255, 255, 255, 0) 100%);
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* --- Final CTA Section --- */
+.onfraFinalCtaSection {
+  background-color: #10c469;
+}
+
+.onfraFinalCtaSection h2, .onfraFinalCtaSection .onfraSubtitle {
+  color: #fff;
+}
+
+.onfraFinalCtaSection .onfraSubtitle {
+  color: #e0e0e0 !important;
+}
+
+.ctaFinalButton {
+  background-color: #fff;
+  color: #10c469;
+  margin-top: 1.5rem;
+}
+
+.ctaFinalButton:hover {
+  background-color: #f2f2f2;
+  color: #0e9f58;
+}

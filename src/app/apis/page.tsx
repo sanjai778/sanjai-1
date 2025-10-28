@@ -3,6 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import './api.css';
+import Header from '@/app/components/Header';
+import Footer from '@/app/components/Footer';
 import {
   WrenchScrewdriverIcon,
   CheckBadgeIcon,
@@ -29,21 +31,20 @@ import {
   ChatBubbleLeftRightIcon,
   Cog6ToothIcon,
 } from '@heroicons/react/24/outline';
+import CtaSection from '../components/sections/CtaSection';
 // --- MAIN PAGE COMPONENT ---
 const ApiPage: React.FC = () => {
   return (
     <>
-      
+      <Header />
       {/* --- Section 1: Hero --- */}
       <section id="sub_page_hero_banner">
         <div className="container">
           <div className="row banner-top-margin">
             <div className="col-lg-6">
               <div className="banner-text">
-                <h2 className="section_title">
-                  <span className="section_tagline">Api template</span>
-                  Easily see which assets are assigned.
-                </h2>
+                <h2 className="section_tagline">Api template</h2>
+                <h3 className="section_title">Easily see which assets are assigned.</h3>
                 <p>Recent activity is visible at a glance, as well as an overview of your assets.</p>
                 <div className="button_col">
                   <a href="https://app.visitdesk.io/signup" className="btn btn-primary">Signup For Free!</a>
@@ -57,7 +58,7 @@ const ApiPage: React.FC = () => {
             </div>
             <div className="col-lg-6">
               {/* NOTE: Make sure this image exists in your /public/images/ folder */}
-              <Image src="/images/api-hero.png" alt="visitor management dashboard" width={550} height={500} style={{ maxWidth: '100%', height: 'auto' }}/>
+              <Image src="/uploads/svg_image/product/visitor.webp" alt="visitor management dashboard" width={550} height={500} style={{ maxWidth: '100%', height: 'auto' }}/>
             </div>
           </div>
         </div>
@@ -67,52 +68,53 @@ const ApiPage: React.FC = () => {
       <section id="overview_section" className="prototype_service_info">
         <div className="container">
           <div className="section_header">
-            <h2 className="section_title">Features of Material Gate Pass Management System</h2>
+            <h2 className="section_tagline">Features</h2>
+            <h3 className="section_title">Features of Material Gate Pass Management System</h3>
           </div>
           <div className="row p_service_info">
                     <div className="col-lg-4 col-sm-6">
-                        <div className="p_service_item p_service_item100 pr_70">
+                        <div className="p_service_item">
                             
                             <div className="icon icon_one"><WrenchScrewdriverIcon className="features_icon" /></div>
-                            <h3 className="f_600 f_p t_color3">Add/Remove Fields</h3>
-                            <p className="f_400">The requirements for various gate passes vary. As a result, the data to be entered in the pass varies. Custom fields can be simply added or removed from our material gate pass management system to gather diverse data for your business's specific needs. </p>
+                            <h3>Add/Remove Fields</h3>
+                            <p>The requirements for various gate passes vary. As a result, the data to be entered in the pass varies. Custom fields can be simply added or removed from our material gate pass management system to gather diverse data for your business's specific needs. </p>
                         </div>
                     </div>
                     <div className="col-lg-4 col-sm-6">
-                        <div className="p_service_item p_service_item100 pl_50 pr_20">
+                        <div className="p_service_item">
                             <div className="icon icon_one"><CheckBadgeIcon className="features_icon" /></div>
-                            <h3 className="f_600 f_p t_color3">Approver Workflow</h3>
-                            <p className="f_400">You have complete control over the workflow. Once a gate pass request is submitted, it must be approved by many layers of authority. For particular policy needs, our gate pass management system may simply be designed to add/remove anybody at several levels for simultaneous or sequential approvals.
+                            <h3>Approver Workflow</h3>
+                            <p>You have complete control over the workflow. Once a gate pass request is submitted, it must be approved by many layers of authority. For particular policy needs, our gate pass management system may simply be designed to add/remove anybody at several levels for simultaneous or sequential approvals.
  </p>
                         </div>
                     </div>
                     
                     <div className="col-lg-4 col-sm-6">
-                        <div className="p_service_item p_service_item100 pl_70">
+                        <div className="p_service_item">
                             <div className="icon icon_one"><BellAlertIcon className="features_icon" /></div>
-                            <h3 className="f_600 f_p t_color3">Alerts & Reminders</h3>
-                            <p className="f_400">To automate a gate pass procedure, you'll need alerts and notifications. Initiators, approvers, suppliers, security, or the recipient can all get mobile and email notifications and reminders.If a returnable item isn't returned on time, you can quickly escalate the situation.</p>
+                            <h3>Alerts & Reminders</h3>
+                            <p>To automate a gate pass procedure, you'll need alerts and notifications. Initiators, approvers, suppliers, security, or the recipient can all get mobile and email notifications and reminders.If a returnable item isn't returned on time, you can quickly escalate the situation.</p>
                         </div>
                     </div>
                     <div className="col-lg-4 col-sm-6">
-                        <div className="p_service_item p_service_item100 pr_70">
+                        <div className="p_service_item">
                             <div className="icon icon_one"><CameraIcon className="features_icon" /></div>
-                            <h3 className="f_600 f_p t_color3">Capture Material Details</h3>
-                            <p className="f_400">Take as many pictures as you like. Track the substance at any point throughout its journey. Keep track of material quantities, a photograph of the material, the vendor's photo ID, serial numbers, and other details as needed. QR codes aid in the identification of the material.</p>
+                            <h3>Capture Material Details</h3>
+                            <p>Take as many pictures as you like. Track the substance at any point throughout its journey. Keep track of material quantities, a photograph of the material, the vendor's photo ID, serial numbers, and other details as needed. QR codes aid in the identification of the material.</p>
                         </div>
                     </div>
                     <div className="col-lg-4 col-sm-6">
-                        <div className="p_service_item p_service_item100 pl_50 pr_20">
+                        <div className="p_service_item">
                             <div className="icon icon_one"><MagnifyingGlassIcon className="features_icon" /></div>
-                            <h3 className="f_600 f_p t_color3">Identify Each Material</h3>
-                            <p className="f_400">Each material at each stage of the gate pass process can be easily identifiable by all parties involved in a digital material gate pass management programme. Before digitally approving a content, approvers can view it. They can be identified by barcode or QR code readers by dispatch personnel/receivers.</p>
+                            <h3>Identify Each Material</h3>
+                            <p>Each material at each stage of the gate pass process can be easily identifiable by all parties involved in a digital material gate pass management programme. Before digitally approving a content, approvers can view it. They can be identified by barcode or QR code readers by dispatch personnel/receivers.</p>
                         </div>
                     </div>
                     <div className="col-lg-4 col-sm-6">
-                        <div className="p_service_item p_service_item100 pl_70">
+                        <div className="p_service_item">
                             <div className="icon icon_one"><ChartBarIcon className="features_icon" /></div>
-                            <h3 className="f_600 f_p t_color3">Reports & Analytics</h3>
-                            <p className="f_400">Throughout the process, every material gate pass data is turned into different MIS reports and analytics. They can assist you in making well-informed judgments.You can quickly see how many materials are out for intra-company transfer, how many are due back by a specific date, and so on.</p>
+                            <h3>Reports & Analytics</h3>
+                            <p>Throughout the process, every material gate pass data is turned into different MIS reports and analytics. They can assist you in making well-informed judgments.You can quickly see how many materials are out for intra-company transfer, how many are due back by a specific date, and so on.</p>
                         </div>
                     </div>
                 </div>
@@ -122,8 +124,9 @@ const ApiPage: React.FC = () => {
       {/* --- Section 3: More Features --- */}
       <section id="cool-features">
         <div className="container">
-          <div className="section_header">
-            <h2 className="section_title">More Features</h2>
+          <div className="section_header" style={{textAlign: 'center'}}>
+            <h2 className="section_tagline" style={{color: 'var(--primary-green)', fontSize: 'var(--font-size-lg)'}}>Explore Our Features</h2>
+            <h3 className="section_title" style={{color: 'var(--text-dark)', fontSize: 'var(--font-size-xl)'}}>Packed with Powerful Tools</h3>
           </div>
           <div className="row">
            
@@ -439,7 +442,8 @@ const ApiPage: React.FC = () => {
       <section id="pricing">
         <div className="container">
           <div className="section_header">
-            <h2 className="section_title">Our Pricing</h2>
+            <h2 className="section_tagline" style={{color: 'var(--primary-green)'}}>Pricing</h2>
+            <h3 className="section_title" style={{color: 'var(--text-dark)'}}>Our Pricing</h3>
           </div>
           <div className="pricing-container">
             {/* Basic Plan */}
@@ -498,7 +502,8 @@ const ApiPage: React.FC = () => {
           <p className="non-profit-note">Onfra supports all non-profits with <strong>20% off on all the plans!</strong></p>
         </div>
       </section>
-
+      <CtaSection/>
+      <Footer />
     </>
   );
 };

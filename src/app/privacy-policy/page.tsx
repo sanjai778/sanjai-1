@@ -11,7 +11,7 @@ const PrivacyPolicyPage = () => {
       <SubPageTitle title="Privacy Policy" />
       <main className="py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-8">
+          <div className=" mx-auto bg-white shadow-lg rounded-lg p-8">
             <p className="text-gray-600 mb-6">
               IFELSE TECHSMART SOLUTIONS PRIVATE LIMITED. operates the Onfra website, which provides the this Plat form as Software as a Service.
             </p>

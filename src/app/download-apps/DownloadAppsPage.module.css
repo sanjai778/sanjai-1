@@ -1,36 +1,58 @@
+.container {
+  padding: 2rem;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.column {
+  text-align: center;
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  margin-bottom: 1.5rem;
+  font-size: var(--font-size-base);
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .downloadButton {
   display: flex;
   align-items: center;
-  background-color: #10c469;
-  color: white;
   padding: 12px 24px;
-  border-radius: 8px;
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 6px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .downloadButton:hover {
-  background-color: #0d9d55;
+  background-color: var(--primary-green-dark);
 }
 
-.downloadButton img {
-  margin-right: 12px;
+.icon {
+  margin-right: 0.5rem;
 }
 
-.downloadButton div {
-  text-align: left;
-}
-
-.downloadButton p {
-  margin: 0;
-}
-
-.downloadButton .freeDownload {
+.freeDownload {
   font-size: 0.75rem;
-  font-weight: 500;
 }
 
-.downloadButton .storeName {
-  font-size: 1.125rem;
-  font-weight: 700;
+.storeName {
+  font-weight: bold;
+  font-size: var(--font-size-base);
 }
