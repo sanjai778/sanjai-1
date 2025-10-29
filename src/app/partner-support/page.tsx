@@ -83,7 +83,7 @@ export default function PartnerSupport() {
       <SubPageTitle title="Partner Support" />
       <section className="py-12">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <form id="checkpartnerform">
                 <div className="mb-4">
@@ -99,7 +99,7 @@ export default function PartnerSupport() {
                     {errorBusinessCode}
                   </p>
                 </div>
-                <div className="grid md:grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                   <div>
                     <input
                       type="email"

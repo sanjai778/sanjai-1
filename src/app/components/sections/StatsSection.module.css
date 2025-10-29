@@ -36,7 +36,22 @@
 }
 
 @media (max-width: 768px) {
-  .statsContainer { flex-direction: column; }
-  .statBlock { border-right: none; border-bottom: 1px solid #ccc; }
-  .statBlock:last-child { border-bottom: none; }
+  .statsContainer { 
+    flex-direction: column; 
+    padding: 40px 20px;
+  }
+  .statBlock { 
+    border-right: none; 
+    border-bottom: 1px solid #ccc; 
+    padding: 20px 0;
+  }
+  .statBlock:last-child { 
+    border-bottom: none; 
+  }
+  .statNumber {
+    font-size: 2rem;
+  }
+  .statLabel {
+    font-size: 0.9rem;
+  }
 }

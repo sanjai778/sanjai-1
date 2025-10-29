@@ -38,6 +38,23 @@
 }
 
 @media (max-width: 992px) {
-  .infoContainer { flex-direction: column; }
-  .reversed .textContent, .reversed .imageContent { order: initial; }
+  .infoContainer { 
+    flex-direction: column; 
+    gap: 40px;
+  }
+  .reversed .textContent, .reversed .imageContent { 
+    order: initial; 
+  }
+  .textContent {
+    text-align: center;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+  .arrowImage {
+    display: none;
+  }
 }

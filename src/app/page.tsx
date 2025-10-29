@@ -62,7 +62,7 @@ export default function HomePage() {
         <FaqSection />
         <EnterpriseCta />
         <BlogSwiperSection />
-        <CtaSection />
+        {/* <CtaSection /> */}
         
 
       </main>

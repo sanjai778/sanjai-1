@@ -51,18 +51,21 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
         pagination={{ clickable: true }}
         spaceBetween={20}
         // Default view for mobile
-        slidesPerView={1} 
+        slidesPerView={1}
+        centeredSlides={false}
         // Responsive breakpoints
         breakpoints={{
           // when window width is >= 768px (tablets)
           768: {
             slidesPerView: 2,
-            spaceBetween: 30
+            spaceBetween: 30,
+            centeredSlides: false,
           },
           // when window width is >= 1200px (desktops)
           1200: {
             slidesPerView: 3,
-            spaceBetween: 40
+            spaceBetween: 40,
+            centeredSlides: true,
           }
         }}
         className={styles.swiperContainer}

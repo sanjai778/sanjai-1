@@ -10,6 +10,7 @@ import 'rc-slider/assets/index.css';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import CountrySelector from '@/app/components/CountrySelector';
+import styles from './GetQuotes.module.css';
 
 interface OptionType {
     value: string;
@@ -159,8 +160,9 @@ export default function GetQuotesPage() {
                                                         <p className="text-xl font-bold">{Number(formData[item.name as keyof typeof formData])}</p>
                                                         <p className="text-sm text-gray-500">{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</p>
                                                     </div>
-                                                    <div className="flex items-center">
+                                                    <div className={`flex items-center ${styles.sliderContainer}`}>
                                                         <button type="button" onClick={() => handleChange(item.name, Math.max(item.min, Number(formData[item.name as keyof typeof formData]) - item.step))} className="px-2">-</button>
+                                                        <div className={styles.sliderWrapper}>
                                                         <Slider
                                                             min={item.min}
                                                             max={item.max}
@@ -171,6 +173,7 @@ export default function GetQuotesPage() {
                                                             handleStyle={{ borderColor: '#10c469', boxShadow: 'none' }}
                                                             activeDotStyle={{ borderColor: '#10c469' }}
                                                         />
+                                                        </div>
                                                         <button type="button" onClick={() => handleChange(item.name, Math.min(item.max, Number(formData[item.name as keyof typeof formData]) + item.step))} className="px-2">+</button>
                                                     </div>
                                                 </div>

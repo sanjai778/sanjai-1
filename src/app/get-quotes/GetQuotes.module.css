@@ -1,0 +1,9 @@
+@media (max-width: 767px) {
+    .sliderContainer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .sliderWrapper {
+        width: 100%;
+    }
+}

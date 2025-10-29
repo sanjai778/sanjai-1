@@ -47,6 +47,22 @@
 }
 
 @media (max-width: 768px) {
-  .title { font-size: 32px; }
-  .buttonGroup { flex-direction: column; }
+  .hero {
+    padding: 40px 0 20px;
+  }
+  .title { 
+    font-size: 24px; 
+  }
+  .buttonGroup { 
+    flex-direction: row; 
+    gap: 10px;
+    justify-content: center;
+  }
+  .features {
+    gap: 10px;
+    font-size: 0.9rem;
+  }
+  .heroImage {
+    margin-top: 20px;
+  }
 }

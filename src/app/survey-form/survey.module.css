@@ -33,6 +33,7 @@
 .smiley_group {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .smiley {
@@ -54,4 +55,14 @@
   border-radius: 6px;
   font-size: var(--font-size-base);
   margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+    .form_container {
+        padding: 20px;
+        margin: 50px auto 0;
+    }
+    .smiley_group {
+        gap: 10px;
+    }
 }

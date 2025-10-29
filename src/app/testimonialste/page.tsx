@@ -26,7 +26,13 @@ const TestimonialsPage = () => {
           throw new Error('Failed to fetch testimonials');
         }
         const data = await response.json();
-        setTestimonials(data);
+        const processedData = data.map((testimonial: Testimonial) => {
+          if (testimonial.img && testimonial.img.startsWith('https://onfra.io/wp-content')) {
+            testimonial.img = testimonial.img.replace('https://onfra.io/wp-content', '');
+          }
+          return testimonial;
+        });
+        setTestimonials(processedData);
       } catch (error) {
         console.error(error);
       }
@@ -41,16 +47,16 @@ const TestimonialsPage = () => {
       <SubPageTitle title="Testimonials" />
       <main className="py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className=" mx-auto">
+          <div className="">
             <div className="text-center">
-              <h2 className="text-3xl font-extrabold text-gray-700 sm:text-4xl">
+              <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                 What Our Customers Are Saying
               </h2>
-              <p className="mt-4 text-lg text-gray-400">
+              <p className="mt-4 text-lg text-gray-500">
                 We pride ourselves on providing the best service. Here is what our customers have to say.
               </p>
             </div>
-            <div className="mt-12 grid gap-8 lg:grid-cols-3">
+            <div className="mt-12 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {testimonials.map((testimonial) => (
                 <div key={testimonial.id} className="bg-white p-8 rounded-lg shadow-md flex flex-col">
                   <div className="flex-grow">
@@ -58,7 +64,7 @@ const TestimonialsPage = () => {
                     <p className="text-gray-600">"{testimonial.content}"</p>
                   </div>
                   <div className="mt-4">
-                    <p className="font-bold text-gray-700 text-center">- {testimonial.name}</p>
+                    <p className="font-bold text-gray-900 text-center">- {testimonial.name}</p>
                     <p className="text-sm text-gray-500 text-center">{testimonial.position}</p>
                   </div>
                 </div>

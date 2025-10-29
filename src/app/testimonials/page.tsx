@@ -26,7 +26,13 @@ const TestimonialsPage = () => {
           throw new Error('Failed to fetch testimonials');
         }
         const data = await response.json();
-        setTestimonials(data);
+        const processedData = data.map((testimonial: Testimonial) => {
+          if (testimonial.img && testimonial.img.startsWith('https://onfra.io/wp-content')) {
+            testimonial.img = testimonial.img.replace('https://onfra.io/wp-content', '');
+          }
+          return testimonial;
+        });
+        setTestimonials(processedData);
       } catch (error) {
         console.error(error);
       }
@@ -41,7 +47,7 @@ const TestimonialsPage = () => {
       <SubPageTitle title="Testimonials" />
       <main className="py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+          <div className="">
             <div className="text-center">
               <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                 What Our Customers Are Saying
@@ -50,7 +56,7 @@ const TestimonialsPage = () => {
                 We pride ourselves on providing the best service. Here is what our customers have to say.
               </p>
             </div>
-            <div className="mt-12 grid gap-8 lg:grid-cols-3">
+            <div className="mt-12 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {testimonials.map((testimonial) => (
                 <div key={testimonial.id} className="bg-white p-8 rounded-lg shadow-md flex flex-col">
                   <div className="flex-grow">

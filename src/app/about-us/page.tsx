@@ -10,7 +10,8 @@ const AboutUsPage: React.FC = () => {
     <>
       <Header />
       <SubPageTitle title="About Us" />
-      <main className="container">
+      <main>
+        <div className="container">
         <section className="about-section">
           <div className="row">
             <div className="col-lg-6">
@@ -81,6 +82,7 @@ const AboutUsPage: React.FC = () => {
             </div>
           </div>
         </section>
+        </div>
       </main>
       <Footer />
     </>

@@ -29,6 +29,7 @@
   justify-content: center;
   gap: 20px;
   margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
 .category_button {
@@ -194,4 +195,23 @@
 
 .pagination_info {
   margin: 0 15px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .category_filters {
+    gap: 10px;
+  }
+
+  .category_button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .blog_grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -60,3 +60,16 @@
 .airprintLink a:hover {
     text-decoration: underline;
 }
+
+@media (max-width: 767px) {
+    .table {
+        min-width: 0;
+    }
+    .p1 {
+        padding: 0.5rem;
+    }
+    .tdIconWrapper {
+        font-size: 14px;
+        gap: 5px;
+    }
+}

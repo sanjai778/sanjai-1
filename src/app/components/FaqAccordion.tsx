@@ -108,20 +108,22 @@ const AccordionItem = ({ faq, isOpen, onClick }: { faq: Faq, isOpen: boolean, on
       >
         <div style={{
           marginRight: '15px',
-          backgroundColor: 'var(--white)',
+          backgroundColor: isOpen ? 'var(--primary-green)' : 'var(--white)',
           borderRadius: '50%',
           width: '24px',
           height: '24px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          border: '1px solid var(--primary-green)',
+          transition: 'background-color 0.3s ease-in-out',
         }}>
           <ChevronDownIcon style={{
             width: '16px',
             height: '16px',
-            color: 'var(--primary-green)',
+            color: isOpen ? 'var(--white)' : 'var(--primary-green)',
             transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-            transition: 'transform 0.3s ease-in-out',
+            transition: 'transform 0.3s ease-in-out, color 0.3s ease-in-out',
           }} />
         </div>
         <h5 style={{
@@ -150,12 +152,14 @@ const AccordionItem = ({ faq, isOpen, onClick }: { faq: Faq, isOpen: boolean, on
   );
 };
 
-const FaqAccordion = () => {
+const FaqAccordion = ({ faqs: passedFaqs, limit }: { faqs?: Faq[], limit?: number }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  const displayedFaqs = limit ? (passedFaqs || faqs).slice(0, limit) : (passedFaqs || faqs);
 
   return (
     <div style={{
@@ -186,7 +190,7 @@ const FaqAccordion = () => {
           <div className="row">
             <div className="col-sm-2"></div>
             <div className="col-sm-8">
-              {faqs.map((faq, index) => (
+              {displayedFaqs.map((faq, index) => (
                 <AccordionItem
                   key={index}
                   faq={faq}

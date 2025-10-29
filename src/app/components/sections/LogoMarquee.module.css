@@ -11,7 +11,7 @@
 }
 .marqueeTrack img {
   height: 100px;
-  width: auto;
+  width: auto !important;
 }
 
 @keyframes scroll {
@@ -36,4 +36,20 @@
 .marqueeContainer::after {
   right: 0;
   background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0));
+}
+
+@media (max-width: 768px) {
+  .marqueeContainer {
+    height: 60px;
+  }
+  .marqueeTrack {
+    animation-duration: 30s;
+  }
+  .marqueeTrack img {
+    height: 60px;
+  }
+  .marqueeContainer::before,
+  .marqueeContainer::after {
+    width: 50px;
+  }
 }

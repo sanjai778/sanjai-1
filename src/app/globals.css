@@ -131,3 +131,12 @@ body {
     transform: translateX(-50%);
   }
 }
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  max-width: unset !important;
+}

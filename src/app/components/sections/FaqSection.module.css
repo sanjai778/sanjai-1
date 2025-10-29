@@ -62,3 +62,19 @@
   color: var(--text-light);
   line-height: 1.7;
 }
+
+@media (max-width: 768px) {
+  .faqSection {
+    padding: 60px 0;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .button {
+    font-size: 1rem;
+    padding: 15px;
+  }
+  .cardBody {
+    padding: 0 15px 15px;
+  }
+}

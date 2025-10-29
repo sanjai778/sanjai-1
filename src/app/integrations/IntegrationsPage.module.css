@@ -160,3 +160,9 @@
 .integrationsContent {
   flex: 1;
 }
+
+@media (max-width: 767px) {
+  .integrationsLayout {
+    flex-direction: column;
+  }
+}

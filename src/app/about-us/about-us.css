@@ -8,8 +8,8 @@
   max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
 .sub-page-title {
@@ -43,7 +43,8 @@
 }
 
 /* Base styles for columns: full width on mobile by default */
-.about-section .col-lg-6 {
+.about-section .col-lg-6,
+.about-section .col-lg-12 {
   position: relative;
   width: 100%;
   padding-right: 15px;

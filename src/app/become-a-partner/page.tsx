@@ -84,12 +84,11 @@ export default function PartnerContactPage() {
         <div className="container">
           <form
             name="frmContact"
-            id="pricingQuotes"
+            className={styles.pricingQuotesForm}
             method="post"
             action=""
             encType="multipart/form-data"
             onSubmit={handleSubmit}
-            style={{ padding: '0px 300px' }}
           >
             <fieldset className={styles.fieldset}>
               <div className={styles.formGroup}>
@@ -206,7 +205,7 @@ export default function PartnerContactPage() {
                       <p className={styles.dragDropText}>Drag & Drop your file here</p>
                     </div>
                     <p className={styles.fileName}></p>
-                    <input type="file" className={styles.fileInput} id="companyProfile" name="companyProfile" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                    <input type="file" className={styles.fileInput} id="companyProfile" name="companyProfile" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
                   </div>
                 </div>
               </div>
@@ -220,7 +219,7 @@ export default function PartnerContactPage() {
                       <p className={styles.dragDropText}>Drag & Drop your file here</p>
                     </div>
                     <p className={styles.fileName}></p>
-                    <input type="file" className={styles.fileInput} id="incorporationDoc" name="incorporationDoc" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                    <input type="file" className={styles.fileInput} id="incorporationDoc" name="incorporationDoc" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
                   </div>
                 </div>
               </div>

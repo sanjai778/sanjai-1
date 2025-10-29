@@ -1,11 +1,10 @@
 "use client";
 
-"use client";
-
 import { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import NewPagination from './NewPagination';
+import styles from './CaseStudyList.module.css';
 
 interface CaseStudy {
   id: number;
@@ -78,12 +77,12 @@ export default function CaseStudyList({ initialCaseStudies, industries, products
 
   return (
     <>
-      <div style={{ textAlign: 'center', padding: '50px 20px' }}>
-        <h1 style={{ fontSize: '2.5em', fontWeight: 'bold', marginBottom: '20px' }}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>
           The world’s leading workplaces of every size and industry rely on onfra to transform effectively
         </h1>
-        <div style={{ marginBottom: '30px' }}>
-          <button className="btn btn-primary" style={{ marginRight: '10px' }}>
+        <div className={styles.buttonGroup}>
+          <button className={`btn btn-primary ${styles.button}`}>
             Signup For Free!
           </button>
           <button className="btn btn-outline-primary">
@@ -98,23 +97,15 @@ export default function CaseStudyList({ initialCaseStudies, industries, products
             setSearchTerm(e.target.value);
             setCurrentPage(1);
           }}
-          style={{
-            padding: '15px',
-            width: '400px',
-            border: '1px solid #ccc',
-            borderRadius: '5px',
-            marginBottom: '20px',
-            display: 'block',
-            margin: '0 auto 20px',
-          }}
+          className={styles.searchInput}
         />
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-        <h2 style={{ fontSize: '2em'  }}>Case Studies</h2>
-        <div style={{ display: 'flex', gap: '20px' }}>
+      <div className={styles.filtersContainer}>
+        <h2 className={styles.filtersTitle}>Case Studies</h2>
+        <div className={styles.selectGroup}>
           <select
-            style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}
+            className={styles.select}
             value={selectedIndustry}
             onChange={(e) => {
               setSelectedIndustry(e.target.value);
@@ -127,7 +118,7 @@ export default function CaseStudyList({ initialCaseStudies, industries, products
             ))}
           </select>
           <select
-            style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}
+            className={styles.select}
             value={selectedProduct}
             onChange={(e) => {
               setSelectedProduct(e.target.value);
@@ -143,13 +134,13 @@ export default function CaseStudyList({ initialCaseStudies, industries, products
       </div>
 
       {paginatedCaseStudies.length > 0 ? (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '24px' }}>
+        <div className={styles.grid}>
           {paginatedCaseStudies.map((caseStudy: CaseStudy) => (
-            <Link key={caseStudy.id} href={`/casestudies/${caseStudy.slug}`} style={{ textDecoration: 'none', color: 'inherit', border: '1px solid #eee', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
-              {caseStudy.Company_Image_url && <Image src={caseStudy.Company_Image_url} alt={caseStudy.Card_Title || ''} width={300} height={200} style={{ width: '100%', height: '200px', objectFit: 'cover' }}/>}
-              <div style={{ padding: '20px' }}>
-                <h2 style={{ marginTop: 0, fontSize: '1.1em', marginBottom: '10px' , color: '#222' }}>{caseStudy.Card_Title}</h2>
-                <p style={{ color: '#666' }}>{caseStudy.Card_Description}</p>
+            <Link key={caseStudy.id} href={`/casestudies/${caseStudy.slug}`} className={styles.cardLink}>
+              {caseStudy.Company_Image_url && <Image src={caseStudy.Company_Image_url} alt={caseStudy.Card_Title || ''} width={300} height={200} className={styles.cardImage} />}
+              <div className={styles.cardContent}>
+                <h2 className={styles.cardTitle}>{caseStudy.Card_Title}</h2>
+                <p className={styles.cardDescription}>{caseStudy.Card_Description}</p>
               </div>
             </Link>
           ))}

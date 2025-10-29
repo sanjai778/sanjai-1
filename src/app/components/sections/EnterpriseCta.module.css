@@ -51,3 +51,23 @@
   font-size: 1.5rem;
   font-weight: 600;
 }
+
+@media (max-width: 992px) {
+  .ctaContainer {
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+  }
+  .imageColumn {
+    order: 1;
+  }
+  .contentColumn {
+    order: 2;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .featureList {
+    justify-content: center;
+  }
+}
