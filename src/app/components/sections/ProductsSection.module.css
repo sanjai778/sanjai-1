@@ -10,9 +10,10 @@
 .productCard {
   background-color: #fff;
   border-radius: 8px;
-  padding: 30px;
+  padding: 10px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 300px;
 }
 .productCard:hover {
   transform: translateY(-5px);
@@ -22,15 +23,15 @@
   background-color: #effff6;
   width: 60px;
   height: 60px;
-  border-radius: 50%;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
   font-size: 28px;
   color: var(--primary-green);
 }
-.cardTitle { margin-bottom: 15px; font-size: 1.25rem; }
-.cardTitle a { color: var(--text-dark); text-decoration: none; }
+.boxHeading a { text-decoration: none; }
+.boxHeading h2 { color: var(--text-dark); transition: color 0.2s ease; font-size: 20px; }
+.productCard:hover .boxHeading h2 { color: var(--primary-green); }
 .cardDescription { color: var(--text-light); line-height: 1.6; margin-bottom: 20px; }
 .readMore { color: var(--primary-green); text-decoration: none; font-weight: 500; }

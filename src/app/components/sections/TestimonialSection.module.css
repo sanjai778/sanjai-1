@@ -3,3 +3,9 @@
   background-color: var(--background-light);
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .testimonialSection {
+    padding: 40px 0;
+  }
+}

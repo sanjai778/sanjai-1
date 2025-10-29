@@ -1,0 +1,492 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?kf7bc1');
+  src:  url('fonts/icomoon.eot?kf7bc1#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?kf7bc1') format('truetype'),
+    url('fonts/icomoon.woff?kf7bc1') format('woff'),
+    url('fonts/icomoon.svg?kf7bc1#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-visitdesk_icons_0001:before {
+  content: "\e900";
+}
+.icon-visitdesk_icons_0002:before {
+  content: "\e901";
+}
+.icon-visitdesk_icons_0003:before {
+  content: "\e902";
+}
+.icon-visitdesk_icons_0004:before {
+  content: "\e903";
+}
+.icon-visitdesk_icons_0005:before {
+  content: "\e904";
+}
+.icon-visitdesk_icons_0006:before {
+  content: "\e905";
+}
+.icon-visitdesk_icons_0007:before {
+  content: "\e906";
+}
+.icon-visitdesk_icons_0008:before {
+  content: "\e907";
+}
+.icon-visitdesk_icons_0009:before {
+  content: "\e908";
+}
+.icon-visitdesk_icons_0010:before {
+  content: "\e909";
+}
+.icon-visitdesk_icons_0011:before {
+  content: "\e90a";
+}
+.icon-visitdesk_icons_0012:before {
+  content: "\e90b";
+}
+.icon-visitdesk_icons_0013:before {
+  content: "\e90c";
+}
+.icon-visitdesk_icons_0014:before {
+  content: "\e90d";
+}
+.icon-visitdesk_icons_0015:before {
+  content: "\e90e";
+}
+.icon-visitdesk_icons_0016:before {
+  content: "\e90f";
+}
+.icon-visitdesk_icons_0017:before {
+  content: "\e910";
+}
+.icon-visitdesk_icons_0018:before {
+  content: "\e911";
+}
+.icon-visitdesk_icons_0019:before {
+  content: "\e912";
+}
+.icon-visitdesk_icons_0020:before {
+  content: "\e913";
+}
+.icon-visitdesk_icons_0021:before {
+  content: "\e914";
+}
+.icon-visitdesk_icons_0022:before {
+  content: "\e915";
+}
+.icon-visitdesk_icons_0023:before {
+  content: "\e916";
+}
+.icon-visitdesk_icons_0024:before {
+  content: "\e917";
+}
+.icon-visitdesk_icons_0025:before {
+  content: "\e918";
+}
+.icon-visitdesk_icons_0026:before {
+  content: "\e919";
+}
+.icon-visitdesk_icons_0027:before {
+  content: "\e91a";
+}
+.icon-visitdesk_icons_0028:before {
+  content: "\e91b";
+}
+.icon-visitdesk_icons_0029:before {
+  content: "\e91c";
+}
+.icon-visitdesk_icons_0030:before {
+  content: "\e91d";
+}
+.icon-visitdesk_icons_0031:before {
+  content: "\e91e";
+}
+.icon-visitdesk_icons_0032:before {
+  content: "\e91f";
+}
+.icon-visitdesk_icons_0033:before {
+  content: "\e920";
+}
+.icon-visitdesk_icons_0034:before {
+  content: "\e921";
+}
+.icon-visitdesk_icons_0035:before {
+  content: "\e922";
+}
+.icon-visitdesk_icons_0036:before {
+  content: "\e923";
+}
+.icon-visitdesk_icons_0037:before {
+  content: "\e924";
+}
+.icon-visitdesk_icons_0038:before {
+  content: "\e925";
+}
+.icon-visitdesk_icons_0039:before {
+  content: "\e926";
+}
+.icon-visitdesk_icons_0040:before {
+  content: "\e927";
+}
+.icon-visitdesk_icons_0041:before {
+  content: "\e928";
+}
+.icon-visitdesk_icons_0042:before {
+  content: "\e929";
+}
+.icon-visitdesk_icons_0043:before {
+  content: "\e92a";
+}
+.icon-visitdesk_icons_0044:before {
+  content: "\e92b";
+}
+.icon-visitdesk_icons_0045:before {
+  content: "\e92c";
+}
+.icon-visitdesk_icons_0046:before {
+  content: "\e92d";
+}
+.icon-visitdesk_icons_0047:before {
+  content: "\e92e";
+}
+.icon-visitdesk_icons_0048:before {
+  content: "\e92f";
+}
+.icon-visitdesk_icons_0049:before {
+  content: "\e930";
+}
+.icon-visitdesk_icons_0050:before {
+  content: "\e931";
+}
+.icon-visitdesk_icons_0051:before {
+  content: "\e932";
+}
+.icon-visitdesk_icons_0052:before {
+  content: "\e933";
+}
+.icon-visitdesk_icons_0053:before {
+  content: "\e934";
+}
+.icon-visitdesk_icons_0054:before {
+  content: "\e935";
+}
+.icon-visitdesk_icons_0055:before {
+  content: "\e936";
+}
+.icon-visitdesk_icons_0056:before {
+  content: "\e937";
+}
+.icon-visitdesk_icons_0057:before {
+  content: "\e938";
+}
+.icon-visitdesk_icons_0058:before {
+  content: "\e939";
+}
+.icon-visitdesk_icons_0059:before {
+  content: "\e93a";
+}
+.icon-visitdesk_icons_0060:before {
+  content: "\e93b";
+}
+.icon-visitdesk_icons_0061:before {
+  content: "\e93c";
+}
+.icon-visitdesk_icons_0062:before {
+  content: "\e93d";
+}
+.icon-visitdesk_icons_0063:before {
+  content: "\e93e";
+}
+.icon-visitdesk_icons_0064:before {
+  content: "\e93f";
+}
+.icon-visitdesk_icons_0065:before {
+  content: "\e940";
+}
+.icon-visitdesk_icons_0066:before {
+  content: "\e941";
+}
+.icon-visitdesk_icons_0067:before {
+  content: "\e942";
+}
+.icon-visitdesk_icons_0068:before {
+  content: "\e943";
+}
+.icon-visitdesk_icons_0069:before {
+  content: "\e944";
+}
+.icon-visitdesk_icons_0070:before {
+  content: "\e945";
+}
+.icon-visitdesk_icons_0071:before {
+  content: "\e946";
+}
+.icon-visitdesk_icons_0072:before {
+  content: "\e947";
+}
+.icon-visitdesk_icons_0073:before {
+  content: "\e948";
+}
+.icon-visitdesk_icons_0074:before {
+  content: "\e949";
+}
+.icon-visitdesk_icons_0075:before {
+  content: "\e94a";
+}
+.icon-visitdesk_icons_0076:before {
+  content: "\e94b";
+}
+.icon-visitdesk_icons_0077:before {
+  content: "\e94c";
+}
+.icon-visitdesk_icons_0078:before {
+  content: "\e94d";
+}
+.icon-visitdesk_icons_0079:before {
+  content: "\e94e";
+}
+.icon-visitdesk_icons_0080:before {
+  content: "\e94f";
+}
+.icon-visitdesk_icons_0081:before {
+  content: "\e950";
+}
+.icon-visitdesk_icons_0082:before {
+  content: "\e951";
+}
+.icon-visitdesk_icons_0083:before {
+  content: "\e952";
+}
+.icon-visitdesk_icons_0084:before {
+  content: "\e953";
+}
+.icon-visitdesk_icons_0085:before {
+  content: "\e954";
+}
+.icon-visitdesk_icons_0086:before {
+  content: "\e955";
+}
+.icon-visitdesk_icons_0087:before {
+  content: "\e956";
+}
+.icon-visitdesk_icons_0088:before {
+  content: "\e957";
+}
+.icon-visitdesk_icons_0089:before {
+  content: "\e958";
+}
+.icon-visitdesk_icons_0090:before {
+  content: "\e959";
+}
+.icon-visitdesk_icons_0091:before {
+  content: "\e95a";
+}
+.icon-visitdesk_icons_0092:before {
+  content: "\e95b";
+}
+.icon-visitdesk_icons_0093:before {
+  content: "\e95c";
+}
+.icon-visitdesk_icons_0094:before {
+  content: "\e95d";
+}
+.icon-visitdesk_icons_0095:before {
+  content: "\e95e";
+}
+.icon-visitdesk_icons_0096:before {
+  content: "\e95f";
+}
+.icon-visitdesk_icons_0097:before {
+  content: "\e960";
+}
+.icon-visitdesk_icons_0098:before {
+  content: "\e961";
+}
+.icon-visitdesk_icons_0099:before {
+  content: "\e962";
+}
+.icon-visitdesk_icons_0100:before {
+  content: "\e963";
+}
+.icon-visitdesk_icons_0101:before {
+  content: "\e964";
+}
+.icon-visitdesk_icons_0102:before {
+  content: "\e965";
+}
+.icon-visitdesk_icons_0103:before {
+  content: "\e966";
+}
+.icon-visitdesk_icons_0104:before {
+  content: "\e967";
+}
+.icon-visitdesk_icons_0105:before {
+  content: "\e968";
+}
+.icon-visitdesk_icons_0106:before {
+  content: "\e969";
+}
+.icon-visitdesk_icons_0107:before {
+  content: "\e96a";
+}
+.icon-visitdesk_icons_0108:before {
+  content: "\e96b";
+}
+.icon-visitdesk_icons_0109:before {
+  content: "\e96c";
+}
+.icon-visitdesk_icons_0110:before {
+  content: "\e96d";
+}
+.icon-visitdesk_icons_0111:before {
+  content: "\e96e";
+}
+.icon-visitdesk_icons_0112:before {
+  content: "\e96f";
+}
+.icon-visitdesk_icons_0113:before {
+  content: "\e970";
+}
+.icon-visitdesk_icons_0114:before {
+  content: "\e971";
+}
+.icon-visitdesk_icons_0115:before {
+  content: "\e972";
+}
+.icon-visitdesk_icons_0116:before {
+  content: "\e973";
+}
+.icon-visitdesk_icons_0117:before {
+  content: "\e974";
+}
+.icon-visitdesk_icons_0118:before {
+  content: "\e975";
+}
+.icon-visitdesk_icons_0119:before {
+  content: "\e976";
+}
+.icon-visitdesk_icons_0120:before {
+  content: "\e977";
+}
+.icon-visitdesk_icons_0121:before {
+  content: "\e978";
+}
+.icon-visitdesk_icons_0122:before {
+  content: "\e979";
+}
+.icon-visitdesk_icons_0123:before {
+  content: "\e97a";
+}
+.icon-visitdesk_icons_0124:before {
+  content: "\e97b";
+}
+.icon-visitdesk_icons_0125:before {
+  content: "\e97c";
+}
+.icon-visitdesk_icons_0126:before {
+  content: "\e97d";
+}
+.icon-visitdesk_icons_0127:before {
+  content: "\e97e";
+}
+.icon-visitdesk_icons_0128:before {
+  content: "\e97f";
+}
+.icon-visitdesk_icons_0129:before {
+  content: "\e980";
+}
+.icon-visitdesk_icons_0130:before {
+  content: "\e981";
+}
+.icon-visitdesk_icons_0131:before {
+  content: "\e982";
+}
+.icon-visitdesk_icons_0132:before {
+  content: "\e983";
+}
+.icon-visitdesk_icons_0133:before {
+  content: "\e984";
+}
+.icon-visitdesk_icons_0134:before {
+  content: "\e985";
+}
+.icon-visitdesk_icons_0135:before {
+  content: "\e986";
+}
+.icon-visitdesk_icons_0136:before {
+  content: "\e987";
+}
+.icon-visitdesk_icons_0137:before {
+  content: "\e988";
+}
+.icon-visitdesk_icons_0138:before {
+  content: "\e989";
+}
+.icon-visitdesk_icons_0139:before {
+  content: "\e98a";
+}
+.icon-visitdesk_icons_0140:before {
+  content: "\e98b";
+}
+.icon-visitdesk_icons_0141:before {
+  content: "\e98c";
+}
+.icon-visitdesk_icons_0142:before {
+  content: "\e98d";
+}
+.icon-visitdesk_icons_0143:before {
+  content: "\e98e";
+}
+.icon-visitdesk_icons_0144:before {
+  content: "\e98f";
+}
+.icon-visitdesk_icons_0145:before {
+  content: "\e990";
+}
+.icon-visitdesk_icons_0146:before {
+  content: "\e991";
+}
+.icon-visitdesk_icons_0147:before {
+  content: "\e992";
+}
+.icon-visitdesk_icons_0148:before {
+  content: "\e993";
+}
+.icon-visitdesk_icons_0149:before {
+  content: "\e994";
+}
+.icon-visitdesk_icons_0150:before {
+  content: "\e995";
+}
+.icon-visitdesk_icons_0151:before {
+  content: "\e996";
+}
+.icon-visitdesk_icons_0152:before {
+  content: "\e997";
+}
+.icon-visitdesk_icons_0153:before {
+  content: "\e998";
+}
+.icon-visitdesk_icons_0154:before {
+  content: "\e999";
+}
+.icon-visitdesk_icons_0155:before {
+  content: "\e99a";
+}

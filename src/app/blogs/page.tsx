@@ -38,6 +38,9 @@ async function getCategories(): Promise<Category[]> {
 async function getPosts(): Promise<Post[]> {
   try {
     const posts = await prisma.blog.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
       include: {
         cats: true,
       },

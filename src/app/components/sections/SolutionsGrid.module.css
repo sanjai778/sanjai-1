@@ -8,8 +8,20 @@
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 .headingColumn {
   grid-column: 1 / 2;
@@ -38,7 +50,6 @@
 }
 .solutionBox h3 {
   font-size: 1.1rem;
-  margin-bottom: 15px;
   color: var(--text-dark);
   font-weight: 600;
 }
@@ -47,7 +58,6 @@
   color: var(--text-light);
   line-height: 1.6;
   flex-grow: 1;
-  margin-bottom: 1rem;
 }
 .solutionBox a {
   color: var(--primary-green);

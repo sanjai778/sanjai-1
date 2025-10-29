@@ -3,6 +3,7 @@ import Footer from '@/app/components/Footer';
 import SubPageTitle from '@/app/components/SubPageTitle';
 import CtaSection from '@/app/components/sections/CtaSection';
 import styles from './SupportedPrinters.module.css';
+import Image from 'next/image';
 export default function SupportedPrintersPage() {
   return (
     <>
@@ -25,13 +26,13 @@ export default function SupportedPrintersPage() {
                 <td rowSpan={2} className={styles.printersCol}>Printers</td>
                 <td colSpan={2} className={styles.iosCol}>
                   <span className={styles.tdIconWrapper}>
-                    <img src="/uploads/2022/09/apple1.png" alt="iOS" width="24" height="24" />
+                    <Image src="/uploads/2022/09/apple1.png" alt="iOS" width="24" height="24" />
                     iOS
                   </span>
                 </td>
                 <td colSpan={2} className={styles.androidCol}>
                   <span className={styles.tdIconWrapper}>
-                    <img src="/uploads/2022/09/android.png" alt="Android" width="24" height="24" />
+                    <Image src="/uploads/2022/09/android.png" alt="Android" width="24" height="24" />
                     Android
                   </span>
                 </td>
@@ -39,25 +40,25 @@ export default function SupportedPrintersPage() {
               <tr className={styles.borderBottom}>
                 <td>
                   <span className={styles.tdIconWrapper}>
-                    <img src="/uploads/2022/09/wifi.png" alt="WIFI" width="24" height="24" />
+                    <Image src="/uploads/2022/09/wifi.png" alt="WIFI" width="24" height="24" />
                     WIFI
                   </span>
                 </td>
                 <td>
                   <span className={styles.tdIconWrapper}>
-                    <img src="/uploads/2022/09/bluetooth.png" alt="BLUETOOTH" width="24" height="24" />
+                    <Image src="/uploads/2022/09/bluetooth.png" alt="BLUETOOTH" width="24" height="24" />
                     BLUETOOTH
                   </span>
                 </td>
                 <td>
                   <span className={styles.tdIconWrapper}>
-                    <img src="/uploads/2022/09/wifi.png" alt="WIFI" width="24" height="24" />
+                    <Image src="/uploads/2022/09/wifi.png" alt="WIFI" width="24" height="24" />
                     WIFI
                   </span>
                 </td>
                 <td>
                   <span className={styles.tdIconWrapper}>
-                    <img src="/uploads/2022/09/bluetooth.png" alt="BLUETOOTH" width="24" height="24" />
+                    <Image src="/uploads/2022/09/bluetooth.png" alt="BLUETOOTH" width="24" height="24" />
                     BLUETOOTH
                   </span>
                 </td>
@@ -65,48 +66,48 @@ export default function SupportedPrintersPage() {
               <tr className={styles.borderBottom}>
                 <td className={styles.textAlignLeft}>Brother Lable Printers</td>
                 <td className={`${styles.center} ${styles.p1} ${styles.borderRight}`}>
-                  <img src="/uploads/2019/01/success.svg" alt="Success" width="24" height="24" />
+                  <Image src="/uploads/2019/01/success.svg" alt="Success" width="24" height="24" />
                   <span className={styles.airprintLink}><a href="https://support.apple.com/en-us/HT201311" target="_blank" rel="noopener noreferrer">[Via Airprint]</a></span>
                 </td>
                 <td className={`${styles.center} ${styles.p1} ${styles.borderRight}`}>
-                  <img src="/uploads/2019/01/error.svg" alt="Error" width="24" height="24" />
+                  <Image src="/uploads/2019/01/error.svg" alt="Error" width="24" height="24" />
                 </td>
                 <td className={`${styles.center} ${styles.p1} ${styles.borderRight}`}>
-                  <img src="/uploads/2019/01/success.svg" alt="Success" width="24" height="24" />
+                  <Image src="/uploads/2019/01/success.svg" alt="Success" width="24" height="24" />
                 </td>
                 <td className={`${styles.center} ${styles.p1} ${styles.borderRight}`}>
-                  <img src="/uploads/2019/01/success.svg" alt="Success" width="24" height="24" />
+                  <Image src="/uploads/2019/01/success.svg" alt="Success" width="24" height="24" />
                 </td>
               </tr>
               <tr className={styles.borderBottom}>
                 <td className={styles.textAlignLeft}>Other Printers</td>
                 <td className={`${styles.center} ${styles.p1} ${styles.borderRight}`}>
-                  <img src="/uploads/2019/01/success.svg" alt="Success" width="24" height="24" />
+                  <Image src="/uploads/2019/01/success.svg" alt="Success" width="24" height="24" />
                   <span className={styles.airprintLink}><a href="https://support.apple.com/en-us/HT201311" target="_blank" rel="noopener noreferrer">[Via Airprint]</a></span>
                 </td>
                 <td className={`${styles.center} ${styles.p1} ${styles.borderRight}`}>
-                  <img src="/uploads/2019/01/error.svg" alt="Error" width="24" height="24" />
+                  <Image src="/uploads/2019/01/error.svg" alt="Error" width="24" height="24" />
                 </td>
                 <td className={`${styles.center} ${styles.p1} ${styles.borderRight}`}>
-                  <img src="/uploads/2019/01/error.svg" alt="Error" width="24" height="24" />
+                  <Image src="/uploads/2019/01/error.svg" alt="Error" width="24" height="24" />
                 </td>
                 <td className={`${styles.center} ${styles.p1} ${styles.borderRight}`}>
-                  <img src="/uploads/2019/01/error.svg" alt="Error" width="24" height="24" />
+                  <Image src="/uploads/2019/01/error.svg" alt="Error" width="24" height="24" />
                 </td>
               </tr>
               <tr className={styles.borderBottom}>
                 <td className={styles.textAlignLeft}>ESC/POS Printers</td>
                 <td className={`${styles.center} ${styles.p1} ${styles.borderRight}`}>
-                  <img src="/uploads/2019/01/error.svg" alt="Error" width="24" height="24" />
+                  <Image src="/uploads/2019/01/error.svg" alt="Error" width="24" height="24" />
                 </td>
                 <td className={`${styles.center} ${styles.p1} ${styles.borderRight}`}>
-                  <img src="/uploads/2019/01/success.svg" alt="Success" width="24" height="24" />
+                  <Image src="/uploads/2019/01/success.svg" alt="Success" width="24" height="24" />
                 </td>
                 <td className={`${styles.center} ${styles.p1} ${styles.borderRight}`}>
-                  <img src="/uploads/2019/01/error.svg" alt="Error" width="24" height="24" />
+                  <Image src="/uploads/2019/01/error.svg" alt="Error" width="24" height="24" />
                 </td>
                 <td className={`${styles.center} ${styles.p1} ${styles.borderRight}`}>
-                  <img src="/uploads/2019/01/success.svg" alt="Success" width="24" height="24" />
+                  <Image src="/uploads/2019/01/success.svg" alt="Success" width="24" height="24" />
                 </td>
               </tr>
             </tbody>

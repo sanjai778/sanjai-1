@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 const images = [
   { src: 'https://onfra.io/wp-content/uploads/2023/11/Portrait-pass1.png', category: 'one' },
@@ -49,7 +50,7 @@ const FilterableGallery = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {filteredImages.map((image, index) => (
           <div key={index} className="overflow-hidden rounded-lg shadow-lg">
-            <img src={image.src} alt={`Pass template ${index + 1}`} className="w-full h-auto" />
+            <Image src={image.src} alt={`Pass template ${index + 1}`} width={500} height={500} className="w-full h-auto" />
           </div>
         ))}
       </div>

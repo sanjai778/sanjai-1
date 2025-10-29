@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
 import SubPageTitle from '@/app/components/SubPageTitle';
@@ -101,7 +102,7 @@ const IntegrationsPage = () => {
             </div>
             <div>
               <div>
-                <img className={styles.integrationImage} src="https://onfra.io/wp-content/uploads/svg_image/integration.svg" alt="Integrations" />
+                <Image className={styles.integrationImage} src="https://onfra.io/wp-content/uploads/svg_image/integration.svg" alt="Integrations" width={500} height={500} />
               </div>
             </div>
             <div className={styles.integrationsLayout}>
@@ -135,7 +136,7 @@ const IntegrationsPage = () => {
                 <div className={styles.intContainer} id="company-cards">
                   {filteredIntegrations.map((integration, index) => (
                     <div key={index} className={styles.intCard}>
-                      <img className={styles.intLogo} src={integration.logo} alt={integration.title} />
+                      <Image className={styles.intLogo} src={integration.logo} alt={integration.title} width={100} height={100} />
                       <div className={styles.title}>{integration.title}</div>
                       <p className={styles.paragraph}>{integration.description}</p>
                     </div>

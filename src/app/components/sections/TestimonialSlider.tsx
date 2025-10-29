@@ -50,14 +50,13 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         spaceBetween={20}
-        centeredSlides={true}
         // Default view for mobile
-        slidesPerView={1.3} 
+        slidesPerView={1} 
         // Responsive breakpoints
         breakpoints={{
           // when window width is >= 768px (tablets)
           768: {
-            slidesPerView: 2.5,
+            slidesPerView: 2,
             spaceBetween: 30
           },
           // when window width is >= 1200px (desktops)

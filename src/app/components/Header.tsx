@@ -1,18 +1,3 @@
-import {
-  UserIcon,
-  KeyIcon,
-  ClockIcon,
-  UsersIcon,
-  CubeIcon,
-  ClipboardDocumentListIcon,
-  BuildingOfficeIcon,
-  ComputerDesktopIcon,
-  TruckIcon,
-  ViewfinderCircleIcon,
-  ArrowDownOnSquareIcon,
-  CodeBracketIcon,
-  PuzzlePieceIcon,
-} from '@heroicons/react/24/outline';
 import HeaderContent from './HeaderContent';
 
 interface NavLink {
@@ -24,21 +9,21 @@ interface NavLink {
 
 const Header = () => {
   const platformLinks: NavLink[] = [
-    { href: "/platform/visitors/", icon: <UserIcon />, title: "Visitor", description: "Manage visitor check-ins and track data securely." },
-    { href: "/platform/flexipass/", icon: <KeyIcon />, title: "Flexipass", description: "Streamline contractor access and pass management." },
-    { href: "/platform/employees/", icon: <ClockIcon />, title: "Attendance & Time Tracking", description: "Track employee attendance effortlessly and securely." },
-    { href: "/platform/queue-management/", icon: <UsersIcon />, title: "Queue", description: "Enhance customer experience with efficient queues." },
-    { href: "/platform/deliveries/", icon: <CubeIcon />, title: "Deliveries", description: "Streamline package tracking and delivery notifications." },
-    { href: "/platform/material-pass/", icon: <ClipboardDocumentListIcon />, title: "Material Pass", description: "Track all material movements with ease and accuracy." },
-    { href: "/platform/rooms/", icon: <BuildingOfficeIcon />, title: "Rooms", description: "Simplify meeting room bookings for better collaboration." },
-    { href: "/platform/desk/", icon: <ComputerDesktopIcon />, title: "Desks", description: "Manage desk reservations for a flexible workspace." },
-    { href: "/platform/vehicles/", icon: <TruckIcon />, title: "Vehicle Pass", description: "Control vehicle access with effective pass management." },
-    { href: "#", icon: <ViewfinderCircleIcon />, title: "Signage", description: "Use digital signage for real-time information sharing." },
+    { href: "/platform/visitors/", icon: <span className="icon-visitdesk_icons_0140" />, title: "Visitor", description: "Manage visitor check-ins and track data securely." },
+    { href: "/platform/flexipass/", icon: <span className="icon-visitdesk_icons_0125" />, title: "Flexipass", description: "Streamline contractor access and pass management." },
+    { href: "/platform/employees/", icon: <span className="icon-visitdesk_icons_0091" />, title: "Attendance & Time Tracking", description: "Track employee attendance effortlessly and securely." },
+    { href: "/platform/queue-management/", icon: <span className="icon-visitdesk_icons_0085" />, title: "Queue", description: "Enhance customer experience with efficient queues." },
+    { href: "/platform/deliveries/", icon: <span className="icon-visitdesk_icons_0045" />, title: "Deliveries", description: "Streamline package tracking and delivery notifications." },
+    { href: "/platform/material-pass/", icon: <span className="icon-visitdesk_icons_0148" />, title: "Material Pass", description: "Track all material movements with ease and accuracy." },
+    { href: "/platform/rooms/", icon: <span className="icon-visitdesk_icons_0106" />, title: "Rooms", description: "Simplify meeting room bookings for better collaboration." },
+    { href: "/platform/desk/", icon: <span className="icon-visitdesk_icons_0101" />, title: "Desks", description: "Manage desk reservations for a flexible workspace." },
+    { href: "/platform/vehicles/", icon: <span className="icon-visitdesk_icons_0112" />, title: "Vehicle Pass", description: "Control vehicle access with effective pass management." },
+    { href: "#", icon: <span className="icon-visitdesk_icons_0070" />, title: "Signage", description: "Use digital signage for real-time information sharing." },
   ];
   const platformSecondaryLinks: NavLink[] = [
-    { href: "/download-apps/", icon: <ArrowDownOnSquareIcon />, title: "Download Apps" },
-    { href: "/api/", icon: <CodeBracketIcon />, title: "Api" },
-    { href: "/integrations/", icon: <PuzzlePieceIcon />, title: "Integrations" },
+    { href: "/download-apps/", icon: <span className="icon-visitdesk_icons_0065" />, title: "Download Apps" },
+    { href: "/api/", icon: <span className="icon-visitdesk_icons_0144" />, title: "Api" },
+    { href: "/integrations/", icon: <span className="icon-visitdesk_icons_0152" />, title: "Integrations" },
   ];
   const solutionsLinks: NavLink[] = [
     { href: "/solutions/hybrid-office-management/", title: "Hybrid Office Management", description: "Spanning the Gap Between Office and Remote Work" },

@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
 import SubPageTitle from '@/app/components/SubPageTitle';
@@ -53,7 +54,7 @@ const TestimonialsPage = () => {
               {testimonials.map((testimonial) => (
                 <div key={testimonial.id} className="bg-white p-8 rounded-lg shadow-md flex flex-col">
                   <div className="flex-grow">
-                    {testimonial.img && <img src={testimonial.img} alt={testimonial.name} className="w-24 h-24 rounded-full mx-auto mb-4" />}
+                    {testimonial.img && <Image src={testimonial.img} alt={testimonial.name} width={96} height={96} className="w-24 h-24 rounded-full mx-auto mb-4" />}
                     <p className="text-gray-600">"{testimonial.content}"</p>
                   </div>
                   <div className="mt-4">

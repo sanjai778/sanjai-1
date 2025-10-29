@@ -42,36 +42,36 @@ export default function ContactUsPage() {
         </div>
 
         {/* Section 2: Contact Form and Illustration */}
-        <section className={styles.contactFormSection}>
-          <div className="container">
-            <div className={styles.contactGrid}>
+        <section className="py-12 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* Left Side: Form */}
-              <div className={styles.formContainer}>
-                <div className={styles.formHeader}>
-                  <h2>{`Have a query? Let's talk.`}</h2>
-                  <p>Whether you need help using the tool, want more information about our plans or anything else – our support team would love to assist you.</p>
+              <div className="bg-white p-8 rounded-lg shadow-lg">
+                <div className="text-center md:text-left mb-8">
+                  <h2 className="text-3xl font-bold text-gray-800 mb-2">{`Have a query? Let's talk.`}</h2>
+                  <p className="text-gray-600">Whether you need help using the tool, want more information about our plans or anything else – our support team would love to assist you.</p>
                 </div>
                 
-                <form onSubmit={handleSubmit} className={styles.contactForm}>
-                  <div className={styles.formGroup}>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
                     <input 
                       type="text" 
                       name="name"
                       placeholder="Name" 
-                      className={styles.formInput} 
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-green"
                       value={formData.name}
                       onChange={handleChange}
                       required
                     />
                   </div>
                   
-                  <div className={styles.formRow}>
-                    <div className={styles.formGroup}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
                       <input 
                         type="email" 
                         name="email"
                         placeholder="Email" 
-                        className={styles.formInput} 
+                        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-green"
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -112,8 +112,8 @@ export default function ContactUsPage() {
                 <Image 
                   src="/uploads/2024/05/location-1.webp" 
                   alt="Contact illustration" 
-                  width={500} 
-                  height={500}
+                  width={800} 
+                  height={800}
                   priority
                 />
               </div>
@@ -128,42 +128,33 @@ export default function ContactUsPage() {
               {/* Address */}
               <div className={styles.contactDetailItem}>
                 <div className={styles.contactIcon}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
+                    <Image className="info-icon-list" src="/uploads/svg_image/location.svg" alt="location icon" width={24} height={24} />
                 </div>
                 <div className={styles.contactText}>
-                  <h3>Address</h3>
-                  <p className={styles.companyName}>ONFRA PROPTECH SOLUTIONS PRIVATE LIMITED</p>
-                  <p>16/4, Salai Street, Vepery, Chennai, Tamil Nadu, India, 600007</p>
+                    <h4>Address:</h4>
+                    <p><strong>ONFRA PROPTECH SOLUTIONS PRIVATE LIMITED</strong> <br />16/4, Salai Street, Vepery, Chennai, Tamil Nadu, India, 600007.</p>
                 </div>
               </div>
 
               {/* Phone */}
               <div className={styles.contactDetailItem}>
                 <div className={styles.contactIcon}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
+                    <Image className="info-icon-list" src="/uploads/svg_image/phone.svg" alt="phone icon" width={24} height={24} />
                 </div>
                 <div className={styles.contactText}>
-                  <h3>Phone</h3>
-                  <p>India: +91 98848 99868</p>
+                    <h4>Phone:</h4>
+                    <p><strong>India:</strong> <a href="tel:+919884899868" className="f_400" style={{color: '#000'}}>+91 98848 99868</a></p>
                 </div>
               </div>
 
               {/* Email */}
               <div className={styles.contactDetailItem}>
                 <div className={styles.contactIcon}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
+                    <Image className="info-icon-list" src="/uploads/svg_image/email.svg" alt="email icon" width={24} height={24} />
                 </div>
                 <div className={styles.contactText}>
-                  <h3>Email</h3>
-                  <p>support@onfra.io</p>
+                    <h4>Email:</h4>
+                    <p><a href="mailto:support@onfra.io" className="f_400" style={{color: '#000'}}>support@onfra.io</a></p>
                 </div>
               </div>
             </div>

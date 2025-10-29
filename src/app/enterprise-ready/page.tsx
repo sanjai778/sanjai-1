@@ -35,7 +35,7 @@ const EnterpriseReadyPage = () => {
                 </div>
               </div>
               <div>
-                <img src="/uploads/svg_image/Enterprise.svg" alt="Enterprise" className={styles.image} />
+                <Image src="/uploads/svg_image/Enterprise.svg" alt="Enterprise" width={500} height={500} className={styles.image} />
               </div>
             </div>
           </div>
@@ -45,7 +45,7 @@ const EnterpriseReadyPage = () => {
           <div className="container">
             <div className={styles.grid}>
               <div>
-                <img src="/uploads/svg_image/Your%20Data-Driven%20Workplace%20Solution.svg" alt="Data-Driven Workplace Solution" className={styles.image} />
+                <Image src="/uploads/svg_image/Your%20Data-Driven%20Workplace%20Solution.svg" alt="Data-Driven Workplace Solution" width={500} height={500} className={styles.image} />
               </div>
               <div>
                 <h2 className={styles.tagline}>Interested in our Enterprise Suite?</h2>

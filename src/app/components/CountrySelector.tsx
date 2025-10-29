@@ -21,7 +21,13 @@ interface OptionType {
   cca2: string;
 }
 
-const CountrySelector = () => {
+interface CountrySelectorProps {
+  value?: OptionType | null;
+  onChange?: (value: OptionType | null) => void;
+  instanceId?: string;
+}
+
+const CountrySelector = ({ value, onChange, instanceId = "country-select" }: CountrySelectorProps) => {
   const countryCodeToEmoji = (code: string) => {
     const OFFSET = 127397; // 0x1F1E6 - 0x41
     const codePoints = code
@@ -57,7 +63,7 @@ const CountrySelector = () => {
   }, []);
 
   const options: OptionType[] = countries.map((country) => ({
-    value: country.name.common,
+    value: country.cca2,
     label: country.name.common,
     cca2: country.cca2,
   }));
@@ -104,7 +110,7 @@ const CountrySelector = () => {
 
   return (
     <Select
-      instanceId="country-select"
+      instanceId={instanceId}
       id="countryName"
       name="countryName"
       options={options}
@@ -116,6 +122,8 @@ const CountrySelector = () => {
       styles={customStyles}
       formatOptionLabel={formatOptionLabel}
       classNamePrefix="react-select"
+      value={value}
+      onChange={onChange}
     />
   );
 };

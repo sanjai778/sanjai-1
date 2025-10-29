@@ -98,4 +98,9 @@
     transform: scale(1);
     opacity: 1;
   }
+  .swiperContainer {
+    overflow: hidden !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }

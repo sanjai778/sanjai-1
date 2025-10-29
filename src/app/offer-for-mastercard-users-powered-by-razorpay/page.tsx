@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Select, { MultiValue } from 'react-select';
 import { FaUsers, FaClock, FaBoxOpen, FaCalendarAlt, FaIdBadge, FaCar, FaChartBar, FaTruckLoading, FaDesktop, FaTv, FaShieldAlt, FaGlobe, FaChartLine } from 'react-icons/fa';
 
@@ -72,9 +73,9 @@ const OfferForMastercardUsersPage: React.FC = () => {
               <div className="mt-6 flex flex-col items-center lg:items-start">
                 <p className="text-sm text-gray-500 mb-2">Powered by</p>
                 <div className="flex items-center gap-4">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mastercard_2019_logo.svg/1200px-Mastercard_2019_logo.svg.png" alt="Mastercard Logo" className="max-h-[25px] w-auto" />
+                  <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mastercard_2019_logo.svg/1200px-Mastercard_2019_logo.svg.png" alt="Mastercard Logo" width={100} height={25} className="max-h-[25px] w-auto" />
                   <span className="w-px h-5 bg-gray-300"></span>
-                  <img src="https://razorpay.com/assets/razorpay-logo.svg" alt="Razorpay Logo" className="max-h-[25px] w-auto" />
+                  <Image src="https://razorpay.com/assets/razorpay-logo.svg" alt="Razorpay Logo" width={100} height={25} className="max-h-[25px] w-auto" />
                 </div>
               </div>
             </div>
@@ -177,10 +178,10 @@ const OfferForMastercardUsersPage: React.FC = () => {
                             <p className="text-gray-600">Get 20% off your yearly platform fee with a $900 USD minimum spend.</p>
                             <h4 className="text-[#10c469] font-bold text-left mt-6">What's Included</h4>
                             <ul className="list-none p-0 mt-4">
-                                <li className="flex items-center gap-2 mb-4"><img className="w-5 h-5" src="https://onfra.io/wp-content/uploads/2019/01/success.svg" alt="yes"/> 20% discount on yearly platform fee</li>
-                                <li className="flex items-center gap-2 mb-4"><img className="w-5 h-5" src="https://onfra.io/wp-content/uploads/2019/01/success.svg" alt="yes"/> Minimum $900 USD spend requirement</li>
-                                <li className="flex items-center gap-2 mb-4"><img className="w-5 h-5" src="https://onfra.io/wp-content/uploads/2019/01/success.svg" alt="yes"/> Exclusive Mastercard partnership</li>
-                                <li className="flex items-center gap-2 mb-4"><img className="w-5 h-5" src="https://onfra.io/wp-content/uploads/2019/01/success.svg" alt="yes"/> Secure and seamless payments</li>
+                                <li className="flex items-center gap-2 mb-4"><Image className="w-5 h-5" src="https://onfra.io/wp-content/uploads/2019/01/success.svg" alt="yes" width={20} height={20}/> 20% discount on yearly platform fee</li>
+                                <li className="flex items-center gap-2 mb-4"><Image className="w-5 h-5" src="https://onfra.io/wp-content/uploads/2019/01/success.svg" alt="yes" width={20} height={20}/> Minimum $900 USD spend requirement</li>
+                                <li className="flex items-center gap-2 mb-4"><Image className="w-5 h-5" src="https://onfra.io/wp-content/uploads/2019/01/success.svg" alt="yes" width={20} height={20}/> Exclusive Mastercard partnership</li>
+                                <li className="flex items-center gap-2 mb-4"><Image className="w-5 h-5" src="https://onfra.io/wp-content/uploads/2019/01/success.svg" alt="yes" width={20} height={20}/> Secure and seamless payments</li>
                             </ul>
                         </div>
                     </div>
@@ -229,8 +230,8 @@ const OfferForMastercardUsersPage: React.FC = () => {
                         <h3 className="text-xl font-bold mb-3 mt-2">Complete payment — get 20% off</h3>
                         <p className="text-base text-gray-500 flex-grow mb-4">Secure checkout powered by Razorpay. Use your Mastercard to automatically apply the 20% discount.</p>
                         <div className="flex items-center gap-4 mt-4">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mastercard_2019_logo.svg/1200px-Mastercard_2019_logo.svg.png" alt="Mastercard Logo" className="max-h-5"/>
-                            <img src="https://razorpay.com/assets/razorpay-logo.svg" alt="Razorpay Logo" className="max-h-5"/>
+                            <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mastercard_2019_logo.svg/1200px-Mastercard_2019_logo.svg.png" alt="Mastercard Logo" width={100} height={20} className="max-h-5"/>
+                            <Image src="https://razorpay.com/assets/razorpay-logo.svg" alt="Razorpay Logo" width={100} height={20} className="max-h-5"/>
                         </div>
                     </div>
                 </div>
@@ -250,7 +251,7 @@ const OfferForMastercardUsersPage: React.FC = () => {
         <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
-                    <img src="/uploads/2025/08/mastercard-offer.webp" alt="Mastercard Offer" className="w-full rounded-xl"/>
+                    <Image src="/uploads/2025/08/mastercard-offer.webp" alt="Mastercard Offer" width={500} height={500} className="w-full rounded-xl"/>
                 </div>
                 <div>
                     <h2 className="text-4xl font-bold text-gray-800 mb-8">Why Choose Onfra + Mastercard</h2>
@@ -297,8 +298,8 @@ const OfferForMastercardUsersPage: React.FC = () => {
         <div className="container">
             <div className="relative w-full overflow-hidden h-24 mt-8">
               <div className="flex will-change-transform items-center h-full animate-marquee">
-                <img src="/uploads/2025/06/clients_logos.webp" alt="Client Logos" className="h-20 w-auto px-10" />
-                <img src="/uploads/2025/06/clients_logos.webp" alt="Client Logos" className="h-20 w-auto px-10" />
+                <Image src="/uploads/2025/06/clients_logos.webp" alt="Client Logos" width={500} height={80} className="h-20 w-auto px-10" />
+                <Image src="/uploads/2025/06/clients_logos.webp" alt="Client Logos" width={500} height={80} className="h-20 w-auto px-10" />
               </div>
               <div className="absolute top-0 left-0 w-24 h-full z-10 bg-gradient-to-r from-white to-transparent"></div>
               <div className="absolute top-0 right-0 w-24 h-full z-10 bg-gradient-to-l from-white to-transparent"></div>
