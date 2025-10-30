@@ -16,6 +16,8 @@
   --footer-bg: #f7f8fa;
   --white: #ffffff;
   --line-height: 1.6;
+  --letter-spacing: 0.05rem;
+  --word-spacing: 0.1rem;
 
   /* Font Sizes */
   --font-size-xxl: 2.5em; /* Extra extra large */

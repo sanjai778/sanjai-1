@@ -9,7 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'primary-green': '#10c469',
+        'primary-green': 'var(--primary-green)',
+      },
+      fontFamily: {
+        sans: ['var(--font-family)'],
       },
       animation: {
         fadeInUp: 'fadeInUp 0.8s ease forwards',
