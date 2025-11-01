@@ -10,55 +10,55 @@ import styles from './IntegrationsPage.module.css';
 const integrationsData = [
   {
     title: 'Google',
-    logo: 'https://onfra.io/wp-content/uploads/svg_image/integration/Google.svg',
+    logo: '/uploads/svg_image/integration/Google.svg',
     description: 'Automatically sync Google Workspace users into the onfra employee directory.',
     categories: ['authentication'],
   },
   {
     title: 'Whatsapp',
-    logo: 'https://onfra.io/wp-content/uploads/svg_image/integration/whatsapp.svg',
+    logo: '/uploads/svg_image/integration/whatsapp.svg',
     description: 'When an employee checks in using the host app, information is sent to the main user via WhatsApp notification.',
     categories: ['authentication', 'visitors'],
   },
   {
     title: 'Slack',
-    logo: 'https://onfra.io/wp-content/uploads/svg_image/integration/Slack.svg',
+    logo: '/uploads/svg_image/integration/Slack.svg',
     description: 'Schedule to come into the office, book desks, and invite visitors through Onfra without leaving Slack.',
     categories: ['authentication', 'employees'],
   },
   {
     title: 'Microsoft Teams',
-    logo: 'https://onfra.io/wp-content/uploads/svg_image/integration/Microsoft-teams.svg',
+    logo: '/uploads/svg_image/integration/Microsoft-teams.svg',
     description: 'Automatically notify employees through a Teams message for every Onfra update.',
     categories: ['authentication', 'rooms'],
   },
   {
     title: 'Google Calendar',
-    logo: 'https://onfra.io/wp-content/uploads/svg_image/integration/googlecalender.svg',
+    logo: '/uploads/svg_image/integration/googlecalender.svg',
     description: 'Invite visitors and book desks for employees in Onfra without leaving Google Calendar.',
     categories: ['authentication', 'rooms'],
   },
   {
     title: 'ERP Next',
-    logo: 'https://onfra.io/wp-content/uploads/svg_image/integration/Erpnext_logo.png',
+    logo: '/uploads/svg_image/integration/Erpnext_logo.png',
     description: 'When a user checks in using the Onfra host app, their attendance is automatically marked in ERP Next.',
     categories: ['authentication', 'visitors'],
   },
   {
     title: 'Zoom',
-    logo: 'https://onfra.io/wp-content/uploads/svg_image/integration/Zoom.svg',
+    logo: '/uploads/svg_image/integration/Zoom.svg',
     description: 'Automatically send employees a private notification for every Onfra update.',
     categories: ['authentication', 'rooms'],
   },
   {
     title: 'Microsoft Outlook',
-    logo: 'https://onfra.io/wp-content/uploads/svg_image/integration/msoutlook.svg',
+    logo: '/uploads/svg_image/integration/msoutlook.svg',
     description: 'Invite visitors in Onfra without leaving Outlook.',
     categories: ['authentication'],
   },
   {
     title: 'Google Meet',
-    logo: 'https://onfra.io/wp-content/uploads/svg_image/integration/Google_Meet.png',
+    logo: '/uploads/svg_image/integration/Google_Meet.png',
     description: 'After scheduling a meeting in Google Calendar with a room assignment, a prompt asks if you want to share a Google Meet link with attendees.',
     categories: ['authentication', 'rooms'],
   },
@@ -102,7 +102,7 @@ const IntegrationsPage = () => {
             </div>
             <div>
               <div>
-                <Image className={styles.integrationImage} src="https://onfra.io/wp-content/uploads/svg_image/integration.svg" alt="Integrations" width={500} height={500} />
+                <Image className={styles.integrationImage} src="/uploads/svg_image/integration.svg" alt="Integrations" width={500} height={500} />
               </div>
             </div>
             <div className={styles.integrationsLayout}>

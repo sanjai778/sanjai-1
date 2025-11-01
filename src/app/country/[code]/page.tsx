@@ -10,6 +10,18 @@ import styles from './Country.module.css';
 
 const prisma = new PrismaClient();
 
+export async function generateStaticParams() {
+  const countries = await prisma.countryWorkplaceData.findMany({
+    select: {
+      country_code: true,
+    },
+  });
+
+  return countries.map((country) => ({
+    code: country.country_code.toLowerCase(),
+  }));
+}
+
 type CountryInfo = { code: string; name: string; };
 
 interface CountryData {

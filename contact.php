@@ -1,5 +1,3 @@
-
-text/x-generic country-child.php ( PHP script, UTF-8 Unicode text, with very long lines )
 <?php
 /**
  * Template Part Name: Country - Child (Complete Page - UI Block Refactor)
@@ -88,6 +86,8 @@ $canonical_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "http
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
 <style>
     /* Enhanced modern UI styling with improved visual hierarchy */
@@ -909,14 +909,9 @@ $canonical_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "http
         </div>
 
         <!-- Details Cards Row -->
-        <div class="row g-4" style="
-    align-items: start !important;
-">
-     
-            
-            
+        <div class="row g-4" data-masonry='{"percentPosition": true }'>
             <!-- Islamic Education Overview Card -->
-            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+            <div class="col-lg-6">
                 <div class="card h-100 shadow-sm" style="border: none; border-radius: 1rem;">
                     <div class="card-body p-4">
                         <h4 class="fw-bold d-flex align-items-center mb-4" style="color: #1e293b;">
@@ -938,9 +933,9 @@ $canonical_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "http
                 </div>
             </div>
             <!-- Population Trends Card -->
-            <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+            <div class="col-lg-6">
                 <div class="card h-100 shadow-sm" style="border: none; border-radius: 1rem;">
-                    <div class="card-body p-4 row">
+                    <div class="card-body p-4">
                         <h4 class="fw-bold d-flex align-items-center mb-4" style="color: #1e293b;">
                             <i class="far fa-chart-bar me-2 text-primary"></i>Population Trends
                         </h4>
@@ -966,6 +961,8 @@ $canonical_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "http
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
             </div>
 
             

@@ -63,6 +63,8 @@ const integrationsData = [
 export default function Integrations() {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
+  const allCategories = ['all', ...Array.from(new Set(integrationsData.flatMap(i => i.categories)))];
+
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
   };
@@ -81,13 +83,18 @@ export default function Integrations() {
         </div>
         <div className="filterContainer">
           <ul>
-            <li className="intList"><button className={`categoryBtn ${selectedCategory === 'all' ? 'active' : ''}`} onClick={() => handleCategoryClick('all')}>All Categories</button></li>
-            <li className="intList"><button className={`categoryBtn ${selectedCategory === 'visitors' ? 'active' : ''}`} onClick={() => handleCategoryClick('visitors')}>Visitors</button></li>
-            <li className="intList"><button className={`categoryBtn ${selectedCategory === 'desks' ? 'active' : ''}`} onClick={() => handleCategoryClick('desks')}>Desks</button></li>
-            <li className="intList"><button className={`categoryBtn ${selectedCategory === 'rooms' ? 'active' : ''}`} onClick={() => handleCategoryClick('rooms')}>Rooms</button></li>
-            <li className="intList"><button className={`categoryBtn ${selectedCategory === 'deliveries' ? 'active' : ''}`} onClick={() => handleCategoryClick('deliveries')}>Deliveries</button></li>
-            <li className="intList"><button className={`categoryBtn ${selectedCategory === 'employees' ? 'active' : ''}`} onClick={() => handleCategoryClick('employees')}>Employees</button></li>
-            <li className="intList"><button className={`categoryBtn ${selectedCategory === 'flexipass' ? 'active' : ''}`} onClick={() => handleCategoryClick('flexipass')}>Flexi pass</button></li>
+            {allCategories.map((category) => (
+              <li key={category} className="intList">
+                <button
+                  className={`categoryBtn ${selectedCategory === category ? 'active' : ''}`}
+                  onClick={() => handleCategoryClick(category)}
+                >
+                  {category === 'all'
+                    ? 'All Categories'
+                    : category.charAt(0).toUpperCase() + category.slice(1)}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="integrationsContent">

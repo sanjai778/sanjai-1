@@ -29,6 +29,18 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+export async function generateStaticParams() {
+  const posts = await prisma.blog.findMany({
+    select: {
+      slug: true,
+    },
+  });
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 async function getPost(slug: string): Promise<Post | null> {
   try {
     const post = await prisma.blog.findUnique({
