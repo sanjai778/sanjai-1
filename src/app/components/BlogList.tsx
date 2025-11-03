@@ -77,7 +77,10 @@ export default function BlogList({ posts, categories }: BlogListProps) {
       {/* Category Filters */}
       <div className={styles.category_filters}>
         <button 
-          onClick={() => setSelectedCategory('All')} 
+          onClick={() => {
+            setSelectedCategory('All');
+            setCurrentPage(1);
+          }} 
           className={`${styles.category_button} ${selectedCategory === 'All' ? styles.active : ''}`}
         >
           All
@@ -85,7 +88,10 @@ export default function BlogList({ posts, categories }: BlogListProps) {
         {categories.map(category => (
           <button 
             key={category.id} 
-            onClick={() => setSelectedCategory(category.name)}
+            onClick={() => {
+              setSelectedCategory(category.name);
+              setCurrentPage(1);
+            }}
             className={`${styles.category_button} ${selectedCategory === category.name ? styles.active : ''}`}
           >
             {category.name}
@@ -96,7 +102,7 @@ export default function BlogList({ posts, categories }: BlogListProps) {
       {/* Blog Grid */}
       <div className={styles.blog_grid}>
         {paginatedPosts.map((post, index) => (
-          <Link key={post.id} href={`/blogs/${post.slug}`} className={styles.blog_card}>
+          <Link key={post.id} href={`/blogs/${post.slug}`} className={`${styles.blog_card} p_service_item`}>
             {post.featuredImage && (
               // var imageUrl = post.featuredImage;
   

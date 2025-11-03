@@ -1,0 +1,38 @@
+.prototype_service_info {
+    padding: 80px 0;
+    background-color: var(--background-light);
+}
+
+.p_service_item {
+    text-align: start;
+    margin-bottom: 40px;
+}
+
+.p_service_item .icon {
+    background-color: #e6f7ee;
+    border-radius: 15px;
+    width: 80px;
+    height: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.p_service_item .features_icon {
+    color: var(--primary-green);
+    font-size: 2.5rem;
+    width: 40px;
+    height: 40px;
+}
+
+.p_service_item h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.p_service_item p {
+    color: var(--text-light);
+}

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 @import "tailwindcss";
 
 /* styles/globals.css */
@@ -141,4 +142,17 @@ img, video {
 
 img {
   max-width: unset !important;
+}
+
+::selection {
+  background-color: var(--primary-green);
+  color: #fff;
+}
+
+.p_service_item:hover h3, .p_service_item:hover h2 {
+  color: var(--primary-green);
+}
+
+.p_service_item:hover p {
+  color: var(--text-dark);
 }

@@ -11,11 +11,11 @@ import SecuritySection from './components/sections/SecuritySection';
 import SolutionsGrid from './components/sections/SolutionsGrid';
 import FaqSection from './components/sections/FaqSection';
 import EnterpriseCta from './components/sections/EnterpriseCta';
-import CtaSection from './components/sections/CtaSection';
 // import NewsletterModal from './components/sections/NewsletterModal';
 // import PeekabooSlider from './components/PeekabooSlider';
 import BlogSwiperSection from './components/sections/BlogSwiperSection';
 import './components/BlogSwiper/BlogSwiper.css';
+import './workplace.css';
 import TestimonialSection from './components/sections/TestimonialSection';
 
 export default function HomePage() {

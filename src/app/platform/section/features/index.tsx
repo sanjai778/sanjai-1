@@ -27,7 +27,7 @@ export default function Features({ tagline, title, features }: FeaturesProps) {
           {features.map((feature, index) => (
             <div key={index} className="col-md-4 col-sm-6">
               <div className="p_service_item">
-                <div className="icon icon_one">{feature.icon}</div>
+                <div className="icon icon_one" style={{ fontSize: "40px", color: "var(--primary-green)" }}>{feature.icon}</div>
                 <h3>{feature.title}</h3>
                 <p>{feature.description}</p>
               </div>

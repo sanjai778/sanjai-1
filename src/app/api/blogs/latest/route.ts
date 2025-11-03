@@ -22,7 +22,7 @@ export async function GET() {
       date: post.createdAt.toISOString(),
       slug: post.slug || '',
       featuredImage: post.feature_img ? post.feature_img.replace(/.*\/wp-content/, '') : null,
-      // categories: post.cats,
+      categories: post.cats,
     }));
 
     return NextResponse.json(formattedPosts);

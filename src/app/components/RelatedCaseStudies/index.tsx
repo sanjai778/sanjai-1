@@ -30,7 +30,7 @@ export default async function RelatedCaseStudies({ currentCaseStudyTitle }: { cu
         <h2 className={styles.section_title}>Related Case Studies</h2>
         <div className={styles.related_studies_container}>
           {relatedStudies.map(relatedStudy => (
-            <div key={relatedStudy.id} className={styles.vs_comparison_card}>
+            <div key={relatedStudy.id} className={`${styles.vs_comparison_card} p_service_item`}>
               <Link href={`/casestudies/${relatedStudy.slug}`}>
                 <div className={styles.diagonal_split}>
                   <Image 
@@ -41,8 +41,8 @@ export default async function RelatedCaseStudies({ currentCaseStudyTitle }: { cu
                   />
                 </div>
                 <div className={styles.card_content}>
-                  <h3 className={styles.card_title_vs}>{relatedStudy.Header}</h3>
-                  <p className={styles.card_text}>{relatedStudy.Card_Description || ''}</p>
+                  <h3>{relatedStudy.Header}</h3>
+                  <p>{relatedStudy.Card_Description || ''}</p>
                 </div>
               </Link>
             </div>

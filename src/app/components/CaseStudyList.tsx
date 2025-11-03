@@ -136,7 +136,7 @@ export default function CaseStudyList({ initialCaseStudies, industries, products
       {paginatedCaseStudies.length > 0 ? (
         <div className={styles.grid}>
           {paginatedCaseStudies.map((caseStudy: CaseStudy) => (
-            <Link key={caseStudy.id} href={`/casestudies/${caseStudy.slug}`} className={styles.cardLink}>
+            <Link key={caseStudy.id} href={`/casestudies/${caseStudy.slug}`} className={`${styles.cardLink} p_service_item`}>
               {caseStudy.Company_Image_url && <Image src={caseStudy.Company_Image_url} alt={caseStudy.Card_Title || ''} width={300} height={200} className={styles.cardImage} />}
               <div className={styles.cardContent}>
                 <h2 className={styles.cardTitle}>{caseStudy.Card_Title}</h2>

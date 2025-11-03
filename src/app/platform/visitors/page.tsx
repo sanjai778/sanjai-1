@@ -1,5 +1,6 @@
 import React from "react"
 import "./visitors.css"
+import "../platform.css";
 import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
 import Hero from "@/app/platform/section/hero"

@@ -62,7 +62,7 @@ const ProductsSection: React.FC = () => {
         </div>
         <div className={styles.grid}>
           {products.map((product) => (
-            <div key={product.title} className={styles.productCard}>
+            <div key={product.title} className={`${styles.productCard} p_service_item`}>
               <div className={styles.icon}>
                 <i className={product.icon}></i>
               </div>
