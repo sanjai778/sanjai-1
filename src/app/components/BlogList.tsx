@@ -1,9 +1,10 @@
 // app/components/BlogList.js
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import styles from '../blogs/blogs.module.css';
 import NewPagination from './NewPagination';
 
@@ -29,11 +30,20 @@ interface BlogListProps {
 
 
 
-export default function BlogList({ posts, categories }: BlogListProps) {
+function BlogListComponent({ posts, categories }: BlogListProps) {
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get('category');
+
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedCategory, setSelectedCategory] = useState<string>(categoryParam || 'All');
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 15;
+
+  useEffect(() => {
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [categoryParam]);
 
   const filteredPosts = useMemo(() => {
     const processedPosts = posts.map(p => {
@@ -62,6 +72,7 @@ export default function BlogList({ posts, categories }: BlogListProps) {
   }, [filteredPosts, currentPage, postsPerPage]);
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+
 
   return (
     <div>
@@ -144,5 +155,13 @@ export default function BlogList({ posts, categories }: BlogListProps) {
         onPageChange={(page) => setCurrentPage(page)}
       />
     </div>
+  );
+}
+
+export default function BlogList(props: BlogListProps) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BlogListComponent {...props} />
+    </Suspense>
   );
 }

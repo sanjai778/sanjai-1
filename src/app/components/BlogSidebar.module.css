@@ -30,6 +30,7 @@
   color: var(--text-dark);
   text-decoration: none;
   transition: color 0.3s;
+  font-size: .7rem;
 }
 
 .sidebar_link:hover {

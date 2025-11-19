@@ -1,4 +1,8 @@
+"use client";
 import HeaderContent from './HeaderContent';
+import MobileHeader from './MobileHeader';
+import useWindowSize from '../hooks/useWindowSize';
+import styles from './Header.module.css';
 
 interface NavLink {
   href: string;
@@ -45,13 +49,27 @@ const Header = () => {
     { href: "/solutions/proptech-solutions/", title: "Proptech Solutions", description: "Transform Your Property Management" },
   ];
 
+  const size = useWindowSize();
+
   return (
-    <HeaderContent
-      platformLinks={platformLinks}
-      platformSecondaryLinks={platformSecondaryLinks}
-      solutionsLinks={solutionsLinks}
-      solutionsSecondaryLinks={solutionsSecondaryLinks}
-    />
+    <>
+      <div className={styles.desktop_header}>
+        <HeaderContent
+          platformLinks={platformLinks}
+          platformSecondaryLinks={platformSecondaryLinks}
+          solutionsLinks={solutionsLinks}
+          solutionsSecondaryLinks={solutionsSecondaryLinks}
+        />
+      </div>
+      <div className={styles.mobile_header}>
+        <MobileHeader
+          platformLinks={platformLinks}
+          platformSecondaryLinks={platformSecondaryLinks}
+          solutionsLinks={solutionsLinks}
+          solutionsSecondaryLinks={solutionsSecondaryLinks}
+        />
+      </div>
+    </>
   );
 };
 

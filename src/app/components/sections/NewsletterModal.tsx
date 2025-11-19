@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './NewsletterModal.module.css';
 
 const NewsletterModal: React.FC = () => {
@@ -54,7 +55,7 @@ const NewsletterModal: React.FC = () => {
         <button className={styles.closeButton} onClick={closeModal}>&times;</button>
         <div className={styles.modalBody}>
           <div className={styles.imageColumn}>
-            <Image src="/images/newsletter.png" alt="Newsletter" width={300} height={300} />
+            <Image src="/uploads/2024/05/newsletter.png" alt="Newsletter" width={300} height={300} />
           </div>
           <div className={styles.formColumn}>
             <h4>Subscribe to our <span className={styles.highlight}>newsletter</span></h4>
@@ -74,6 +75,17 @@ const NewsletterModal: React.FC = () => {
                     {isLoading ? 'Subscribing...' : 'Subscribe'}
                   </button>
                 </form>
+                <div className={styles.policyLinks}>
+                  <small>
+                    <Link href="/privacy-policy">Privacy Policy</Link>
+                    <span className={styles.separator}>|</span>
+                    <Link href="/cancellation-and-refund-policy">Cancelation & Refund Policy</Link>
+                    <span className={styles.separator}>|</span>
+                    <Link href="/terms-and-conditions">Terms & Conditions</Link>
+                    <span className={styles.separator}> |</span>
+                    <Link href="/gdpr-policy">GDPR Policy</Link>
+                  </small>
+                </div>
               </>
             ) : (
               <div className={styles.successMessage}>

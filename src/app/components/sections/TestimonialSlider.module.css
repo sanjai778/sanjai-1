@@ -25,6 +25,7 @@
 }
 .testimonialSwiperWrapper :global(.swiper-slide-active) .card {
   box-shadow: 0 20px 50px -20px rgba(44, 62, 80, 0.15);
+  background-color:#fff;
 }
 .testimonialSwiperWrapper :global(.swiper-pagination) {
   position: absolute;
@@ -46,7 +47,7 @@
 
 /* Card and Content Styling */
 .card {
-  background: #fff;
+  /* background: #000; */
   padding: 30px;
   position: relative;
   display: flex;

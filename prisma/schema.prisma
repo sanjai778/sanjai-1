@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,29 +10,29 @@ datasource db {
 model Blog {
   id           Int      @id @default(autoincrement())
   title        String
-  slug         String?  @unique
   content      String?  @db.Text
-  mini_content String?  @db.Text
-  feature_img  String?
-  max          Int?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
-  cats         Cat[]
-  tags         Tag[]
+  feature_img  String?
+  max          Int?
+  mini_content String?  @db.Text
+  slug         String?  @unique
+  cats         Cat[]    @relation("BlogToCat")
+  tags         Tag[]    @relation("BlogToTag")
 }
 
 model Cat {
-  id    Int    @id @default(autoincrement())
-  name  String @unique
+  id    Int     @id @default(autoincrement())
+  name  String  @unique
   slug  String? @unique
-  blogs Blog[]
+  blogs Blog[]  @relation("BlogToCat")
 }
 
 model Tag {
-  id    Int    @id @default(autoincrement())
-  name  String @unique
+  id    Int     @id @default(autoincrement())
+  name  String  @unique
   slug  String? @unique
-  blogs Blog[]
+  blogs Blog[]  @relation("BlogToTag")
 }
 
 model CaseStudy {
@@ -67,7 +64,6 @@ model CaseStudy {
 model Compare {
   id                                     Int     @id @default(autoincrement())
   wordpress_id                           String  @unique @db.VarChar(255)
-  slug                                   String? @unique
   main_title                             String? @db.Text
   Dynamic_Fields                         String? @db.Text
   Document_Sign                          String? @db.Text
@@ -167,13 +163,14 @@ model Compare {
   page_description                       String? @db.Text
   img_url                                String? @db.Text
   Title                                  String? @db.Text
+  slug                                   String? @unique(map: "slug") @db.VarChar(255)
 }
 
 model Faq {
-  id       String  @id @db.VarChar(255)
-  category String  @db.VarChar(255)
-  Question String  @db.Text
-  Answer   String  @db.LongText
+  id       String @id @db.VarChar(255)
+  category String @db.VarChar(255)
+  Question String @db.Text
+  Answer   String @db.LongText
   order    Int?
 }
 
@@ -185,14 +182,14 @@ model CountryWorkplaceData {
 }
 
 model Testimonial {
+  name         String    @db.VarChar(255)
+  position     String    @db.VarChar(255)
+  content      String    @db.Text
+  img          String?   @db.VarChar(500)
+  category     String?   @db.VarChar(255)
+  created_at   DateTime? @default(now())
+  updated_at   DateTime? @updatedAt
+  Title        String?   @db.VarChar(255)
   id           Int       @id @default(autoincrement())
   wordpress_id Int       @unique
-  name         String    @db.VarChar(255)
-  position   String    @db.VarChar(255)
-  content    String    @db.Text
-  img        String?   @db.VarChar(500)
-  category   String?   @db.VarChar(255)
-  created_at DateTime? @default(now())
-  updated_at DateTime? @updatedAt
-  Title      String?   @db.VarChar(255)
 }

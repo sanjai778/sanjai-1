@@ -1,22 +1,28 @@
 import Link from 'next/link';
 import styles from './BlogSidebar.module.css';
+import { PrismaClient } from '@prisma/client';
 
-const recentPosts = [
-  { id: 1, title: 'Beyond Security: Benefits of Implementing a Digital Gate Pass...', slug: '#' },
-  { id: 2, title: 'Enhanced Mega Alerts (Emergency Notifications) for Proactive Workplace...', slug: '#' },
-  { id: 3, title: 'The Rise of the Digital Reception: How Touchless, Integrated Systems Are...', slug: '#' },
-];
+const prisma = new PrismaClient();
 
-const categories = [
-  { id: 1, name: 'Articles', slug: '#' },
-  { id: 2, name: 'Features', slug: '#' },
-  { id: 3, name: 'How tos', slug: '#' },
-  { id: 4, name: 'News', slug: '#' },
-  { id: 5, name: 'Tips', slug: '#' },
-  { id: 6, name: 'Uncategorized', slug: '#' },
-];
+async function getRecentPosts() {
+  const posts = await prisma.blog.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+    take: 3,
+  });
+  return posts;
+}
 
-export default function BlogSidebar() {
+async function getCategories() {
+  const categories = await prisma.cat.findMany();
+  return categories;
+}
+
+export default async function BlogSidebar() {
+  const recentPosts = await getRecentPosts();
+  const categories = await getCategories();
+
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebar_widget}>
@@ -36,7 +42,7 @@ export default function BlogSidebar() {
         <ul className={styles.sidebar_list}>
           {categories.map(category => (
             <li key={category.id} className={styles.sidebar_list_item}>
-              <Link href={`/categories/${category.slug}`} className={styles.sidebar_link}>
+              <Link href={`/blogs?category=${category.name}`} className={styles.sidebar_link}>
                 {category.name}
               </Link>
             </li>

@@ -141,7 +141,7 @@ img, video {
 }
 
 img {
-  max-width: unset !important;
+  /* max-width: unset !important; */
 }
 
 ::selection {

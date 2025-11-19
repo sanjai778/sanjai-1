@@ -21,7 +21,9 @@ const HeroSection: React.FC = () => {
               <span><Image src="/images/icons/check-circle.svg" alt="check" width={20} height={20} /> Quick Setup</span>
             </div>
           </div>
-           <Image 
+          
+        </div>
+         <Image 
           src="/images/hero-main.webp" 
           alt="#1 Workplace Management System" 
           width={1920} 
@@ -29,7 +31,6 @@ const HeroSection: React.FC = () => {
           priority
           className={styles.heroImage}
         />
-        </div>
       </section>
       {/* <div className={styles.heroImageWrapper}>
 

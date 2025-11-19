@@ -69,8 +69,8 @@ async function getPost(slug: string): Promise<Post | null> {
   }
 }
 
-export default async function SinglePostPage({ params }: { params: { slug: string } }) {
-  const post = await getPost(params.slug);
+export default async function SinglePostPage(props: { params: { slug: string } }) {
+  const post = await getPost(props.params.slug);
 
   if (!post) {
     notFound();

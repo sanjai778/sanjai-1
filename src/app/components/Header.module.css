@@ -58,7 +58,7 @@
 }
 
 .toggle_navbar {
-  display: none;
+  display: none !important;
   font-size: 28px;
   cursor: pointer;
   margin-left: 20px;
@@ -216,11 +216,21 @@
     display: none;
 }
 
+.mobile_header {
+  display: none;
+}
+
 /* ===================================================================
     Mobile Styles
 =================================================================== */
 
-@media (max-width: 1024px) {
+@media (max-width: 991px) {
+  .desktop_header {
+    display: none;
+  }
+  .mobile_header {
+    display: block;
+  }
   .nav_menu {
     position: fixed;
     top: 70px;
@@ -256,7 +266,7 @@
   }
   
   .toggle_navbar {
-    display: block;
+    display: block !important;
   }
 
   .dropdown_menu {

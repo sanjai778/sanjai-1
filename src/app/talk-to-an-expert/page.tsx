@@ -118,7 +118,7 @@ const TalkToAnExpert = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                             <div>
                                 <h2 className="text-2xl font-semibold">Schedule a Consultation</h2>
-                                <Image className="mt-5 rounded-2xl w-full" src="https://onfra.io/wp-content/uploads/static-image/talk-to-an-expert.png" alt="Talk to an expert" width={500} height={500} />
+                                <Image className="mt-5 rounded-2xl w-full" src="/uploads/static-image/talk-to-an-expert.png" alt="Talk to an expert" width={500} height={500} />
                             </div>
                             <div>
                                 <form onSubmit={handleSubmit}>
@@ -213,3 +213,4 @@ const TalkToAnExpert = () => {
 };
 
 export default TalkToAnExpert;
+

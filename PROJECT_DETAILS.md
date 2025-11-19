@@ -38,3 +38,11 @@ A Next.js project.
 - `prisma`: `^6.17.1`
 - `tailwindcss`: `^4`
 - `typescript`: `^5`
+
+
+
+npx use 
+
+npx prisma studio
+
+npx prisma db push

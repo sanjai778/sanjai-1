@@ -1,6 +1,6 @@
 .marqueeContainer {
   position: relative;
-  width: 100%;
+  width: 400%;
   overflow: hidden;
   height: 100px; /* Adjust as needed */
 }
