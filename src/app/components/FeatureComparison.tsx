@@ -27,21 +27,24 @@ const FeatureComparison: React.FC<FeatureComparisonProps> = ({ compare }) => {
           </tr>
         </thead>
         <tbody>
-          {features.map((feature, index) => (
-            <tr key={index}>
-              <td>{feature.replace(/_/g, ' ').replace(/([A-Z])/g, ' $1').replace(/\d+$/, '').trim()}</td>
-              <td className={styles.onfraColumn}>
-                <Image src="/uploads/2019/01/success.svg" alt="Yes" className={styles.icon} width={20} height={20} />
-              </td>
-              <td className={styles.competitorColumn}>
-                {compare[feature as keyof Compare] === 'Yes' ? (
-                  <Image src="/uploads/2019/01/success.svg" alt="Yes" className={styles.icon} width={20} height={20} />
-                ) : (
-                  <Image src="/uploads/2019/01/error.svg" alt="No" className={styles.icon} width={20} height={20} />
-                )}
-              </td>
-            </tr>
-          ))}
+          {features.map((feature, index) => {
+            const featureName = feature.replace(/_/g, ' ').replace(/([A-Z])/g, ' $1').replace(/\d+$/, '').trim();
+            return (
+              <tr key={index}>
+                <td>{featureName}</td>
+                <td className={styles.onfraColumn}>
+                  <Image src="/uploads/2019/01/success.svg" alt={`Onfra supports ${featureName}`} className={styles.icon} width={20} height={20} />
+                </td>
+                <td className={styles.competitorColumn}>
+                  {compare[feature as keyof Compare] === 'Yes' ? (
+                    <Image src="/uploads/2019/01/success.svg" alt={`${compare.main_title} supports ${featureName}`} className={styles.icon} width={20} height={20} />
+                  ) : (
+                    <Image src="/uploads/2019/01/error.svg" alt={`${compare.main_title} does not support ${featureName}`} className={styles.icon} width={20} height={20} />
+                  )}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
         <tfoot>
           <tr>

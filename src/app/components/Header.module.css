@@ -8,7 +8,7 @@
   box-shadow: 0 0 20px rgb(46 59 125 / 23%);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1001;
   width: 100%;
 }
 
@@ -96,11 +96,13 @@
   border-radius: 10px;
 }
 
-.nav_menu > li:hover .dropdown_menu {
-  max-height: 600px;
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+@media (min-width: 992px) {
+  .nav_menu > li:hover .dropdown_menu {
+    max-height: 600px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
 }
 
 .dropdown_container, .dropdown_container_solutions {
@@ -166,10 +168,11 @@
 
 .dropdown_links li a {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
   padding: 10px;
   border-radius: 8px;
+  width: 100%;
 }
 
 .icon {
@@ -193,10 +196,12 @@
 }
 
 .dropdown_links p {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-light);
   margin: 0;
   line-height: 1.4;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .dropdown_links li a:hover {
@@ -218,6 +223,7 @@
 
 .mobile_header {
   display: none;
+  z-index: 9999;
 }
 
 /* ===================================================================
@@ -230,6 +236,9 @@
   }
   .mobile_header {
     display: block;
+    position: sticky;
+    top: 0px;
+    z-index: 9999;
   }
   .nav_menu {
     position: fixed;
@@ -239,8 +248,8 @@
     height: calc(100vh - 70px);
     background-color: #fff;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 30px;
+    align-items: stretch;
+    padding: 20px 20px 80px; /* Added more bottom padding for scrolling */
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     z-index: 1000;
@@ -256,6 +265,9 @@
   .nav_menu > li {
     width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   
   .nav_menu > li > a {
@@ -263,6 +275,8 @@
     font-size: 1.2rem;
     width: 100%;
     justify-content: space-between;
+    color: var(--primary-green) !important;
+    font-weight: 600;
   }
   
   .toggle_navbar {
@@ -281,7 +295,7 @@
   }
 
   .dropdown_menu.show {
-    max-height: 1000px; /* A large enough value to show all content */
+    max-height: 2000px;
   }
 
   .dropdown_container, .dropdown_container_solutions {
@@ -296,5 +310,10 @@
 
   .dropdown_section .dropdown_links, .dropdown_container_solutions .dropdown_links {
     grid-template-columns: 1fr;
+  }
+
+  .rotate {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
   }
 }

@@ -9,17 +9,17 @@ interface CardData {
 
 const cardsData: CardData[] = [
   {
-    imageSrc: "/images/icons/cool-features.svg",
+    imageSrc: "/uploads/svg_image/cool-features.svg",
     title: "Guaranteed Compliance and Data Security",
     description: "With our state-of-the-art platform, you can rest assured that your workplace management is in compliance with the highest industry standards, including SOC2, GDPR, and ISO."
   },
   {
-    imageSrc: "/images/icons/customers-love.svg",
+    imageSrc: "/uploads/svg_image/customers_love_visitdesk.svg",
     title: "Don't just take our word for it",
     description: "Onfra has been rated highly by some of the most trusted sources in the industry! Our users have given Onfra top marks for its user-friendly interface, comprehensive features, and exceptional customer support."
   },
   {
-    imageSrc: "/images/icons/integrations.svg",
+    imageSrc: "/uploads/svg_image/intergrations_image.svg",
     title: "Just Plug and Play",
     description: "We’ve already integrated with many key business systems so you can simply log in and get back to business – or use our simple API for everything else."
   }

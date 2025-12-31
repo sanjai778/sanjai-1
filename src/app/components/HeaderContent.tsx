@@ -59,8 +59,16 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
     <nav className={styles.top_main_header}>
       <div className={styles.container}>
         <Link href="/" className={styles.brand}>
-          <Image src="/images/logos/onfra-logo.png" width={165} height={55} style={{ height: '55px' }} alt="Best Workplace Management Platform" />
+          <Image 
+            src="/images/logos/onfra-logo.png" 
+            width={165} 
+            height={55} 
+            priority
+            style={{ width: '165px', height: 'auto' }} 
+            alt="Best Workplace Management Platform" 
+          />
         </Link>
+
         <ul className={`${styles.nav_menu} ${isMenuOpen ? styles.show : ''}`}>
           <li>
             <a href="#" onClick={() => handleDropdownToggle('platform')}>

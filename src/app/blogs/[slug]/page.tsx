@@ -9,6 +9,9 @@ import BlogSidebar from '../../components/BlogSidebar';
 import SubPageTitle from '../../components/SubPageTitle';
 import styles from './blog-post.module.css';
 
+import { Metadata } from 'next';
+import { generateBlogPostingSchema } from '@/app/utils/schema';
+
 interface Tag {
   id: number;
   name: string;
@@ -25,9 +28,7 @@ interface Post {
   tags: Tag[];
 }
 
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '@/lib/prisma';
 
 export async function generateStaticParams() {
   const posts = await prisma.blog.findMany({
@@ -69,8 +70,52 @@ async function getPost(slug: string): Promise<Post | null> {
   }
 }
 
-export default async function SinglePostPage(props: { params: { slug: string } }) {
-  const post = await getPost(props.params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+
+  if (!post) {
+    return {
+      title: 'Post not found',
+    };
+  }
+
+  const description = post.content ? post.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...' : 'Read our latest blog post on workspace efficiency and visitor management.';
+
+  return {
+    title: `${post.title} | Onfra Blog`,
+    description: description,
+    alternates: {
+      canonical: `https://onfra.io/blogs/${post.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: description,
+      url: `https://onfra.io/blogs/${post.slug}`,
+      siteName: 'Onfra',
+      images: post.featuredImage ? [
+        {
+          url: post.featuredImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        }
+      ] : [],
+      locale: 'en_US',
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: description,
+      images: post.featuredImage ? [post.featuredImage] : [],
+    },
+  };
+}
+
+export default async function SinglePostPage(props: { params: Promise<{ slug: string }> }) {
+  const { slug } = await props.params;
+  const post = await getPost(slug);
 
   if (!post) {
     notFound();
@@ -84,10 +129,22 @@ export default async function SinglePostPage(props: { params: { slug: string } }
     imageUrl = encodeURI(imageUrl);
   }
 
+  const blogSchema = generateBlogPostingSchema({
+    title: post.title,
+    content: post.content,
+    date: post.date,
+    slug: post.slug,
+    featuredImageUrl: imageUrl,
+  });
+
   return (
     <>
       <Header />
       <SubPageTitle title={post.title} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       <main className={styles.container}>
         <div className={styles.grid}>
           <article className={styles.main_content}>

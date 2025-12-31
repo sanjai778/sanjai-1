@@ -54,29 +54,22 @@ const TalkToAnExpert = () => {
             return;
         }
 
-        const data = new FormData();
-        data.append('action', 'talk_to_expert_action');
-        data.append('contactusName2', formData.contactusName2);
-        data.append('contactusEmail2', formData.contactusEmail2);
-        data.append('contactusPhoneno2', formData.contactusPhoneno2);
-        data.append('contactusCompany2', formData.contactusCompany2);
-        data.append('contactusJob2', formData.contactusJob2);
-        data.append('contactusMessage2', formData.contactusMessage2);
-        data.append('contactMethod', formData.contactMethod);
-        data.append('bestTime', formData.typeRegistration2);
-        data.append('contactHelp', formData.typeRegistration1);
-        data.append('currentPageUrl', window.location.href);
-
-
         try {
-            const response = await fetch('/api/talk-to-an-expert', {
+            const response = await fetch('/api/form', {
                 method: 'POST',
-                body: data,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    formName: 'Talk to an Expert',
+                    formId: '1007',
+                    email: formData.contactusEmail2,
+                    currentPageUrl: window.location.href,
+                }),
             });
 
-            const result = await response.json();
-
-            if (result.status === "success") {
+            if (response.ok) {
                 setSuccess(true);
                 setFormData({
                     contactusName2: '',
@@ -94,7 +87,7 @@ const TalkToAnExpert = () => {
                     setSuccess(false);
                 }, 10000);
             } else {
-                alert("Error: " + result.message);
+                alert("An error occurred. Please try again.");
             }
         } catch (error) {
             console.error("Failed to submit form:", error);
@@ -213,4 +206,3 @@ const TalkToAnExpert = () => {
 };
 
 export default TalkToAnExpert;
-

@@ -1,12 +1,13 @@
 .marqueeContainer {
   position: relative;
-  width: 400%;
+  /* width: 400%; */
   overflow: hidden;
   height: 100px; /* Adjust as needed */
 }
 .marqueeTrack {
   display: flex;
-  width: fit-content;
+  width: -moz-fit-content;
+  width: 3000px;
   animation: scroll 60s linear infinite;
 }
 .marqueeTrack img {

@@ -5,10 +5,10 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../CaseStudy.module.css';
-import { PrismaClient, CaseStudy } from '@prisma/client';
+import { CaseStudy } from '@prisma/client';
 import RelatedCaseStudies from '../../components/RelatedCaseStudies';
-
-const prisma = new PrismaClient();
+import { generateBlogPostingSchema } from '@/app/utils/schema';
+import { prisma } from '@/lib/prisma';
 
 export async function generateStaticParams() {
   const caseStudies = await prisma.caseStudy.findMany({
@@ -35,15 +35,50 @@ async function getCaseStudy(slug: string): Promise<CaseStudy | null> {
   }
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const caseStudy = await getCaseStudy(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const caseStudy = await getCaseStudy(slug);
+  if (!caseStudy) {
+    return {
+      title: 'Case Study Not Found',
+    };
+  }
+
+  const description = caseStudy.Meta_Description || caseStudy.Card_Description || (caseStudy.Overview || '').split(',*')[0].substring(0, 160) + '...';
+
   return {
-    title: caseStudy?.Title,
+    title: `${caseStudy.Title} | Onfra Case Study`,
+    description: description,
+    alternates: {
+      canonical: `https://onfra.io/casestudies/${caseStudy.slug}`,
+    },
+    openGraph: {
+      title: `${caseStudy.Title} | Onfra Case Study`,
+      description: description,
+      url: `https://onfra.io/casestudies/${caseStudy.slug}`,
+      siteName: 'Onfra',
+      images: caseStudy.Card_Image_Url ? [
+        {
+          url: caseStudy.Card_Image_Url.replace(/.*\/wp-content/, ''),
+          width: 1200,
+          height: 630,
+          alt: caseStudy.Title || '',
+        }
+      ] : [],
+      locale: 'en_US',
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${caseStudy.Title} | Onfra Case Study`,
+      description: description,
+      images: caseStudy.Card_Image_Url ? [caseStudy.Card_Image_Url.replace(/.*\/wp-content/, '')] : [],
+    },
   };
 }
 
-export default async function CaseStudyPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const caseStudy = await getCaseStudy(slug);
 
   if (!caseStudy) {
@@ -59,8 +94,26 @@ export default async function CaseStudyPage({ params }: { params: { slug: string
     );
   }
 
+  const cardImageUrl = caseStudy.Card_Image_Url ? caseStudy.Card_Image_Url.replace(/.*\/wp-content/, '') : null;
+  const companyImageUrl = caseStudy.Company_Image_url ? caseStudy.Company_Image_url.replace(/.*\/wp-content/, '') : null;
+  const articleImageUrl = cardImageUrl || companyImageUrl;
+  
+  const description = caseStudy.Meta_Description || caseStudy.Card_Description || (caseStudy.Overview || '').split(',*')[0];
+
+  const caseStudySchema = generateBlogPostingSchema({
+    title: caseStudy.Title || caseStudy.Header || 'Case Study',
+    content: description || '', // Use description/overview as content summary
+    date: new Date().toISOString(), // Use current date since no dedicated publish date is available
+    slug: caseStudy.slug || 'case-study-detail',
+    featuredImageUrl: articleImageUrl,
+  });
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudySchema) }}
+      />
       <Header />
       <main>
         <section className={styles.hero_section}>

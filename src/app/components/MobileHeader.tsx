@@ -33,7 +33,8 @@ const MobileHeader: React.FC<HeaderContentProps> = ({
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleDropdownToggle = (dropdown: string) => {
+  const handleDropdownToggle = (e: React.MouseEvent, dropdown: string) => {
+    e.preventDefault();
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
@@ -45,12 +46,26 @@ const MobileHeader: React.FC<HeaderContentProps> = ({
     <nav className={styles.top_main_header}>
       <div className={styles.container}>
         <Link href="/" className={styles.brand}>
-          <Image src="/images/logos/onfra-logo.png" width={165} height={55} style={{ height: '55px' }} alt="Best Workplace Management Platform" />
+          <Image 
+            src="/images/logos/onfra-logo.png" 
+            width={165} 
+            height={55} 
+            priority
+            style={{ width: '165px', height: 'auto' }} 
+            alt="Best Workplace Management Platform" 
+          />
         </Link>
+
         <ul className={`${styles.nav_menu} ${isMenuOpen ? styles.show : ''}`}>
+          {/* <div className={styles.mobile_menu_header}>
+            <Link href="/" className={styles.brand}>
+              <Image src="/images/logos/onfra-logo.png" width={165} height={55} style={{ height: '55px' }} alt="Best Workplace Management Platform" />
+            </Link>
+            <i className="bx bx-x" onClick={handleMenuToggle}></i>
+          </div> */}
           <li>
-            <a href="#" onClick={() => handleDropdownToggle('platform')}>
-              Platform <i className='bx bx-chevron-down'></i>
+            <a href="#" onClick={(e) => handleDropdownToggle(e, 'platform')}>
+              Platform <i className={`bx bx-chevron-down ${openDropdown === 'platform' ? styles.rotate : ''}`}></i>
             </a>
             <div className={`${styles.dropdown_menu} ${openDropdown === 'platform' ? styles.show : ''}`}>
               <div className={styles.dropdown_container}>
@@ -87,8 +102,8 @@ const MobileHeader: React.FC<HeaderContentProps> = ({
             </div>
           </li>
           <li>
-            <a href="#" onClick={() => handleDropdownToggle('solutions')}>
-              Solutions <i className='bx bx-chevron-down'></i>
+            <a href="#" onClick={(e) => handleDropdownToggle(e, 'solutions')}>
+              Solutions <i className={`bx bx-chevron-down ${openDropdown === 'solutions' ? styles.rotate : ''}`}></i>
             </a>
             <div className={`${styles.dropdown_menu} ${openDropdown === 'solutions' ? styles.show : ''}`}>
               <div className={styles.dropdown_container_solutions}>

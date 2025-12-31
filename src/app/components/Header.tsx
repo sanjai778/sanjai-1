@@ -1,7 +1,7 @@
 "use client";
+import React from 'react';
 import HeaderContent from './HeaderContent';
 import MobileHeader from './MobileHeader';
-import useWindowSize from '../hooks/useWindowSize';
 import styles from './Header.module.css';
 
 interface NavLink {
@@ -12,6 +12,18 @@ interface NavLink {
 }
 
 const Header = () => {
+  const [isMobile, setIsMobile] = React.useState<boolean | null>(null);
+
+  React.useEffect(() => {
+    const mql = window.matchMedia('(max-width: 991px)');
+    const checkMobile = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsMobile(e.matches);
+    };
+    checkMobile(mql);
+    mql.addEventListener('change', checkMobile);
+    return () => mql.removeEventListener('change', checkMobile);
+  }, []);
+
   const platformLinks: NavLink[] = [
     { href: "/platform/visitors/", icon: <span className="icon-visitdesk_icons_0140" />, title: "Visitor", description: "Manage visitor check-ins and track data securely." },
     { href: "/platform/flexipass/", icon: <span className="icon-visitdesk_icons_0125" />, title: "Flexipass", description: "Streamline contractor access and pass management." },
@@ -49,26 +61,31 @@ const Header = () => {
     { href: "/solutions/proptech-solutions/", title: "Proptech Solutions", description: "Transform Your Property Management" },
   ];
 
-  const size = useWindowSize();
-
   return (
     <>
-      <div className={styles.desktop_header}>
-        <HeaderContent
-          platformLinks={platformLinks}
-          platformSecondaryLinks={platformSecondaryLinks}
-          solutionsLinks={solutionsLinks}
-          solutionsSecondaryLinks={solutionsSecondaryLinks}
-        />
-      </div>
-      <div className={styles.mobile_header}>
-        <MobileHeader
-          platformLinks={platformLinks}
-          platformSecondaryLinks={platformSecondaryLinks}
-          solutionsLinks={solutionsLinks}
-          solutionsSecondaryLinks={solutionsSecondaryLinks}
-        />
-      </div>
+      {isMobile === false && (
+        <div className={styles.desktop_header}>
+          <HeaderContent
+            platformLinks={platformLinks}
+            platformSecondaryLinks={platformSecondaryLinks}
+            solutionsLinks={solutionsLinks}
+            solutionsSecondaryLinks={solutionsSecondaryLinks}
+          />
+        </div>
+      )}
+      {isMobile === true && (
+        <div className={styles.mobile_header}>
+          <MobileHeader
+            platformLinks={platformLinks}
+            platformSecondaryLinks={platformSecondaryLinks}
+            solutionsLinks={solutionsLinks}
+            solutionsSecondaryLinks={solutionsSecondaryLinks}
+          />
+        </div>
+      )}
+      {/* Skeleton or placeholder for SSR to avoid jump if needed, 
+          but usually for header we want to avoid double rendering more than absolute SSR matching 
+          especially for performance */}
     </>
   );
 };

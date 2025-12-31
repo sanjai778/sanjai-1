@@ -1,15 +1,57 @@
 import React from 'react';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Header from '@/app/components/Header';
+import { generateWebPageSchema } from '@/app/utils/schema';
+
+export const metadata: Metadata = {
+  title: 'About Us | Onfra',
+  description: 'Learn about M/s. ONFRA PROPTECH SOLUTIONS PRIVATE LIMITED, our mission to transform workspaces for a sustainable hybrid future, and our integrated facility management solutions.',
+  alternates: {
+    canonical: 'https://onfra.io/about-us',
+  },
+  openGraph: {
+    title: 'About Us | Onfra',
+    description: 'Learn about M/s. ONFRA PROPTECH SOLUTIONS PRIVATE LIMITED, our mission to transform workspaces for a sustainable hybrid future, and our integrated facility management solutions.',
+    url: 'https://onfra.io/about-us',
+    siteName: 'Onfra',
+    images: [
+      {
+        url: '/assets/img/visitdesk_facebook.png',
+        width: 1200,
+        height: 630,
+        alt: 'Onfra About Us',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us | Onfra',
+    description: 'Learn about M/s. ONFRA PROPTECH SOLUTIONS PRIVATE LIMITED, our mission to transform workspaces for a sustainable hybrid future, and our integrated facility management solutions.',
+    images: ['/assets/img/visitdesk_twitter.png'],
+  },
+};
 import Footer from '@/app/components/Footer';
 import SubPageTitle from '@/app/components/SubPageTitle';
 import './about-us.css';
 
 const AboutUsPage: React.FC = () => {
+  const pageSchema = generateWebPageSchema({
+    title: metadata.title as string,
+    description: metadata.description as string,
+    url: 'https://onfra.io/about-us',
+  });
+  
   return (
     <>
       <Header />
       <SubPageTitle title="About Us" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
       <main>
         <div className="container">
         <section className="about-section">

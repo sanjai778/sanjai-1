@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/app/components/Header';
+import { generateWebPageSchema } from '@/app/utils/schema';
 import Footer from '@/app/components/Footer';
 import CountryList from '../CountryList';
 import styles from './Country.module.css';
@@ -53,14 +54,44 @@ async function getAllCountries(): Promise<CountryInfo[]> {
   } catch (error) { console.error("Failed to fetch all countries:", error); return []; }
 }
 
-export async function generateMetadata({ params }: { params: { code: string } }): Promise<Metadata> {
-  const countryData = await getCountryData(params.code);
+export async function generateMetadata({ params }: { params: Promise<{ code: string }> }): Promise<Metadata> {
+  const { code } = await params;
+  const countryData = await getCountryData(code);
   const countryName = countryData?.country_data?.name || 'Workplace Solutions';
-  return { title: `Best Workplace Management Solutions in ${countryName}` };
+  const description = countryData?.country_data?.paragraphs?.[0] || `Explore the best workplace management solutions in ${countryName}. Secure and streamline your workspace with Onfra's integrated platform.`;
+  return {
+    title: `Best Workplace Management Solutions in ${countryName} | Onfra`,
+    description: description,
+    alternates: {
+      canonical: `https://onfra.io/country/${code}`,
+    },
+    openGraph: {
+      title: `Best Workplace Management Solutions in ${countryName} | Onfra`,
+      description: description,
+      url: `https://onfra.io/country/${code}`,
+      siteName: 'Onfra',
+      images: [
+        {
+          url: 'https://onfra.io/public/assets/img/visitdesk_facebook.png',
+          width: 1200,
+          height: 630,
+          alt: `Onfra Workplace Solutions in ${countryName}`,
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Best Workplace Management Solutions in ${countryName} | Onfra`,
+      description: description,
+      images: ['https://onfra.io/public/assets/img/visitdesk_twitter.png'],
+    },
+  };
 }
 
-export default async function CountryPage({ params }: { params: { code: string } }) {
-  const { code } = params;
+export default async function CountryPage({ params }: { params: Promise<{ code: string }> }) {
+  const { code } = await params;
   const [countryData, allCountries] = await Promise.all([ getCountryData(code), getAllCountries() ]);
 
   if (!countryData || !countryData.country_data.name) { notFound(); }
@@ -69,8 +100,18 @@ export default async function CountryPage({ params }: { params: { code: string }
   const marketData = countryData.country_market_data;
   const formatTitle = (text: string) => text.replace(/_/g, ' ');
 
+  const countryPageSchema = generateWebPageSchema({
+    title: `Best Workplace Management Solutions in ${countryName}`,
+    description: paragraphs?.[0] || 'Workplace solutions and market data for this region.',
+    url: `https://onfra.io/country/${code}`,
+  });
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(countryPageSchema) }}
+      />
       <Header />
       <main>
         <section className={styles.hero_section}>

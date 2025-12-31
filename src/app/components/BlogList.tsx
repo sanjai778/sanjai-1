@@ -1,12 +1,18 @@
-// app/components/BlogList.js
 'use client';
 
-import { useState, useMemo, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import styles from '../blogs/blogs.module.css';
 import NewPagination from './NewPagination';
+import useDebounce from '../hooks/useDebounce';
+
+// Types
+interface Category {
+  id: number;
+  name: string;
+}
 
 interface Post {
   id: number;
@@ -18,65 +24,80 @@ interface Post {
   categories: Category[];
 }
 
-interface Category {
-  id: number;
-  name: string;
-}
-
 interface BlogListProps {
   posts: Post[];
   categories: Category[];
+  totalPages: number;
+  currentPage: number;
+  categorySlug?: string;
 }
 
-
-
-function BlogListComponent({ posts, categories }: BlogListProps) {
+function BlogListComponent({ posts: initialPosts, categories, totalPages: initialTotalPages, currentPage: initialPage, categorySlug }: BlogListProps) {
   const searchParams = useSearchParams();
-  const categoryParam = searchParams.get('category');
 
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>(categoryParam || 'All');
-  const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 15;
+  // Local state for data
+  const [posts, setPosts] = useState<Post[]>(initialPosts);
+  const [totalPages, setTotalPages] = useState(initialTotalPages);
+  const [currentPage, setCurrentPage] = useState(initialPage);
+  const [isLoading, setIsLoading] = useState(false);
 
+  // Search state
+  const initialSearch = searchParams.get('search') || '';
+  const [searchTerm, setSearchTerm] = useState(initialSearch);
+  const debouncedSearch = useDebounce(searchTerm, 500);
+
+  const isFirstRun = useRef(true);
+
+  // Reset local state when props change (e.g. navigating to a different category or page via Link)
   useEffect(() => {
-    if (categoryParam) {
-      setSelectedCategory(categoryParam);
-    }
-  }, [categoryParam]);
+    setPosts(initialPosts);
+    setTotalPages(initialTotalPages);
+    setCurrentPage(initialPage);
+    setSearchTerm(initialSearch);
+    isFirstRun.current = true;
+  }, [initialPosts, initialTotalPages, initialPage, initialSearch, categorySlug]);
 
-  const filteredPosts = useMemo(() => {
-    const processedPosts = posts.map(p => {
-      const post = { ...p };
-      if (post.featuredImage) {
-        if (post.featuredImage.startsWith('https://onfra.io/wp-content/uploads/')) {
-          post.featuredImage = post.featuredImage.replace('https://onfra.io/wp-content/uploads/', '');
-        } else if (post.featuredImage.startsWith('/uploads/')) {
-          post.featuredImage = post.featuredImage.substring('/uploads/'.length);
-        }
-        post.featuredImage = encodeURI(post.featuredImage);
+  const fetchPosts = useCallback(async (page: number, search: string) => {
+    setIsLoading(true);
+    try {
+      const params = new URLSearchParams();
+      params.set('page', page.toString());
+      if (search) params.set('search', search);
+      if (categorySlug) params.set('category', categorySlug);
+      
+      const res = await fetch(`/api/blogs?${params.toString()}`);
+      const data = await res.json();
+      
+      if (data.posts) {
+        setPosts(data.posts);
+        setTotalPages(data.totalPages);
+        setCurrentPage(data.currentPage);
       }
-      return post;
-    });
+    } catch (err) {
+      console.error('Error fetching posts:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [categorySlug]);
 
-    return processedPosts.filter(post => {
-      const matchesCategory = selectedCategory === 'All' || post.categories.some(cat => cat.name === selectedCategory);
-      const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
-  }, [posts, selectedCategory, searchTerm]);
+  // Trigger search fetch when debounced search term changes
+  useEffect(() => {
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
+    // Search always resets to page 1
+    fetchPosts(1, debouncedSearch);
+  }, [debouncedSearch, fetchPosts]);
 
-  const paginatedPosts = useMemo(() => {
-    const startIndex = (currentPage - 1) * postsPerPage;
-    return filteredPosts.slice(startIndex, startIndex + postsPerPage);
-  }, [filteredPosts, currentPage, postsPerPage]);
-
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-
+  const handlePageChange = (page: number) => {
+    fetchPosts(page, debouncedSearch);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div>
-      {/* Search Bar */}
+      {/* Search & Filter UI */}
       <input
         type="text"
         placeholder="Search..."
@@ -85,82 +106,102 @@ function BlogListComponent({ posts, categories }: BlogListProps) {
         className={styles.search_bar}
       />
 
-      {/* Category Filters */}
       <div className={styles.category_filters}>
-        <button 
-          onClick={() => {
-            setSelectedCategory('All');
-            setCurrentPage(1);
-          }} 
-          className={`${styles.category_button} ${selectedCategory === 'All' ? styles.active : ''}`}
+        <Link
+          href="/blogs"
+          className={`${styles.category_button} ${!categorySlug ? styles.active : ''}`}
         >
           All
-        </button>
+        </Link>
         {categories.map(category => (
-          <button 
-            key={category.id} 
-            onClick={() => {
-              setSelectedCategory(category.name);
-              setCurrentPage(1);
-            }}
-            className={`${styles.category_button} ${selectedCategory === category.name ? styles.active : ''}`}
+          <Link
+            key={category.id}
+            href={`/blogs/category/${category.name}`}
+            className={`${styles.category_button} ${categorySlug === category.name ? styles.active : ''}`}
           >
             {category.name}
-          </button>
-        ))}
-      </div>
-
-      {/* Blog Grid */}
-      <div className={styles.blog_grid}>
-        {paginatedPosts.map((post, index) => (
-          <Link key={post.id} href={`/blogs/${post.slug}`} className={`${styles.blog_card} p_service_item`}>
-            {post.featuredImage && (
-              // var imageUrl = post.featuredImage;
-  
-              <Image 
-                src={`/uploads/${post.featuredImage}`} 
-                alt={post.title} 
-                width={350} 
-                height={200} 
-                className={styles.card_image} 
-                priority={index < 3} // Prioritize loading for the first 3 images
-                placeholder="blur"
-                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-              />
-            )}
-            <div className={styles.card_content}>
-              <h2 className={styles.card_title}>
-                {post.title}
-              </h2>
-              <p className={styles.card_date}>
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC'
-                })}
-              </p>
-              <div className={styles.card_excerpt}>
-                {post.miniContent ? post.miniContent.replace(/<[^>]*>?/gm, '') : ''}
-              </div>
-              <span className={styles.read_more_btn}>
-                Read More
-              </span>
-            </div>
           </Link>
         ))}
       </div>
 
-      {/* Pagination */}
+      {/* Grid */}
+      <div className={`${styles.blog_grid} ${isLoading ? styles.loading : ''}`} style={{ opacity: isLoading ? 0.5 : 1, transition: 'opacity 0.2s' }}>
+        {posts.map((post, index) => {
+           let imageUrl = post.featuredImage;
+           if (imageUrl) {
+             if (imageUrl.startsWith('https://onfra.io/wp-content/uploads/')) {
+               imageUrl = imageUrl.replace('https://onfra.io/wp-content/uploads/', '');
+             } else if (imageUrl.startsWith('/uploads/')) {
+               imageUrl = imageUrl.substring('/uploads/'.length);
+             }
+             imageUrl = encodeURI(imageUrl);
+           }
+
+           return (
+          <Link key={post.id} href={`/blogs/${post.slug}`} className={`${styles.blog_card} p_service_item`}>
+            {/* Image Container */}
+            <div style={{ position: 'relative', width: '100%', height: '220px', overflow: 'hidden', backgroundColor: '#f3f4f6' }}>
+              {imageUrl && (
+                <Image
+                  src={`/uploads/${imageUrl}`}
+                  alt={post.title}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  className={styles.card_image}
+                  priority={index < 3}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+                />
+              )}
+            </div>
+
+            <div className={styles.card_content}>
+              <h2 className={styles.card_title}>{post.title}</h2>
+              <p className={styles.card_date}>
+                {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
+              </p>
+              <div className={styles.card_excerpt}>
+                {post.miniContent ? post.miniContent.replace(/<[^>]*>?/gm, '') : ''}
+              </div>
+              <span className={styles.read_more_btn}>Read More</span>
+            </div>
+          </Link>
+        );
+        })}
+      </div>
+
       <NewPagination
         currentPage={currentPage}
         totalPages={totalPages}
-        onPageChange={(page) => setCurrentPage(page)}
+        onPageChange={handlePageChange}
       />
     </div>
   );
 }
 
+const BlogCardSkeleton = () => {
+    return (
+      <div className={`${styles.blog_card} p_service_item`}>
+        <div style={{ position: 'relative', width: '100%', height: '220px', overflow: 'hidden', backgroundColor: '#f0f0f0', animation: 'pulse 1.5s infinite ease-in-out' }}></div>
+        <div className={styles.card_content}>
+          <div style={{ height: '20px', backgroundColor: '#e0e0e0', width: '80%', marginBottom: '8px', animation: 'pulse 1.5s infinite ease-in-out' }}></div>
+          <div style={{ height: '12px', backgroundColor: '#e0e0e0', width: '40%', marginBottom: '10px', animation: 'pulse 1.5s infinite ease-in-out' }}></div>
+          <div style={{ height: '14px', backgroundColor: '#e0e0e0', width: '100%', marginBottom: '4px', animation: 'pulse 1.5s infinite ease-in-out' }}></div>
+          <div style={{ height: '14px', backgroundColor: '#e0e0e0', width: '90%', marginBottom: '4px', animation: 'pulse 1.5s infinite ease-in-out' }}></div>
+          <div style={{ height: '14px', backgroundColor: '#e0e0e0', width: '80%', animation: 'pulse 1.5s infinite ease-in-out' }}></div>
+        </div>
+      </div>
+    );
+};
+
 export default function BlogList(props: BlogListProps) {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={
+      <div className={styles.blog_grid}>
+        {[...Array(6)].map((_, index) => <BlogCardSkeleton key={index} />)}
+      </div>
+    }>
       <BlogListComponent {...props} />
     </Suspense>
   );

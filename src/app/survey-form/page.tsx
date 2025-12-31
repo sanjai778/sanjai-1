@@ -25,11 +25,40 @@ const smileys = [
 
 export default function SurveyFormPage() {
   const [ratings, setRatings] = useState(Array(questions.length).fill(null));
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleRating = (questionIndex: number, smileyIndex: number) => {
     const newRatings = [...ratings];
     newRatings[questionIndex] = smileyIndex;
     setRatings(newRatings);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ratings, email }),
+      });
+
+      if (response.ok) {
+        alert('Survey submitted successfully!');
+        setRatings(Array(questions.length).fill(null));
+        setEmail('');
+      } else {
+        alert('Failed to submit survey.');
+      }
+    } catch (error) {
+      console.error('An error occurred while submitting the survey:', error);
+      alert('An error occurred while submitting the survey.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -40,14 +69,14 @@ export default function SurveyFormPage() {
         <div className={styles.form_container}>
           <div className={styles.image_container}>
             <Image
-              src="/uploads/static-image/survey-img.png"
-              alt="Survey illustration"
-              width={250}
-              height={200}
+              src="/uploads/static-image/survey.svg"
+              alt="Survey illustrtion"
+              width={400}
+              height={500}
               className={styles.image}
             />
           </div>
-          <form>
+          <form onSubmit={handleSubmit}>
             {questions.map((question, qIndex) => (
               <div key={qIndex} className={styles.question_group}>
                 <p className={styles.question}>{question}</p>
@@ -73,10 +102,13 @@ export default function SurveyFormPage() {
                 type="email"
                 placeholder="Email"
                 className={styles.email_input}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
-            <button type="submit" className="btn btn-submit">
-              Submit
+            <button type="submit" className="btn btn-submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
           </form>
         </div>

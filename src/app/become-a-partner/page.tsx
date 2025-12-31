@@ -1,6 +1,34 @@
-'use client';
+import { Metadata } from 'next';
 
-import { useEffect, useState } from 'react';
+export const metadata: Metadata = {
+  title: 'Become an Onfra Partner | Reseller, Affiliate, and Channel Programs',
+  description: 'Join the Onfra partner network. Explore our reseller, affiliate, and exclusive channel partner programs for our visitor management and workspace solutions.',
+  alternates: {
+    canonical: 'https://onfra.io/become-a-partner',
+  },
+  openGraph: {
+    title: 'Become an Onfra Partner | Reseller, Affiliate, and Channel Programs',
+    description: 'Join the Onfra partner network. Explore our reseller, affiliate, and exclusive channel partner programs for our visitor management and workspace solutions.',
+    url: 'https://onfra.io/become-a-partner',
+    siteName: 'Onfra',
+    images: [
+      {
+        url: 'https://onfra.io/public/assets/img/visitdesk_facebook.png',
+        width: 1200,
+        height: 630,
+        alt: 'Onfra Partner Program',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Become an Onfra Partner | Reseller, Affiliate, and Channel Programs',
+    description: 'Join the Onfra partner network. Explore our reseller, affiliate, and exclusive channel partner programs for our visitor management and workspace solutions.',
+    images: ['https://onfra.io/public/assets/img/visitdesk_twitter.png'],
+  },
+};
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
 import Image from 'next/image';
@@ -8,74 +36,6 @@ import styles from './PartnerContact.module.css';
 import CountrySelector from '@/app/components/CountrySelector';
 
 export default function PartnerContactPage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [statusMessage, setStatusMessage] = useState('');
-
-  useEffect(() => {
-    const dragDropAreas = document.querySelectorAll<HTMLElement>(`.${styles.dragDropArea}`);
-
-    dragDropAreas.forEach((dragDropArea) => {
-      const input = dragDropArea.querySelector(`.${styles.fileInput}`) as HTMLInputElement;
-      const uploadText = dragDropArea.querySelector<HTMLElement>(`.${styles.uploadText}`);
-      const fileNameDisplay = dragDropArea.querySelector<HTMLElement>(`.${styles.fileName}`);
-      const originalIcon = dragDropArea.querySelector<HTMLElement>(`.${styles.uploadIcon}`);
-
-      const handleFiles = (files: FileList | null) => {
-        if (files && files.length > 0) {
-          const fileName = files[0].name;
-          if (uploadText) uploadText.style.display = 'none';
-          if (originalIcon) originalIcon.style.display = 'none';
-          if (fileNameDisplay) {
-            fileNameDisplay.textContent = fileName;
-            fileNameDisplay.style.display = 'block';
-          }
-        } else {
-          if (fileNameDisplay) fileNameDisplay.style.display = 'none';
-          if (uploadText) uploadText.style.display = 'block';
-          if (originalIcon) originalIcon.style.display = 'block';
-        }
-      };
-
-      dragDropArea.addEventListener('dragover', (e: DragEvent) => {
-        e.preventDefault();
-        dragDropArea.classList.add(styles.isDragging);
-      });
-
-      dragDropArea.addEventListener('dragleave', () => {
-        dragDropArea.classList.remove(styles.isDragging);
-      });
-
-      dragDropArea.addEventListener('drop', (e: DragEvent) => {
-        e.preventDefault();
-        dragDropArea.classList.remove(styles.isDragging);
-        if (e.dataTransfer?.files) {
-          input.files = e.dataTransfer.files;
-          handleFiles(input.files);
-        }
-      });
-
-      input.addEventListener('change', () => {
-        handleFiles(input.files);
-      });
-    });
-  }, []);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setStatusMessage('');
-
-    const formData = new FormData(e.currentTarget);
-    // Replace with your API endpoint
-    const response = await fetch('/api/partner-contact', {
-      method: 'POST',
-      body: formData,
-    });
-
-    const result = await response.json();
-    setStatusMessage(result.message);
-    setIsLoading(false);
-  };
 
   return (
     <>
@@ -88,7 +48,6 @@ export default function PartnerContactPage() {
             method="post"
             action=""
             encType="multipart/form-data"
-            onSubmit={handleSubmit}
           >
             <fieldset className={styles.fieldset}>
               <div className={styles.formGroup}>
@@ -234,10 +193,9 @@ export default function PartnerContactPage() {
             </fieldset>
 
             <div>
-              <button type="submit" name="Submit" className={`${styles.btnSubmit} ${isLoading ? styles.isLoading : ''}`} disabled={isLoading}>
-                <span>{isLoading ? 'Submitting...' : 'Submit Application'}</span>
+              <button type="submit" name="Submit" className={`${styles.btnSubmit}`}>
+                <span>{'Submit Application'}</span>
               </button>
-              <div id="statusMessage" dangerouslySetInnerHTML={{ __html: statusMessage }}></div>
             </div>
           </form>
         </div>

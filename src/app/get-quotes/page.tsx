@@ -90,20 +90,23 @@ export default function GetQuotesPage() {
         }
 
         try {
-            const response = await fetch('/api/get-quotes', {
+            const response = await fetch('/api/form', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ ...formData, region: formData.region?.label }),
+                body: JSON.stringify({
+                    ...formData,
+                    region: formData.region?.label,
+                    formName: 'Get Quotes',
+                    formId: '1008',
+                }),
             });
 
-            const result = await response.json();
-
-            if (result.status === "success") {
+            if (response.ok) {
                 setSuccess(true);
             } else {
-                alert("Error: " + result.message);
+                alert("An error occurred. Please try again.");
             }
         } catch (error) {
             console.error("Failed to submit form:", error);

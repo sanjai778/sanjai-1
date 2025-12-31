@@ -193,3 +193,29 @@ model Testimonial {
   id           Int       @id @default(autoincrement())
   wordpress_id Int       @unique
 }
+model Testimonial1 {
+  name         String    @db.VarChar(255)
+  position     String    @db.VarChar(255)
+  content      String    @db.Text
+  img          String?   @db.VarChar(500)
+  category     String?   @db.VarChar(255)
+  created_at   DateTime? @default(now())
+  updated_at   DateTime? @updatedAt
+  Title        String?   @db.VarChar(255)
+  id           Int       @id @default(autoincrement())
+  wordpress_id Int       @unique
+}
+
+model Form {
+  id                   Int       @id @default(autoincrement())
+  formData             Json
+  email                String
+  emailSentStatus      Boolean   @default(false)
+  emailSentDate        DateTime?
+  formName             String
+  formId               String
+  leadSquareSendStatus Boolean   @default(false)
+  leadSquareSendDate   DateTime?
+  formSubmitDate       DateTime  @default(now())
+  createdAt            DateTime  @default(now())
+}

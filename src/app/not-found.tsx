@@ -1,30 +1,23 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import styles from './not-found.module.css';
 
 export default function NotFound() {
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: '100vh',
-      textAlign: 'center',
-      fontFamily: 'sans-serif'
-    }}>
-      <h1 style={{ fontSize: '2em', marginBottom: '20px' }}>404 - Page Not Found</h1>
-      <p style={{ marginBottom: '20px' }}>The page you are looking for does not exist.</p>
-      <Link href="/" style={{
-        padding: '10px 20px',
-        fontSize: '16px',
-        cursor: 'pointer',
-        border: '1px solid #ccc',
-        borderRadius: '5px',
-        backgroundColor: '#f0f0f0',
-        textDecoration: 'none',
-        color: 'black'
-      }}>
-        Go back to Home
-      </Link>
+    <div className={styles.container}>
+      <div className={styles.circleOuter}>
+        <Image
+          src="/uploads/2024/08/404.png"
+          alt="404 Not Found"
+          width={500}
+          height={500}
+          className={styles.image}
+        />
+        <h1 className={styles.title}>Looks like you have lost.</h1>
+        <Link href="/" className={styles.button}>
+          Go Home
+        </Link>
+      </div>
     </div>
   );
 }

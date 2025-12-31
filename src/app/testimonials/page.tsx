@@ -1,50 +1,94 @@
-'use client';
-import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
 import SubPageTitle from '@/app/components/SubPageTitle';
 import CtaSection from '@/app/components/sections/CtaSection';
+import { Metadata } from 'next';
+import { PrismaClient } from '@prisma/client';
 
-interface Testimonial {
-  id: number;
-  name: string;
-  position: string;
-  content: string;
-  img?: string;
-  Title?: string;
+const prisma = new PrismaClient();
+
+export const metadata: Metadata = {
+  title: 'Customer Testimonials | Real-World Success Stories',
+  description: 'Read real-world testimonials and success stories from businesses that have transformed their hybrid workplaces using Onfra’s innovative platform.',
+  alternates: {
+    canonical: 'https://onfra.io/testimonials',
+  },
+  openGraph: {
+    title: 'Customer Testimonials | Real-World Success Stories',
+    description: 'Read real-world testimonials and success stories from businesses that have transformed their hybrid workplaces using Onfra’s innovative platform.',
+    url: 'https://onfra.io/testimonials',
+    siteName: 'Onfra',
+    images: [
+      {
+        url: 'https://onfra.io/public/assets/img/visitdesk_facebook.png',
+        width: 1200,
+        height: 630,
+        alt: 'Onfra Testimonials',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Customer Testimonials | Real-World Success Stories',
+    description: 'Read real-world testimonials and success stories from businesses that have transformed their hybrid workplaces using Onfra’s innovative platform.',
+    images: ['https://onfra.io/public/assets/img/visitdesk_twitter.png'],
+  },
+};
+
+async function getTestimonials() {
+  try {
+    const testimonials = await prisma.testimonial.findMany();
+    return testimonials;
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
 }
 
-const TestimonialsPage = () => {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+const TestimonialsPage = async () => {
+  const testimonials = await getTestimonials();
 
-  useEffect(() => {
-    const fetchTestimonials = async () => {
-      try {
-        const response = await fetch('/api/testimonials');
-        if (!response.ok) {
-          throw new Error('Failed to fetch testimonials');
+  const testimonialSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": testimonials.map((testimonial, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Review",
+        "name": testimonial.Title || `Testimonial from ${testimonial.name}`,
+        "reviewBody": testimonial.content,
+        "author": {
+          "@type": "Person",
+          "name": testimonial.name,
+        },
+        "itemReviewed": {
+          "@type": "Organization",
+          "name": "Onfra",
+          "url": "https://onfra.io"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          // Assuming all testimonials are positive (5/5), as no rating data exists
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1"
         }
-        const data = await response.json();
-        const processedData = data.map((testimonial: Testimonial) => {
-          if (testimonial.img && testimonial.img.startsWith('https://onfra.io/wp-content')) {
-            testimonial.img = testimonial.img.replace('https://onfra.io/wp-content', '');
-          }
-          return testimonial;
-        });
-        setTestimonials(processedData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchTestimonials();
-  }, []);
+      },
+    })),
+  };
 
   return (
     <>
       <Header />
       <SubPageTitle title="Testimonials" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(testimonialSchema) }}
+      />
       <main className="py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="">

@@ -12,7 +12,7 @@ import styles from './TestimonialSlider.module.css';
 interface Testimonial {
   id: number;
   content: string;
-  img: string;
+  img: string | null;
   name: string;
   position: string;
 }
@@ -28,9 +28,9 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
 
   // Best practice: If you have a small number of slides, duplicate them to ensure
   // the loop is seamless and there are always enough slides to show in the "peek" view.
-  const displayTestimonials = testimonials.length <= 5 
-    ? [...testimonials, ...testimonials] 
-    : testimonials;
+  const displayTestimonials = testimonials
+    .filter((t) => t.img)
+    .flatMap((t) => testimonials.length <= 5 ? [t, t] : [t]);
 
   const getStrapiMedia = (url: string) => {
     if (url.startsWith("https://onfra.io/wp-content")) {
@@ -73,10 +73,10 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
         {displayTestimonials.map((t, index) => (
           <SwiperSlide key={`${t.id}-${index}`} className={styles.swiperSlide}>
             <div className={styles.card}>
-              <Image src="/uploads/2025/06/onfra2.png" alt="quote icon" width={32} height={32} className={styles.quoteIcon} />
+              <Image src="/uploads/2025/06/onfra2.png" alt="quotation mark icon" width={32} height={32} className={styles.quoteIcon} />
               <p className={styles.cardText}>{t.content}</p>
               <div className={styles.cardFooter}>
-                <Image src={getStrapiMedia(t.img)} alt={t.name} width={55} height={55} className={styles.avatar} />
+                {t.img && <Image src={getStrapiMedia(t.img)} alt={t.name} width={55} height={55} className={styles.avatar} />}
                 <div className={styles.authorInfo}>
                   <h4>{t.name}</h4>
                   <p>{t.position}</p>

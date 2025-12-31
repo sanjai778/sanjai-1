@@ -59,10 +59,10 @@ export default function BlogSwiper({ posts = [] }: BlogSwiperProps) {
             />
           </div>
           <div className="blog-slider__content">
-            <span className="blog-slider__code">{new Date(post.date).toLocaleDateString()}</span>
+            <Link href={`/blogs/${post.slug}`} > <span className="blog-slider__code">{new Date(post.date).toLocaleDateString()}</span>
             <div className="blog-slider__title">{post.title}</div>
             <div className="blog-slider__text">{post.miniContent}</div>
-            <Link href={`/${post.slug}`} className="btn btn-outline-primary">READ MORE</Link>
+            <span className="btn btn-outline-primary">Read More</span></Link>
           </div>
         </SwiperSlide>
       ))}

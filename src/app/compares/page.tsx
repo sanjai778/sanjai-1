@@ -1,81 +1,87 @@
-"use client";
-
-import { useState, useEffect } from 'react';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
-import CompareSearch from '@/app/components/CompareSearch';
-import BestComparisons from '@/app/components/BestComparisons';
-import NewPagination from '@/app/components/NewPagination';
-import TestimonialSection from '../components/sections/TestimonialSection';
+import TestimonialSectionClient from '@/app/components/sections/TestimonialSectionClient';
 import CtaSection from '../components/sections/CtaSection';
+import CompareList from '@/app/components/CompareList';
+import { generateWebPageSchema } from '@/app/utils/schema';
+import { prisma } from '@/lib/prisma';
+import { Metadata } from 'next';
 import { Compare } from '@/app/types';
 
-async function getCompares() {
-  try {
-    const response = await fetch('/api/compares', { next: { revalidate: 60 } });
+export const metadata: Metadata = {
+  title: 'Software Comparisons | Onfra',
+  description: 'Compare leading software solutions with Onfra to find the best fit for your workplace management needs.',
+  alternates: {
+    canonical: 'https://onfra.io/compares',
+  },
+  openGraph: {
+    title: 'Software Comparisons | Onfra',
+    description: 'Compare leading software solutions with Onfra to find the best fit for your workplace management needs.',
+    url: 'https://onfra.io/compares',
+    siteName: 'Onfra',
+    locale: 'en_US',
+    type: 'website',
+  },
+};
 
-    if (!response.ok) {
-      throw new Error('Failed to fetch compares.');
+async function getInitialCompares() {
+    try {
+        const limit = 12;
+        const where = {
+            AND: [
+                { main_title: { not: 'title' } },
+                { main_title: { not: 'onfra' } }
+            ]
+        };
+        
+        const [compares, total] = await Promise.all([
+            prisma.compare.findMany({
+                where,
+                take: limit,
+            }),
+            prisma.compare.count({ where })
+        ]);
+
+        const mappedCompares: Compare[] = compares.map(c => ({
+            id: c.id,
+            slug: c.slug || '',
+            img_url: c.img_url || '',
+            main_title: c.main_title || '',
+            page_description: c.page_description || ''
+        }));
+        
+        return { compares: mappedCompares, total };
+    } catch (err) {
+        console.error(err);
+        return { compares: [], total: 0 };
     }
-
-    const compares = await response.json();
-    return compares;
-  } catch (err) {
-    console.error(err);
-    return [];
-  }
 }
 
-export default function ComparesPage() {
-  const [compares, setCompares] = useState<Compare[]>([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(12);
+export default async function ComparesPage() {
+    const { compares, total } = await getInitialCompares();
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getCompares();
-      setCompares(data);
-    }
-    fetchData();
-  }, []);
+    const compareSchema = generateWebPageSchema({
+        title: 'Software Comparisons',
+        description: 'Compare leading software...',
+        url: 'https://onfra.io/compares',
+        type: "CollectionPage"
+    });
 
-
-  const filteredCompares = compares
-    .filter((compare: Compare) =>
-      compare.main_title &&
-      compare.main_title.toLowerCase() !== 'title' &&
-      compare.main_title.toLowerCase() !== 'onfra' &&
-      compare.main_title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredCompares.slice(indexOfFirstItem, indexOfLastItem);
-
-  const totalPages = Math.ceil(filteredCompares.length / itemsPerPage);
-
-  return (
-    <>
-      <Header />
-      <CompareSearch value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
-        {currentItems.length > 0 ? (
-          <>
-            <BestComparisons data={currentItems} />
-            <NewPagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={(page) => setCurrentPage(page)}
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(compareSchema) }}
             />
-          </>
-        ) : (
-          <p style={{ textAlign: 'center' }}>No compares found.</p>
-        )}
-      </main>
-       <TestimonialSection />
-       <CtaSection />
-      <Footer />
-    </>
-  );
+            <Header />
+            <CompareList 
+                initialCompares={compares} 
+                initialTotal={total}
+                initialPage={1}
+            />
+            <TestimonialSectionClient />
+            <CtaSection />
+            <Footer />
+        </>
+    );
 }

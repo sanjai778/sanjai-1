@@ -27,7 +27,7 @@ const BestComparisons: React.FC<BestComparisonsProps> = ({ data }) => {
             imageUrl = encodeURI(imageUrl);
           }
           return (
-            <Link key={compare.id} href={`/compares/${compare.slug}`} className={`${styles.card} p_service_item`}>
+            <Link key={compare.id} href={`/compares/${compare.slug}`} className={`${styles.card} p_service_item`} aria-label={`Read more about comparing Onfra with ${compare.main_title}`}>
               {imageUrl && <Image src={imageUrl} alt={compare.main_title} className={styles.logo} width={300} height={200} />}
               <h3>Onfra vs {compare.main_title} | Alternative to {compare.main_title}</h3>
               <p>{truncateWords(compare.page_description, 14)}</p>

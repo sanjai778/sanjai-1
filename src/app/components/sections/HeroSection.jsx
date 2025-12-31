@@ -14,9 +14,9 @@ var HeroSection = function () {
               <Link href="/talk-to-an-expert" className="btn btn-outline-primary">Talk to Expert</Link>
             </div>
             <div className={styles.features}>
-              <span><Image src="/images/icons/check-circle.svg" alt="check" width={20} height={20}/> Free 14-day Demo</span>
-              <span><Image src="/images/icons/check-circle.svg" alt="check" width={20} height={20}/> No credit card needed</span>
-              <span><Image src="/images/icons/check-circle.svg" alt="check" width={20} height={20}/> Quick Setup</span>
+              <span><Image src="/images/icons/check-circle.svg" alt="free trial checkmark" width={20} height={20}/> Free 14-day Demo</span>
+              <span><Image src="/images/icons/check-circle.svg" alt="no credit card checkmark" width={20} height={20}/> No credit card needed</span>
+              <span><Image src="/images/icons/check-circle.svg" alt="quick setup checkmark" width={20} height={20}/> Quick Setup</span>
             </div>
           </div>
         </div>

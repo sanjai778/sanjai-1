@@ -18,21 +18,21 @@ export default function Hero({ tagline, title, description, imageUrl }: HeroProp
           <div className="col-lg-6">
             <div className="banner-text">
               <h2 className="section_tagline">{tagline}</h2>
-              <h3 className="section_title">{title}</h3>
+              <h1 className="section_title">{title}</h1>
               <p>{description}</p>
               <div className="button_col">
                 <a href="#" className="btn btn-primary">Book Demo</a>
                 <a href="#" className="btn btn-outline-primary">Talk to Expert</a>
               </div>
               <div className="notices">
-                <span><Image src="/images/icons/check-circle.svg" width={20} height={20} alt="check mark" style={{ marginRight: '8px' }}/>Free 14-day Demo</span>
-                <span><Image src="/images/icons/check-circle.svg" width={20} height={20} alt="check mark" style={{ marginRight: '8px' }}/>No credit card needed</span>
-                <span><Image src="/images/icons/check-circle.svg" width={20} height={20} alt="check mark" style={{ marginRight: '8px' }}/>Quick Setup</span>
+                <span><Image src="/images/icons/check-circle.svg" width={20} height={20} alt="free trial checkmark" style={{ marginRight: '8px' }}/>Free 14-day Demo</span>
+                <span><Image src="/images/icons/check-circle.svg" width={20} height={20} alt="no credit card checkmark" style={{ marginRight: '8px' }}/>No credit card needed</span>
+                <span><Image src="/images/icons/check-circle.svg" width={20} height={20} alt="quick setup checkmark" style={{ marginRight: '8px' }}/>Quick Setup</span>
               </div>
             </div>
           </div>
           <div className="col-lg-6">
-            <Image src={imageUrl} alt="Visitor Management Illustration" width={550} height={500} style={{ maxWidth: '100%', height: 'auto' }} />
+            <Image src={imageUrl} alt={`${title} Illustration`} width={550} height={500} style={{ maxWidth: '100%', height: 'auto' }} />
           </div>
         </div>
       </div>

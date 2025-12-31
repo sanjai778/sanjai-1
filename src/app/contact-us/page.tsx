@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
+import { generateWebPageSchema } from '@/app/utils/schema';
 import CtaSection from '../components/sections/CtaSection';
 import Image from 'next/image';
 import styles from './contact.module.css';
@@ -23,15 +24,61 @@ export default function ContactUsPage() {
     });
   };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setError('');
+    setSuccess(false);
+
+    try {
+      const response = await fetch('/api/form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          formName: 'Contact Us',
+          formId: '1002',
+        }),
+      });
+
+      if (response.ok) {
+        setSuccess(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: ''
+        });
+      } else {
+        setError('Failed to submit the form. Please try again.');
+      }
+    } catch {
+      setError('An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  const contactSchema = generateWebPageSchema({
+    title: 'Contact Us | Get In Touch with Onfra',
+    description: 'Have questions about visitor management, desk booking, or facility management? Contact the Onfra support and sales teams today.',
+    url: 'https://onfra.io/contact-us',
+    type: "ContactPage"
+  });
 
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+      />
 
       <main>
         {/* Section 1: Green Banner - Exact match with reference */}
@@ -53,9 +100,11 @@ export default function ContactUsPage() {
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {success && <p className="text-green-500">Form submitted successfully!</p>}
+                  {error && <p className="text-red-500">{error}</p>}
                   <div>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="name"
                       placeholder="Name" 
                       className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-green"
@@ -101,8 +150,8 @@ export default function ContactUsPage() {
                     />
                   </div>
                   
-                  <button type="submit" className={styles.submitBtn}>
-                    Submit
+                  <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
                   </button>
                 </form>
               </div>

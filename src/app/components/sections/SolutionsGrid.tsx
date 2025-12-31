@@ -7,13 +7,13 @@ interface Solution {
 }
 
 const solutions: Solution[] = [
-  { title: "Finance & Government", description: "Streamline the visitor and employee sign in experience with an intuitive, easy to use software solution." },
-  { title: "Logistics & Transport", description: "Easily identify visitors and contractors and automate manual processes with a single, simple solution." },
-  { title: "Construction & Realestate", description: "Comply with health and safety regulations and have total visibility of staff, contractor, and visitor presence across your sites." },
-  { title: "Education, Universities & Schools", description: "Track visitors coming and going and ensure you are compliant with strict security rules." },
+  { title: "Finance & Government", description: "Streamline the visitor and employee sign in experience with an intuitive software solution." },
+  { title: "Logistics & Transport", description: "Identify visitors and contractors and automate manual processes with a single, simple solution." },
+  { title: "Construction & Realestate", description: "Comply with safety regulations and have total visibility of staff and visitor presence across sites." },
+  { title: "Education & Schools", description: "Track visitors coming and going and ensure you are compliant with strict security rules." },
   { title: "Offices & Co-working", description: "Simplify visitor management and enhance workplace productivity." },
-  { title: "Techparks & Business Center", description: "TrackEfficient visitor management system for tech parks—reliable and convenient." },
-  { title: "Warehouse & facilities", description: "Streamline visitor management at warehouses and facilities while boosting workplace efficiency." },
+  { title: "Techparks", description: "Efficient visitor management system for tech parks—reliable and convenient." },
+  { title: "Warehouse", description: "Streamline visitor management at warehouses while boosting workplace efficiency." },
 ];
 
 const SolutionsGrid: React.FC = () => {
@@ -22,13 +22,17 @@ const SolutionsGrid: React.FC = () => {
       <div className="container">
         <div className={styles.sectionContainer}>
           <div className={styles.grid}>
-            <div>
+            <div style={{ contentVisibility: 'auto' }}>
               <h2 className={styles.gridHeading}>
                 A <span className={styles.highlight}>solution</span> for every workplace
               </h2>
             </div>
             {solutions.map((solution, index) => (
-              <div key={index} className={styles.solutionBox}>
+              <div
+                key={index}
+                className={styles.solutionBox}
+                style={{ contentVisibility: 'auto' }}
+              >
                 <h3>{solution.title}</h3>
                 <p>{solution.description}</p>
                 <Link href="#">Learn more</Link>

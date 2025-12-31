@@ -36,15 +36,15 @@ const Footer: React.FC = () => {
           <div className={styles.linkColumn}>
             <h4 className={styles.linkTitle}>Products</h4>
             <ul>
-              <li><Link href="/platform/visitors">Visitors</Link></li>
-              <li><Link href="/platform/flexipass">Flexipass</Link></li>
-              <li><Link href="/platform/employees">Employees</Link></li>
-              <li><Link href="/platform/queue-management">Queue</Link></li>
-              <li><Link href="/platform/deliveries">Deliveries</Link></li>
-              <li><Link href="/platform/material-pass">Material Pass</Link></li>
-              <li><Link href="/platform/rooms">Rooms</Link></li>
-              <li><Link href="/platform/desk">Desks</Link></li>
-              <li><Link href="/platform/vehicles">Vehicle Pass</Link></li>
+              <li><Link href="/platform/visitors/">Visitors</Link></li>
+              <li><Link href="/platform/flexipass/">Flexipass</Link></li>
+              <li><Link href="/platform/employees/">Employees</Link></li>
+              <li><Link href="/platform/queue-management/">Queue</Link></li>
+              <li><Link href="/platform/deliveries/">Deliveries</Link></li>
+              <li><Link href="/platform/material-pass/">Material Pass</Link></li>
+              <li><Link href="/platform/rooms/">Rooms</Link></li>
+              <li><Link href="/platform/desk/">Desks</Link></li>
+              <li><Link href="/platform/vehicles/">Vehicle Pass</Link></li>
               <li><Link href="#">Signage</Link></li>
             </ul>
           </div>
@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
               <li><Link href="/survey-form">Survey form</Link></li>
               <li><Link href="/supported-printers">Supported Printers</Link></li>
               <li><Link href="/become-a-partner">Become a Partner</Link></li>
-              <li><Link href="/qucik-links">Qucik Links</Link></li>
+              <li><Link href="/qucik-links">Quick Links</Link></li>
               <li><Link href="/partner-program-terms-and-conditions">Partner Program Terms and Conditions</Link></li>
             </ul>
           </div>
@@ -72,16 +72,16 @@ const Footer: React.FC = () => {
           <div className={styles.linkColumn}>
             <h4 className={styles.linkTitle}>Solution</h4>
             <ul>
-              <li><Link href="/solutions/hybrid-office-management">Hybrid Office Management</Link></li>
-              <li><Link href="/solutions/co-working-management">Co Working Management</Link></li>
-              <li><Link href="/solutions/facility-management">Facility Management</Link></li>
-              <li><Link href="/solutions/tech-park-management">Tech Park Management</Link></li>
-              <li><Link href="/solutions/centralize-workplace-management">Centralize workplace management</Link></li>
-              <li><Link href="/solutions/employee-tenant-and-visitor-experience">Employee, tenant and visitor experience</Link></li>
-              <li><Link href="/solutions/safety-security-and-compliance">Safety, security and compliance</Link></li>
-              <li><Link href="/solutions/workplace-utilization-and-insights">Workplace utilization and insights</Link></li>
-              <li><Link href="/solutions/workplaces-and-buildings">Workplaces and buildings</Link></li>
-              <li><Link href="/solutions/sustainable-workplace">Sustainable Workplace</Link></li>
+              <li><Link href="/solutions/hybrid-office-management/">Hybrid Office Management</Link></li>
+              <li><Link href="/solutions/co-working-management/">Co Working Management</Link></li>
+              <li><Link href="/solutions/facility-management/">Facility Management</Link></li>
+              <li><Link href="/solutions/tech-park-management/">Tech Park Management</Link></li>
+              <li><Link href="/solutions/centralize-workplace-management/">Centralize workplace management</Link></li>
+              <li><Link href="/solutions/employee-tenant-and-visitor-experience/">Employee, tenant and visitor experience</Link></li>
+              <li><Link href="/solutions/safety-security-and-compliance/">Safety, security and compliance</Link></li>
+              <li><Link href="/solutions/workplace-utilization-and-insights/">Workplace utilization and insights</Link></li>
+              <li><Link href="/solutions/workplaces-and-buildings/">Workplaces and buildings</Link></li>
+              <li><Link href="/solutions/sustainable-workplace/">Sustainable Workplace</Link></li>
             </ul>
           </div>
         </div>
@@ -89,11 +89,11 @@ const Footer: React.FC = () => {
         <div className={styles.footerBottom}>
           <p className={styles.madeWith}>Made with ❤️ at ifelse</p>
           <div className={styles.legalLinks}>
-            <Link href="/your-country">Your Country</Link>
+            <Link href="/country">Your Country</Link>
             <Link href="/privacy-policy">Privacy Policy</Link>
-            <Link href="/terms">Terms & Conditions</Link>
-            <Link href="/cancellation-policy">Cancellation and Refund policy</Link>
-            <Link href="/gdpr">GDPR Policy</Link>
+            <Link href="/terms-and-conditions">Terms & Conditions</Link>
+            <Link href="/cancellation-and-refund-policy">Cancellation and Refund policy</Link>
+            <Link href="/gdpr-policy">GDPR Policy</Link>
           </div>
         </div>
       </div>

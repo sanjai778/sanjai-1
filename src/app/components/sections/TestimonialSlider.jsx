@@ -52,7 +52,7 @@ export default function TestimonialSlider(_a) {
         }} className={styles.swiperContainer}>
         {displayTestimonials.map(function (t, index) { return (<SwiperSlide key={"".concat(t.id, "-").concat(index)} className={styles.swiperSlide}>
             <div className={styles.card}>
-              <Image src="/uploads/2025/06/onfra2.png" alt="quote icon" width={32} height={32} className={styles.quoteIcon}/>
+              <Image src="/uploads/2025/06/onfra2.png" alt="quotation mark icon" width={32} height={32} className={styles.quoteIcon}/>
               <p className={styles.cardText}>{t.content}</p>
               <div className={styles.cardFooter}>
                 <Image src={getStrapiMedia(t.img)} alt={t.name} width={55} height={55} className={styles.avatar}/>

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Image from "next/image"
 
 const integrationsData = [
@@ -60,8 +60,16 @@ const integrationsData = [
   },
 ];
 
-export default function Integrations() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+interface IntegrationsProps {
+  activeCategory?: string;
+}
+
+export default function Integrations({ activeCategory = 'all' }: IntegrationsProps) {
+  const [selectedCategory, setSelectedCategory] = useState(activeCategory);
+
+  useEffect(() => {
+    setSelectedCategory(activeCategory);
+  }, [activeCategory]);
 
   const allCategories = ['all', ...Array.from(new Set(integrationsData.flatMap(i => i.categories)))];
 
@@ -101,7 +109,7 @@ export default function Integrations() {
           <div className="intContainer">
             {filteredIntegrations.map((integration, index) => (
               <div key={index} className="intCard">
-                <Image className="intLogo" src={integration.logo} alt={integration.title} width={50} height={50} />
+                <Image className="intLogo" src={integration.logo} alt={integration.title} width={50} height={50} style={{ objectFit: 'contain' }} />
                 <div className="title">{integration.title}</div>
                 <p className="paragraph">{integration.description}</p>
               </div>

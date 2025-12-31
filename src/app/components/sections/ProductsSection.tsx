@@ -62,9 +62,13 @@ const ProductsSection: React.FC = () => {
         </div>
         <div className={styles.grid}>
           {products.map((product) => (
-            <div key={product.title} className={`${styles.productCard} p_service_item`}>
+            <div
+              key={product.title}
+              className={`${styles.productCard} p_service_item`}
+              style={{ contentVisibility: 'auto' }}
+            >
               <div className={styles.icon}>
-                <i className={product.icon}></i>
+                <i className={product.icon} aria-hidden="true"></i>
               </div>
               <div className={styles.boxHeading}>
                 <Link href={product.link}>

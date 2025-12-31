@@ -10,6 +10,7 @@ const NewsletterModal: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
 
   // Effect to trigger modal after a delay, only once per session/week
   useEffect(() => {
@@ -25,7 +26,7 @@ const NewsletterModal: React.FC = () => {
         setIsOpen(true);
         localStorage.setItem('newsletterPopupShown', new Date().toISOString());
       }
-    }, 10000); // 10 second delay
+    }, 1000); // 10 second delay
 
     return () => clearTimeout(timer);
   }, []);
@@ -33,12 +34,30 @@ const NewsletterModal: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    console.log("Subscribing with email:", email);
-    setIsLoading(false);
-    setIsSuccess(true);
-    setEmail("");
+    setError(null);
+
+    try {
+      const response = await fetch('/api/email/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        setEmail("");
+      } else {
+        const data = await response.json();
+        setError(data.error || 'Subscription failed. Please try again.');
+        alert(data.error || 'Subscription failed. Please try again.');
+      }
+    } catch {
+      setError('An error occurred. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
   };
   
   const closeModal = () => {
@@ -64,6 +83,7 @@ const NewsletterModal: React.FC = () => {
               <>
                 <p>Stay in the loop! Subscribe for updates, features, and exclusive offers.</p>
                 <form onSubmit={handleSubmit}>
+                  {error && <p className={styles.error}>{error}</p>}
                   <input
                     type="email"
                     placeholder="Enter your email"

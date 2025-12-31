@@ -4,10 +4,53 @@ import Footer from '@/app/components/Footer';
 import SubPageTitle from '@/app/components/SubPageTitle';
 import CtaSection from '@/app/components/sections/CtaSection';
 import styles from './CancellationAndRefundPolicy.module.css';
+import { Metadata } from 'next';
+import { generateWebPageSchema } from '@/app/utils/schema';
+
+export const metadata: Metadata = {
+  title: 'Cancellation & Refund Policy | Onfra SaaS Service',
+  description: 'Review Onfra\'s cancellation and refund policy, including guidelines for monthly billing, subscription terms, and our 15-day no-obligation cancellation period.',
+  alternates: {
+    canonical: 'https://onfra.io/cancellation-and-refund-policy',
+  },
+  openGraph: {
+    title: 'Cancellation & Refund Policy | Onfra SaaS Service',
+    description: 'Review Onfra\'s cancellation and refund policy, including guidelines for monthly billing, subscription terms, and our 15-day no-obligation cancellation period.',
+    url: 'https://onfra.io/cancellation-and-refund-policy',
+    siteName: 'Onfra',
+    images: [
+      {
+        url: 'https://onfra.io/public/assets/img/visitdesk_facebook.png',
+        width: 1200,
+        height: 630,
+        alt: 'Onfra Policy Document',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cancellation & Refund Policy | Onfra SaaS Service',
+    description: 'Review Onfra\'s cancellation and refund policy, including guidelines for monthly billing, subscription terms, and our 15-day no-obligation cancellation period.',
+    images: ['https://onfra.io/public/assets/img/visitdesk_twitter.png'],
+  },
+};
 
 const CancellationAndRefundPolicy = () => {
+  const policySchema = generateWebPageSchema({
+    title: metadata.title as string,
+    description: metadata.description as string,
+    url: metadata.alternates?.canonical as string,
+    type: "WebPage"
+  });
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(policySchema) }}
+      />
       <Header />
       <SubPageTitle title="Cancellation & Refund Policy" />
       <div className={styles.main}>

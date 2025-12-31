@@ -1,14 +1,15 @@
 import { PrismaClient } from '@prisma/client';
-import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
 export async function GET() {
   try {
     const testimonials = await prisma.testimonial.findMany();
-    return NextResponse.json(testimonials);
-  } catch (error) {
-    console.error('Error fetching testimonials:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return Response.json(testimonials);
+  } catch (err) {
+    console.error(err);
+    return Response.json({ message: 'Failed to fetch testimonials' }, { status: 500 });
+  } finally {
+    await prisma.$disconnect();
   }
 }

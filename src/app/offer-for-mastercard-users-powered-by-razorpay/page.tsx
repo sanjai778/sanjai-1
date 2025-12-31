@@ -39,8 +39,16 @@ const OfferForMastercardUsersPage: React.FC = () => {
     setIsClient(true);
   }, []);
 
-  const handleFormSubmit = (event: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+
+  const handleFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    setIsSubmitting(true);
+    setError('');
+    setSuccess(false);
+
     const formData = {
       fullName,
       companyName,
@@ -49,8 +57,36 @@ const OfferForMastercardUsersPage: React.FC = () => {
       phone,
       selectedModules: selectedModules.map(option => option.value),
     };
-    console.log('Form Submitted:', formData);
-    alert('Form submitted! Check the console for the data.');
+
+    try {
+      const response = await fetch('/api/form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          formName: 'Mastercard Offer',
+          formId: '1003',
+        }),
+      });
+
+      if (response.ok) {
+        setSuccess(true);
+        setFullName('');
+        setCompanyName('');
+        setNumEmployees('');
+        setEmail('');
+        setPhone('');
+        setSelectedModules([]);
+      } else {
+        setError('Failed to submit the form. Please try again.');
+      }
+    } catch {
+      setError('An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -86,6 +122,8 @@ const OfferForMastercardUsersPage: React.FC = () => {
                   <p className="text-gray-500 text-base">Fill in your details and get started</p>
                 </div>
                 <form onSubmit={handleFormSubmit} className="mt-6" noValidate>
+                  {success && <p className="text-green-500">Form submitted successfully!</p>}
+                  {error && <p className="text-red-500">{error}</p>}
                   <div className="mb-4">
                     <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} className="w-full bg-gray-50 border border-gray-200 p-3 h-12 rounded-lg text-base focus:bg-white focus:border-[#10c469] focus:shadow-[0_0_0_3px_rgba(16,196,105,0.2)] outline-none" placeholder="Full Name" required />
                   </div>
@@ -124,7 +162,9 @@ const OfferForMastercardUsersPage: React.FC = () => {
                       />
                     )}
                   </div>
-                  <button type="submit" className="w-full bg-[#10c469] text-white py-3.5 px-7 font-semibold text-base rounded-lg border-none transition-all duration-300 ease-in-out transform hover:bg-[#0e9f58] hover:-translate-y-0.5 shadow-[0_4px_15px_rgba(16,196,105,0.3)]">Submit</button>
+                  <button type="submit" className="w-full bg-[#10c469] text-white py-3.5 px-7 font-semibold text-base rounded-lg border-none transition-all duration-300 ease-in-out transform hover:bg-[#0e9f58] hover:-translate-y-0.5 shadow-[0_4px_15px_rgba(16,196,105,0.3)]" disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                  </button>
                 </form>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import React from "react"
+import { Metadata } from "next"
 import "./visitors.css"
 import "../platform.css";
 import Header from "@/app/components/Header"
@@ -7,10 +8,17 @@ import Hero from "@/app/platform/section/hero"
 import Features from "@/app/platform/section/features"
 import ProcessSteps from "@/app/platform/section/process-steps"
 import Integrations from "@/app/platform/section/integrations"
-import FaqAccordion from "@/app/components/FaqAccordion"
-import CtaSection from "@/app/components/sections/CtaSection"
-import TestimonialSection from "@/app/components/sections/TestimonialSection"
-import RelatedCaseStudies from "@/app/components/RelatedCaseStudies"
+import dynamic from 'next/dynamic'
+
+const FaqSection = dynamic(() => import("@/app/components/sections/FaqSection"))
+const CtaSection = dynamic(() => import("@/app/components/sections/CtaSection"))
+const TestimonialSectionServer = dynamic(() => import("@/app/components/sections/TestimonialSection.server"))
+const RelatedCaseStudies = dynamic(() => import("@/app/components/RelatedCaseStudies"))
+
+export const metadata: Metadata = {
+  title: 'Visitor Management System | Onfra',
+  description: 'Simplify visitor check-ins and track data securely with Onfra’s modern visitor management system. Modernize front-desk operations with contactless check-ins and real-time monitoring.',
+}
 
 export default function VisitorsPage() {
   return (
@@ -80,10 +88,10 @@ export default function VisitorsPage() {
           },
         ]}
       />
-      <Integrations />
+      <Integrations activeCategory="visitors" />
       <RelatedCaseStudies />
-      <TestimonialSection />
-      <FaqAccordion limit={4} />
+      <TestimonialSectionServer />
+      <FaqSection />
       <CtaSection/>
       <Footer />
     </main>

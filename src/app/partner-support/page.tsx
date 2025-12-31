@@ -44,27 +44,32 @@ export default function PartnerSupport() {
 
     setIsSubmitting(true);
 
-    const response = await fetch('/api/partner-support', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        check_Business_Code: businessCode,
-        check_registered_email_id: registeredEmail,
-        check_partner_phone_number: phoneNumber,
-        partner_query: query,
-      }),
-    });
+    try {
+      const response = await fetch('/api/form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          businessCode,
+          email: registeredEmail,
+          phone: phoneNumber,
+          query,
+          formName: 'Partner Support',
+          formId: '1004',
+        }),
+      });
 
-    const data = await response.json();
-    setIsSubmitting(false);
-
-    if (data.status === 'success') {
-      setShowSuccess(true);
-    } else {
-      // Handle error
-      console.error(data.message);
+      if (response.ok) {
+        setShowSuccess(true);
+      } else {
+        // Handle error
+        console.error('Failed to submit the form.');
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 

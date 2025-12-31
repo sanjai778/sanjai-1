@@ -8,7 +8,8 @@ import { Metadata } from 'next';
 import CtaSection from '@/app/components/sections/CtaSection';
 import BackButton from '@/app/components/BackButton';
 import FaqSection from '@/app/components/sections/FaqSection';
-import TestimonialSection from '@/app/components/sections/TestimonialSection';
+import TestimonialSectionServer from '@/app/components/sections/TestimonialSection.server';
+import { generateWebPageSchema } from '@/app/utils/schema';
 import { notFound } from 'next/navigation';
 import { PrismaClient } from '@prisma/client';
 
@@ -59,19 +60,65 @@ async function getCompare(slug: string) {
   }
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const compare = await getCompare(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const compare = await getCompare(slug);
+  if (!compare) {
+    return {
+      title: "Compare not found",
+    };
+  }
+
+  const description = compare.page_description || `Compare Onfra with ${compare.main_title}. See how our visitor management, desk booking, and facility management solutions stack up against the competition.`;
+
   return {
-    title: compare?.main_title,
+    title: `${compare.main_title} vs Onfra | Feature & Price Comparison`,
+    description: description,
+    alternates: {
+      canonical: `https://onfra.io/compares/${compare.slug}`,
+    },
+    openGraph: {
+      title: `${compare.main_title} vs Onfra | Feature & Price Comparison`,
+      description: description,
+      url: `https://onfra.io/compares/${compare.slug}`,
+      siteName: 'Onfra',
+      images: [
+        {
+          url: 'https://onfra.io/public/assets/img/visitdesk_facebook.png',
+          width: 1200,
+          height: 630,
+          alt: `Onfra vs ${compare.main_title} Comparison`,
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${compare.main_title} vs Onfra | Feature & Price Comparison`,
+      description: description,
+      images: ['https://onfra.io/public/assets/img/visitdesk_twitter.png'],
+    },
   };
 }
 
-export default async function ComparePage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function ComparePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const compare = await getCompare(slug);
 
+  const comparePageSchema = generateWebPageSchema({
+    title: compare?.main_title || "Software Comparison",
+    description: compare?.page_description || "Detailed comparison of visitor management software.",
+    url: compare ? `https://onfra.io/compares/${compare.slug}` : 'https://onfra.io/compares',
+    type: "WebPage"
+  });
+  
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(comparePageSchema) }}
+      />
       <Header />
       <main>
         {compare ? (
@@ -92,12 +139,9 @@ export default async function ComparePage({ params }: { params: { slug: string }
       </main>
 
     
-        <FaqSection />
-       <TestimonialSection />
-        
-   
-      
-              <CtaSection />
+      <FaqSection />
+      <TestimonialSectionServer />
+      <CtaSection />
       <Footer />
     </>
   );
